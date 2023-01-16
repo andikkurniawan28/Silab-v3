@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Report;
+use App\Models\Indicator;
+use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
@@ -14,8 +15,8 @@ class ReportController extends Controller
 
     public function process(Request $request)
     {
-        $data = Report::serve($request->date);
-        return view('report.show', compact('data'));
-        // return $data;
+        $indicators = Indicator::all();
+        $data = Report::serve($request);
+        return view('report.show', compact('data', 'indicators'));
     }
 }
