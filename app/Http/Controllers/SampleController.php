@@ -40,7 +40,9 @@ class SampleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Sample::create($request->all());
+        return redirect()->back()
+            ->with('success', 'Sampel '.Material::whereId($request->material_id)->get()->last()->name.' berhasil disimpan');
     }
 
     /**
@@ -72,9 +74,11 @@ class SampleController extends Controller
      * @param  \App\Models\Sample  $sample
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sample $sample)
+    public function update(Request $request, $id)
     {
-        //
+        Sample::where('id', $id)->update(['material_id' => $request->material_id]);
+        return redirect()->back()
+            ->with('success', 'Sampel berhasil dirubah');
     }
 
     /**
@@ -83,8 +87,10 @@ class SampleController extends Controller
      * @param  \App\Models\Sample  $sample
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sample $sample)
+    public function destroy(Request $request, $id)
     {
-        //
+        Sample::whereId($id)->delete();
+        return redirect()->back()
+            ->with('success', 'Sampel '.Material::whereId($request->material_id)->get()->last()->name.' berhasil dihapus');
     }
 }

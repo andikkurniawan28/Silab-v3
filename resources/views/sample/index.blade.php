@@ -79,7 +79,8 @@
                                     {{ $material->name }}
                                 </option>
                             @endforeach
-                          </select>
+                        </select>
+                        <input type="hidden" name="user_id" value="{{ Auth()->user()->id }}">
                     </div>
                 </div>
 
@@ -121,7 +122,7 @@
                                  {{ $material->name }}
                                 </option>
                             @endforeach
-                          </select>
+                        </select>
                     </div>
                 </div>
 
@@ -158,7 +159,7 @@
                     'value' => $sample->material->name,
                     'modifier' => 'readonly',
                 ])
-
+                <input type="hidden" name="material_id" value="{{ $sample->material_id }}">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>

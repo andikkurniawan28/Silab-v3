@@ -1,4 +1,4 @@
-<form action="{{ route('process_report') }}" method="POST">
+<form action="{{ route('report_process') }}" method="POST">
     @csrf
     @method('POST')
     <p>

@@ -33,12 +33,8 @@
     <!-- Nav Item - User Information -->
     <li class="nav-item dropdown no-arrow">
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {{-- <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth()->user()->name }}</span> --}}
-            {{-- @if(auth()->user()->image == NULL)
+            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth()->user()->name }}</span>
                 <img class="img-profile rounded-circle" src="/admin_template/img/undraw_profile.svg">
-             @else
-                <img class="img-profile rounded-circle" src="{{ Storage::url('public/image/').auth()->user()->image }}">
-            @endif --}}
         </a>
 
         <!-- Dropdown - User Information -->
