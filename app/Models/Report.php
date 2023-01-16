@@ -15,7 +15,6 @@ class Report extends Model
     public function serve($request)
     {
         $time = self::determineTimeRange($request);
-
         foreach(Material::all() as $material)
         {
             $data[$material->id]['material'] = $material->name;
@@ -27,15 +26,13 @@ class Report extends Model
                 ->select('id')
                 ->get();
 
-            foreach(Method::where('material_id', $material->id)->get() as $method)
-            {
+            foreach(Method::where('material_id', $material->id)->get() as $method) {
                 $data[$material->id][$method->indicator->name] =
                     Analysis::where('indicator_id', $method->indicator_id)
                         ->whereIn('sample_id', $data[$material->id]['sample'])
                         ->avg('value');
             }
         }
-
         return $data;
     }
 

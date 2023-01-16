@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sample;
+use App\Models\Station;
+use App\Models\Material;
 use Illuminate\Http\Request;
 
 class SampleController extends Controller
@@ -14,8 +16,10 @@ class SampleController extends Controller
      */
     public function index()
     {
-        $samples = Sample::all();
-        return view('sample.index', compact('samples'));
+        $stations = Station::all();
+        $samples = Sample::latest()->paginate(10000);
+        $materials = Material::all();
+        return view('sample.index', compact('stations', 'samples', 'materials'));
     }
 
     /**
