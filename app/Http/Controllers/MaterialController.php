@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Material;
+use App\Models\Station;
 use Illuminate\Http\Request;
 
 class MaterialController extends Controller
@@ -14,7 +15,9 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        //
+        $stations = Station::all();
+        $materials = Material::all();
+        return view('material.index', compact('stations', 'materials'));
     }
 
     /**
@@ -35,7 +38,9 @@ class MaterialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Material::create($request->all());
+        return redirect()->back()
+            ->with('success', 'Material berhasil disimpan');
     }
 
     /**
@@ -67,9 +72,14 @@ class MaterialController extends Controller
      * @param  \App\Models\Material  $material
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Material $material)
+    public function update(Request $request, $id)
     {
-        //
+        Material::where('id', $id)->update([
+            'name' => $request->name,
+            'station_id' => $request->station_id,
+        ]);
+        return redirect()->back()
+            ->with('success', 'Material berhasil dirubah');
     }
 
     /**
@@ -78,8 +88,10 @@ class MaterialController extends Controller
      * @param  \App\Models\Material  $material
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Material $material)
+    public function destroy(Request $request, $id)
     {
-        //
+        Material::whereId($id)->delete();
+        return redirect()->back()
+            ->with('success', 'Material berhasil dihapus');
     }
 }

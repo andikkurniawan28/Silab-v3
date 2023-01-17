@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Indicator;
+use App\Models\Station;
 use Illuminate\Http\Request;
 
 class IndicatorController extends Controller
@@ -14,7 +15,9 @@ class IndicatorController extends Controller
      */
     public function index()
     {
-        //
+        $stations = Station::all();
+        $indicators = Indicator::all();
+        return view('indicator.index', compact('stations', 'indicators'));
     }
 
     /**
@@ -35,16 +38,18 @@ class IndicatorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Indicator::create($request->all());
+        return redirect()->back()
+            ->with('success', 'Indikator berhasil disimpan');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Indicator  $indicator
+     * @param  \App\Models\Station  $indicator
      * @return \Illuminate\Http\Response
      */
-    public function show(Indicator $indicator)
+    public function show(Station $indicator)
     {
         //
     }
@@ -52,10 +57,10 @@ class IndicatorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Indicator  $indicator
+     * @param  \App\Models\Station  $indicator
      * @return \Illuminate\Http\Response
      */
-    public function edit(Indicator $indicator)
+    public function edit(Station $indicator)
     {
         //
     }
@@ -64,22 +69,28 @@ class IndicatorController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Indicator  $indicator
+     * @param  \App\Models\Station  $indicator
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Indicator $indicator)
+    public function update(Request $request, $id)
     {
-        //
+        Indicator::where('id', $id)->update([
+            'name' => $request->name,
+        ]);
+        return redirect()->back()
+            ->with('success', 'Indikator berhasil dirubah');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Indicator  $indicator
+     * @param  \App\Models\Station  $indicator
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Indicator $indicator)
+    public function destroy(Request $request, $id)
     {
-        //
+        Indicator::whereId($id)->delete();
+        return redirect()->back()
+            ->with('success', 'Indikator berhasil dihapus');
     }
 }

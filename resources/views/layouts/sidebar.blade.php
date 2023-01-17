@@ -26,7 +26,6 @@
         <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu :</h6>
-                <a class="collapse-item" href="{{ route('monitoring_analisa_per_tanggal') }}">Analisa per Tanggal</a>
                 {{-- <a class="collapse-item" href="{{ route('ronsel_masakan') }}">Masakan</a>
                 <a class="collapse-item" href="{{ route('balances.create') }}">Flow Nira Mentah</a>
                 <a class="collapse-item" href="{{ route('imbibitions.create') }}">Imbibisi</a>
@@ -69,8 +68,11 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu :</h6>
+                <a class="collapse-item" href="{{ route('stations.index') }}">Stasiun</a>
+                <a class="collapse-item" href="{{ route('indicators.index') }}">Indikator</a>
+                <a class="collapse-item" href="{{ route('materials.index') }}">Material</a>
                 <a class="collapse-item" href="{{ route('samples.index') }}">Sample</a>
-                {{-- <a class="collapse-item" href="{{ route('materials.index') }}">Material</a>
+                {{--
                 <a class="collapse-item" href="{{ route('barcode_samples') }}">Barcode</a>
                 <a class="collapse-item" href="{{ route('saccharomats.index') }}">Saccharomat</a>
                 <a class="collapse-item" href="{{ route('coloromats.index') }}">Coloromat</a>
@@ -115,7 +117,6 @@
                 <h6 class="collapse-header">Menu :</h6>
                 <a class="collapse-item" href="{{ route('users.index') }}">User</a>
                 <a class="collapse-item" href="{{ route('roles.index') }}">Role & Permission</a>
-                <a class="collapse-item" href="{{ route('stations.index') }}">Station</a>
                 <a class="collapse-item" href="{{ route('methods.index') }}">Method</a>
                 <a class="collapse-item" href="{{ route('cooperatives.index') }}">KUD</a>
                 <a class="collapse-item" href="{{ route('outposts.index') }}">Pos Pantau</a>

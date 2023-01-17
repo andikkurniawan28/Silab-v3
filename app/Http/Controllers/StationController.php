@@ -14,7 +14,8 @@ class StationController extends Controller
      */
     public function index()
     {
-        //
+        $stations = Station::all();
+        return view('station.index', compact('stations', 'stations'));
     }
 
     /**
@@ -35,7 +36,9 @@ class StationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Station::create($request->all());
+        return redirect()->back()
+            ->with('success', 'Station berhasil disimpan');
     }
 
     /**
@@ -67,9 +70,13 @@ class StationController extends Controller
      * @param  \App\Models\Station  $station
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Station $station)
+    public function update(Request $request, $id)
     {
-        //
+        Station::where('id', $id)->update([
+            'name' => $request->name,
+        ]);
+        return redirect()->back()
+            ->with('success', 'Station berhasil dirubah');
     }
 
     /**
@@ -78,8 +85,10 @@ class StationController extends Controller
      * @param  \App\Models\Station  $station
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Station $station)
+    public function destroy(Request $request, $id)
     {
-        //
+        Station::whereId($id)->delete();
+        return redirect()->back()
+            ->with('success', 'Station berhasil dihapus');
     }
 }
