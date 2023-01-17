@@ -21,11 +21,6 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col col-md-12 text-dark">
-                {{-- <div class="font-weight-bold text-dark text-uppercase mb-1">
-                    <br>
-                    Laporan Analisa Laboratorium
-                </div> --}}
-                {{-- <div class="table-responsive"> --}}
                     <br>
                     <table width="100%" class="table table-dark table-striped table-sm table-bordered table-hover text-xs">
                         <thead>

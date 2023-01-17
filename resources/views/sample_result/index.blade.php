@@ -23,8 +23,6 @@
                             @foreach($methods as $method)
                                 <td>{{ $method->indicator->name }}</td>
                             @endforeach
-                            <td>Sampler</td>
-                            <td>Analis</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,15 +32,13 @@
                             <td>{{ $sample->created_at }}</td>
                                 @foreach($methods as $method)
                                     <td>
-                                        @for($i=0; $i<count($sample->analysis); $i++)
-                                            @if($method->indicator_id == $sample->analysis[$i]->indicator_id)
-                                                {{ $sample->analysis[$i]->value }}
+                                        @foreach($sample->analysis as $analysis)
+                                            @if($method->indicator_id == $analysis->indicator_id)
+                                                {{ $analysis->value }}
                                             @endif
-                                        @endfor
+                                        @endforeach
                                     </td>
                                 @endforeach
-                            <td>{{ $sample->user->name }}</td>
-                            <td>{{ $sample->analysis[0]->user->name }}</td>
                         </tr>
                         @endforeach
                     </tbody>
