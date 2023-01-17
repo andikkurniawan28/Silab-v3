@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Station;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,6 +15,7 @@ class HomeController extends Controller
      */
     public function __invoke()
     {
-        return view('home.index');
+        $stations = Station::all();
+        return view('home.index', compact('stations'));
     }
 }

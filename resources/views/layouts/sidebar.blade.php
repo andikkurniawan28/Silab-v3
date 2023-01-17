@@ -16,9 +16,9 @@
         <span>Dashboard</span></a>
     </li>
 
-    <hr class="sidebar-divider">
+    {{-- <hr class="sidebar-divider"> --}}
 
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2" aria-expanded="true" aria-controls="collapsePages2">
             <i class="fas fa-fw fa-eye"></i>
             <span>Monitoring</span>
@@ -26,7 +26,7 @@
         <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu :</h6>
-                {{-- <a class="collapse-item" href="{{ route('ronsel_masakan') }}">Masakan</a>
+                <a class="collapse-item" href="{{ route('ronsel_masakan') }}">Masakan</a>
                 <a class="collapse-item" href="{{ route('balances.create') }}">Flow Nira Mentah</a>
                 <a class="collapse-item" href="{{ route('imbibitions.create') }}">Imbibisi</a>
                 <a class="collapse-item" href="{{ route('arounds.index') }}">Data Proses</a>
@@ -36,10 +36,10 @@
                 <a class="collapse-item" href="{{ route('timbangan_tetes') }}">Timbangan Tetes</a>
                 <a class="collapse-item" href="{{ route('timbangan_rs_in') }}">Timbangan RS</a>
                 <a class="collapse-item" href="{{ route('timbangan_rs_out') }}">Timbangan RS Out</a>
-                <a class="collapse-item" href="{{ route('agroklimat_view') }}">Agroklimat</a> --}}
+                <a class="collapse-item" href="{{ route('agroklimat_view') }}">Agroklimat</a>
             </div>
         </div>
-    </li>
+    </li> --}}
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities2" aria-expanded="true" aria-controls="collapseUtilities2">
@@ -49,10 +49,10 @@
         <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu :</h6>
-                {{-- @foreach($stations as $station)
+                @foreach($stations as $station)
                     <a class="collapse-item" href="{{ route('station_result', $station->id) }}">{{ $station->name }}</a>
                 @endforeach
-                <a class="collapse-item" href="{{ route('core_samples_view') }}">{{ "Core Sample" }}</a>
+                {{-- <a class="collapse-item" href="{{ route('core_samples_view') }}">{{ "Core Sample" }}</a>
                 <a class="collapse-item" href="{{ route('rafactions_view') }}">{{ "MBS" }}</a> --}}
             </div>
         </div>
@@ -89,12 +89,13 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
             <i class="fas fa-fw fa-file-signature"></i>
-            <span>Dokumentasi</span>
+            <span>Laporan</span>
         </a>
         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu :</h6>
-                {{-- <a class="collapse-item" href="{{ route('reports') }}">Laporan</a>
+                    <a class="collapse-item" href="{{ route('report') }}">Cetak Laporan</a>
+                {{--
                 <a class="collapse-item" href="{{ route('certificates') }}">Sertifikat</a> --}}
             </div>
         </div>
