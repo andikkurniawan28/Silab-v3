@@ -71,7 +71,8 @@
                 <a class="collapse-item" href="{{ route('stations.index') }}">Stasiun</a>
                 <a class="collapse-item" href="{{ route('indicators.index') }}">Indikator</a>
                 <a class="collapse-item" href="{{ route('materials.index') }}">Material</a>
-                <a class="collapse-item" href="{{ route('samples.index') }}">Sample</a>
+                <a class="collapse-item" href="{{ route('methods.index') }}">Metode</a>
+                <a class="collapse-item" href="{{ route('samples.index') }}">Sampel</a>
                 {{--
                 <a class="collapse-item" href="{{ route('barcode_samples') }}">Barcode</a>
                 <a class="collapse-item" href="{{ route('saccharomats.index') }}">Saccharomat</a>

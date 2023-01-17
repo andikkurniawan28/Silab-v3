@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Method;
+use App\Models\Station;
+use App\Models\Material;
+use App\Models\Indicator;
 use Illuminate\Http\Request;
 
 class MethodController extends Controller
@@ -14,7 +17,11 @@ class MethodController extends Controller
      */
     public function index()
     {
-        //
+        $stations = Station::all();
+        $methods = Method::all();
+        $materials = Material::all();
+        $indicators = Indicator::all();
+        return view('method.index', compact('stations', 'methods', 'materials', 'indicators'));
     }
 
     /**
@@ -35,16 +42,18 @@ class MethodController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Method::create($request->all());
+        return redirect()->back()
+            ->with('success', 'Metode berhasil disimpan');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Method  $method
+     * @param  \App\Models\Station  $method
      * @return \Illuminate\Http\Response
      */
-    public function show(Method $method)
+    public function show(Station $method)
     {
         //
     }
@@ -52,10 +61,10 @@ class MethodController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Method  $method
+     * @param  \App\Models\Station  $method
      * @return \Illuminate\Http\Response
      */
-    public function edit(Method $method)
+    public function edit(Station $method)
     {
         //
     }
@@ -64,22 +73,29 @@ class MethodController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Method  $method
+     * @param  \App\Models\Station  $method
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Method $method)
+    public function update(Request $request, $id)
     {
-        //
+        Method::where('id', $id)->update([
+            'material_id' => $request->material_id,
+            'indicator_id' => $request->indicator_id,
+        ]);
+        return redirect()->back()
+            ->with('success', 'Metode berhasil dirubah');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Method  $method
+     * @param  \App\Models\Station  $method
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Method $method)
+    public function destroy(Request $request, $id)
     {
-        //
+        Method::whereId($id)->delete();
+        return redirect()->back()
+            ->with('success', 'Metode berhasil dihapus');
     }
 }
