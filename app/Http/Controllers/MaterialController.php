@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Material;
 use App\Models\Station;
+use App\Models\Activity;
+use App\Models\Material;
 use Illuminate\Http\Request;
 
 class MaterialController extends Controller
@@ -39,6 +40,11 @@ class MaterialController extends Controller
     public function store(Request $request)
     {
         Material::create($request->all());
+        Activity::insert([
+            'subject' => 'Material',
+            'action' => 'Create',
+            'user_id' => Auth()->user()->id,
+        ]);
         return redirect()->back()
             ->with('success', 'Material berhasil disimpan');
     }
@@ -78,6 +84,12 @@ class MaterialController extends Controller
             'name' => $request->name,
             'station_id' => $request->station_id,
         ]);
+        Activity::insert([
+            'subject' => 'Material',
+            'subject_id' => $id,
+            'action' => 'Edit',
+            'user_id' => Auth()->user()->id,
+        ]);
         return redirect()->back()
             ->with('success', 'Material berhasil dirubah');
     }
@@ -91,6 +103,12 @@ class MaterialController extends Controller
     public function destroy(Request $request, $id)
     {
         Material::whereId($id)->delete();
+        Activity::insert([
+            'subject' => 'Material',
+            'subject_id' => $id,
+            'action' => 'Delete',
+            'user_id' => Auth()->user()->id,
+        ]);
         return redirect()->back()
             ->with('success', 'Material berhasil dihapus');
     }

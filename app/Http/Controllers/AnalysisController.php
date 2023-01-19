@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Sample;
 use App\Models\Station;
+use App\Models\Activity;
 use App\Models\Analysis;
 use App\Models\Material;
 use App\Models\Indicator;
@@ -43,6 +44,11 @@ class AnalysisController extends Controller
     public function store(Request $request)
     {
         Analysis::create($request->all());
+        Activity::insert([
+            'subject' => 'Analysis',
+            'action' => 'Create',
+            'user_id' => Auth()->user()->id,
+        ]);
         return redirect()->back()
             ->with('success', 'Analisa berhasil disimpan');
     }
@@ -87,6 +93,12 @@ class AnalysisController extends Controller
             'indicator_id' => $request->indicator_id,
             'value' => $request->value,
         ]);
+        Activity::insert([
+            'subject' => 'Analysis',
+            'subject_id' => $id,
+            'action' => 'Edit',
+            'user_id' => Auth()->user()->id,
+        ]);
         return redirect()->route('analyses.index')
             ->with('success', 'Analisa berhasil dirubah');
     }
@@ -100,6 +112,12 @@ class AnalysisController extends Controller
     public function destroy(Request $request, $id)
     {
         Analysis::whereId($id)->delete();
+        Activity::insert([
+            'subject' => 'Analysis',
+            'subject_id' => $id,
+            'action' => 'Delete',
+            'user_id' => Auth()->user()->id,
+        ]);
         return redirect()->back()
             ->with('success', 'Analisa berhasil dihapus');
     }

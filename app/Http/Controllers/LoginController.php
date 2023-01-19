@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,6 +24,11 @@ class LoginController extends Controller
         if ($attempt)
         {
             $request->session()->regenerate();
+            Activity::insert([
+                'subject' => 'Auth',
+                'action' => 'Login',
+                'user_id' => Auth()->user()->id,
+            ]);
             return redirect()->intended();
         }
         else

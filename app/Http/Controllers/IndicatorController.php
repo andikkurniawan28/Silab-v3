@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Indicator;
 use App\Models\Station;
+use App\Models\Activity;
+use App\Models\Indicator;
 use Illuminate\Http\Request;
 
 class IndicatorController extends Controller
@@ -39,6 +40,11 @@ class IndicatorController extends Controller
     public function store(Request $request)
     {
         Indicator::create($request->all());
+        Activity::insert([
+            'subject' => 'Indicator',
+            'action' => 'Create',
+            'user_id' => Auth()->user()->id,
+        ]);
         return redirect()->back()
             ->with('success', 'Indikator berhasil disimpan');
     }
@@ -77,6 +83,12 @@ class IndicatorController extends Controller
         Indicator::where('id', $id)->update([
             'name' => $request->name,
         ]);
+        Activity::insert([
+            'subject' => 'Indicator',
+            'subject_id' => $id,
+            'action' => 'Edit',
+            'user_id' => Auth()->user()->id,
+        ]);
         return redirect()->back()
             ->with('success', 'Indikator berhasil dirubah');
     }
@@ -90,6 +102,12 @@ class IndicatorController extends Controller
     public function destroy(Request $request, $id)
     {
         Indicator::whereId($id)->delete();
+        Activity::insert([
+            'subject' => 'Indicator',
+            'subject_id' => $id,
+            'action' => 'Delete',
+            'user_id' => Auth()->user()->id,
+        ]);
         return redirect()->back()
             ->with('success', 'Indikator berhasil dihapus');
     }

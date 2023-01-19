@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Station;
+use App\Models\Activity;
 use Illuminate\Http\Request;
 
 class StationController extends Controller
@@ -37,6 +38,11 @@ class StationController extends Controller
     public function store(Request $request)
     {
         Station::create($request->all());
+        Activity::insert([
+            'subject' => 'Station',
+            'action' => 'Create',
+            'user_id' => Auth()->user()->id,
+        ]);
         return redirect()->back()
             ->with('success', 'Station berhasil disimpan');
     }
@@ -75,6 +81,12 @@ class StationController extends Controller
         Station::where('id', $id)->update([
             'name' => $request->name,
         ]);
+        Activity::insert([
+            'subject' => 'Station',
+            'subject_id' => $id,
+            'action' => 'Edit',
+            'user_id' => Auth()->user()->id,
+        ]);
         return redirect()->back()
             ->with('success', 'Station berhasil dirubah');
     }
@@ -88,6 +100,12 @@ class StationController extends Controller
     public function destroy(Request $request, $id)
     {
         Station::whereId($id)->delete();
+        Activity::insert([
+            'subject' => 'Station',
+            'subject_id' => $id,
+            'action' => 'Delete',
+            'user_id' => Auth()->user()->id,
+        ]);
         return redirect()->back()
             ->with('success', 'Station berhasil dihapus');
     }
