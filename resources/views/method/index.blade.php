@@ -33,10 +33,10 @@
                             <td>{{ $method->material->name }}</td>
                             <td>{{ $method->indicator->name }}</td>
                             <td>
-                                <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#edit{{ $method->id }}">
+                                <a href="{{ route('methods.edit', $method->id) }}" type="button" class="btn btn-outline-success btn-sm">
                                     @include('components.icon', ['icon' => 'edit '])
                                     Edit
-                                </button>
+                                </a>
                                 <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#delete{{ $method->id }}">
                                     @include('components.icon', ['icon' => 'trash '])
                                     Hapus
@@ -106,66 +106,6 @@
         </div>
     </div>
 </div>
-
-@foreach($methods as $method)
-<div class="modal fade" id="edit{{ $method->id }}" tabindex="-1" method="dialog" aria-labelledby="edit{{ $method->id }}Label" aria-hidden="true">
-    <div class="modal-dialog" method="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="edit{{ $method->id }}Label">Edit {{ ucfirst('metode') }}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body">
-
-                <form method="POST" action="{{ route('methods.update', $method->id) }}" class="text-dark">
-                @csrf
-                @method('PUT')
-
-                <div class="form-group row">
-                    <label for="material_id" class="col-sm-2 col-form-label">Material</label>
-                    <div class="col-sm-10">
-                        <select class="form-control" name="material_id">
-                            @foreach ($materials as $material)
-                                <option
-                                @if($material->id == $method->material_id)
-                                {{ 'selected' }}
-                                @endif
-                                value="{{ $material->id }}">
-                                 {{ $material->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label for="indicator_id" class="col-sm-2 col-form-label">Indikator</label>
-                    <div class="col-sm-10">
-                        <select class="form-control" name="indicator_id">
-                            @foreach ($indicators as $indicator)
-                                <option
-                                @if($indicator->id == $method->indicator_id)
-                                {{ 'selected' }}
-                                @endif
-                                value="{{ $indicator->id }}">
-                                 {{ $indicator->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Save
-                    @include('components.icon', ['icon' => 'edit'])
-                </button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-@endforeach
 
 @foreach($methods as $method)
 <div class="modal fade" id="delete{{ $method->id }}" tabindex="-1" method="dialog" aria-labelledby="delete{{ $method->id }}Label" aria-hidden="true">

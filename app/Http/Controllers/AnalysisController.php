@@ -20,9 +20,8 @@ class AnalysisController extends Controller
     {
         $stations = Station::all();
         $analyses = Analysis::latest()->paginate(10000);
-        $materials = Material::all();
         $indicators = Indicator::all();
-        return view('analysis.index', compact('stations', 'analyses', 'materials', 'indicators'));
+        return view('analysis.index', compact('stations', 'analyses', 'indicators'));
     }
 
     /**
@@ -65,9 +64,13 @@ class AnalysisController extends Controller
      * @param  \App\Models\Analysis  $analysis
      * @return \Illuminate\Http\Response
      */
-    public function edit(Analysis $analysis)
+    public function edit($id)
     {
-        //
+        $stations = Station::all();
+        $samples = Sample::all();
+        $analysis = Analysis::whereId($id)->get()->last();
+        $indicators = Indicator::all();
+        return view('analysis.edit', compact('stations', 'analysis', 'indicators', 'samples'));
     }
 
     /**
@@ -83,9 +86,8 @@ class AnalysisController extends Controller
             'sample_id' => $request->sample_id,
             'indicator_id' => $request->indicator_id,
             'value' => $request->value,
-            'user_id' => $request->user_id,
         ]);
-        return redirect()->back()
+        return redirect()->route('analyses.index')
             ->with('success', 'Analisa berhasil dirubah');
     }
 

@@ -33,14 +33,10 @@
                             <td>{{ $sample->material->name }}</td>
                             <td>{{ $sample->user->name }}</td>
                             <td>
-                                <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#show{{ $sample->id }}">
-                                    @include('components.icon', ['icon' => 'info '])
-                                    Info
-                                </button>
-                                <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#edit{{ $sample->id }}">
+                                <a href="{{ route('samples.edit', $sample->id) }}" type="button" class="btn btn-outline-success btn-sm">
                                     @include('components.icon', ['icon' => 'edit '])
                                     Edit
-                                </button>
+                                </a>
                                 <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#delete{{ $sample->id }}">
                                     @include('components.icon', ['icon' => 'trash '])
                                     Hapus
@@ -98,99 +94,6 @@
         </div>
     </div>
 </div>
-
-@foreach($samples as $sample)
-<div class="modal fade" id="edit{{ $sample->id }}" tabindex="-1" sample="dialog" aria-labelledby="edit{{ $sample->id }}Label" aria-hidden="true">
-    <div class="modal-dialog" sample="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="edit{{ $sample->id }}Label">Edit {{ ucfirst('sampel') }}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body">
-
-                <form method="POST" action="{{ route('samples.update', $sample->id) }}" class="text-dark">
-                @csrf
-                @method('PUT')
-
-                <div class="form-group row">
-                    <label for="role_id" class="col-sm-2 col-form-label">Material</label>
-                    <div class="col-sm-10">
-                        <select class="form-control" name="material_id">
-                            @foreach ($materials as $material)
-                                <option
-                                @if($material->id == $sample->material_id)
-                                {{ 'selected' }}
-                                @endif
-                                value="{{ $material->id }}">
-                                 {{ $material->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Save
-                    @include('components.icon', ['icon' => 'edit'])
-                </button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-@endforeach
-
-@foreach($samples as $sample)
-<div class="modal fade" id="show{{ $sample->id }}" tabindex="-1" sample="dialog" aria-labelledby="show{{ $sample->id }}Label" aria-hidden="true">
-    <div class="modal-dialog" sample="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="show{{ $sample->id }}Label">Info {{ ucfirst('sampel') }}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body">
-
-                @include('components.input',[
-                    'label' => 'Material',
-                    'name' => 'name',
-                    'type' => 'text',
-                    'value' => $sample->material->name,
-                    'modifier' => 'readonly',
-                ])
-
-                @include('components.input',[
-                    'label' => 'Created',
-                    'name' => 'created_at',
-                    'type' => 'text',
-                    'value' => $sample->created_at,
-                    'modifier' => 'readonly',
-                ])
-
-                @include('components.input',[
-                    'label' => 'Updated',
-                    'name' => 'updated_at',
-                    'type' => 'text',
-                    'value' => $sample->created_at,
-                    'modifier' => 'readonly',
-                ])
-
-                @include('components.input',[
-                    'label' => 'User',
-                    'name' => 'user',
-                    'type' => 'text',
-                    'value' => $sample->user->name,
-                    'modifier' => 'readonly',
-                ])
-
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
-</div>
-@endforeach
 
 @foreach($samples as $sample)
 <div class="modal fade" id="delete{{ $sample->id }}" tabindex="-1" sample="dialog" aria-labelledby="delete{{ $sample->id }}Label" aria-hidden="true">

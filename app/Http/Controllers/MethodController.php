@@ -64,9 +64,13 @@ class MethodController extends Controller
      * @param  \App\Models\Station  $method
      * @return \Illuminate\Http\Response
      */
-    public function edit(Station $method)
+    public function edit($id)
     {
-        //
+        $stations = Station::all();
+        $method = Method::whereId($id)->get()->last();
+        $materials = Material::all();
+        $indicators = Indicator::all();
+        return view('method.edit', compact('stations', 'method', 'materials', 'indicators'));
     }
 
     /**
@@ -82,7 +86,7 @@ class MethodController extends Controller
             'material_id' => $request->material_id,
             'indicator_id' => $request->indicator_id,
         ]);
-        return redirect()->back()
+        return redirect()->route('methods.index')
             ->with('success', 'Metode berhasil dirubah');
     }
 

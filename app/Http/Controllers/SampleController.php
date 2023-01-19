@@ -62,9 +62,12 @@ class SampleController extends Controller
      * @param  \App\Models\Sample  $sample
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sample $sample)
+    public function edit($id)
     {
-        //
+        $stations = Station::all();
+        $sample = Sample::whereId($id)->get()->last();
+        $materials = Material::all();
+        return view('sample.edit', compact('stations', 'sample', 'materials'));
     }
 
     /**
@@ -77,7 +80,7 @@ class SampleController extends Controller
     public function update(Request $request, $id)
     {
         Sample::where('id', $id)->update(['material_id' => $request->material_id]);
-        return redirect()->back()
+        return redirect()->route('samples.index')
             ->with('success', 'Sampel berhasil dirubah');
     }
 
