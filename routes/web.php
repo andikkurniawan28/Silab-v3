@@ -8,6 +8,7 @@ use App\Http\Controllers\MethodController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SampleController;
 use App\Http\Controllers\StationController;
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AnalysisController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\IndicatorController;
@@ -29,3 +30,4 @@ Route::post('report_process', [ ReportController::class, 'process' ])->name('rep
 Route::get('login', [ LoginController::class, 'index' ])->name('login');
 Route::post('login_process', [ LoginController::class, 'process' ])->name('login_process');
 Route::get('logout', LogoutController::class)->name('logout');
+Route::get('activities', ActivityController::class)->name('activities');

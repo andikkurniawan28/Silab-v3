@@ -46,9 +46,9 @@
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#changePassword">
                 <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i> Change Password
             </a>
-            {{-- <a class="dropdown-item" href="{{ route('activity_log_by_user') }}">
+            <a class="dropdown-item" href="{{ route('activities') }}">
                 <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
-            </a> --}}
+            </a>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
             </a>
