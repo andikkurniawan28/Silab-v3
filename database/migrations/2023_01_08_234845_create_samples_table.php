@@ -17,6 +17,9 @@ class CreateSamplesTable extends Migration
             $table->id();
             $table->foreignId('material_id')->constrained();
             $table->foreignId('user_id')->constrained();
+            $table->integer('volume')->nullable();
+            $table->integer('pan')->nullable();
+            $table->integer('reef')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

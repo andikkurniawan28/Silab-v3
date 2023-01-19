@@ -68,6 +68,7 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu :</h6>
+                <a class="collapse-item" href="{{ route('users.index') }}">User</a>
                 <a class="collapse-item" href="{{ route('stations.index') }}">Stasiun</a>
                 <a class="collapse-item" href="{{ route('indicators.index') }}">Indikator</a>
                 <a class="collapse-item" href="{{ route('materials.index') }}">Material</a>

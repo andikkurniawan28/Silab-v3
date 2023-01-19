@@ -40,12 +40,12 @@
         <!-- Dropdown - User Information -->
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
 
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#uploadImage">
+            {{-- <a class="dropdown-item" href="#" data-toggle="modal" data-target="#uploadImage">
                 <i class="fas fa-image fa-sm fa-fw mr-2 text-gray-400"></i> Upload Image
             </a>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#changePassword">
                 <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i> Change Password
-            </a>
+            </a> --}}
             <a class="dropdown-item" href="{{ route('activities') }}">
                 <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
             </a>

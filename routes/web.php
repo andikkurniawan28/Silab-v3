@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\MethodController;
@@ -23,6 +24,7 @@ Route::resource('materials', MaterialController::class);
 Route::resource('samples', SampleController::class);
 Route::resource('methods', MethodController::class);
 Route::resource('analyses', AnalysisController::class);
+Route::resource('users', UserController::class);
 Route::get('station_result/{station_id}', StationResultController::class)->name('station_result');
 Route::get('sample_result/{material_id}', SampleResultController::class)->name('sample_result');
 Route::get('report', [ ReportController::class, 'index' ])->name('report');

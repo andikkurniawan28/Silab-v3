@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use App\Models\Station;
 use Illuminate\Http\Request;
@@ -17,7 +18,8 @@ class UserController extends Controller
     {
         $stations = Station::all();
         $users = User::all();
-        return view('user.index', compact('stations', 'users'));
+        $roles = Role::all();
+        return view('user.index', compact('stations', 'users', 'roles'));
     }
 
     /**
@@ -38,7 +40,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        User::create($request->all());
+        Activity::insert([
+            'subject' => 'User',
+            'action' => 'Create',
+            'user_id' => Auth()->user()->id,
+        ]);
+        return redirect()->back()
+            ->with('success', 'User berhasil disimpan');
     }
 
     /**
@@ -60,7 +69,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $stations = Station::all();
+        $roles = Role::all();
+        $user = User::whereId($id)->get()->last();
+        return view('user.edit', compact('stations', 'user', 'roles'));
     }
 
     /**
@@ -72,7 +84,14 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Activity::insert([
+            'subject' => 'User',
+            'subject_id' => $id,
+            'action' => 'Edit',
+            'user_id' => Auth()->user()->id,
+        ]);
+        return redirect()->back()
+            ->with('success', 'User berhasil disimpan');
     }
 
     /**
@@ -83,6 +102,14 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::whereId($id)->delete();
+        Activity::insert([
+            'subject' => 'User',
+            'subject_id' => $id,
+            'action' => 'Delete',
+            'user_id' => Auth()->user()->id,
+        ]);
+        return redirect()->back()
+            ->with('success', 'User berhasil disimpan');
     }
 }
