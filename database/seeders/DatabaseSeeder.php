@@ -491,6 +491,7 @@ class DatabaseSeeder extends Seeder
             ['name' => 'PI'],
             ['name' => '%Sbt'],
             ['name' => '%Kpr'],
+            ['name' => 'Pol Ampas'],
         ];
 
         $materials = [
@@ -623,7 +624,7 @@ class DatabaseSeeder extends Seeder
 
         for($i = 8; $i<= 12; $i++)
         {
-            array_push($methods, ['material_id' => $i, 'indicator_id' => 3]);
+            array_push($methods, ['material_id' => $i, 'indicator_id' => 25]);
             array_push($methods, ['material_id' => $i, 'indicator_id' => 7]);
             array_push($methods, ['material_id' => $i, 'indicator_id' => 8]);
         }
@@ -776,7 +777,7 @@ class DatabaseSeeder extends Seeder
         Indicator::insert($indicators);
         Material::insert($materials);
         Method::insert($methods);
-        Sample::insert($samples);
-        Analysis::insert($analyses);
+        // Sample::insert($samples);
+        // Analysis::insert($analyses);
     }
 }

@@ -75,6 +75,8 @@
                 <a class="collapse-item" href="{{ route('methods.index') }}">Metode</a>
                 <a class="collapse-item" href="{{ route('samples.index') }}">Sampel</a>
                 <a class="collapse-item" href="{{ route('analyses.index') }}">Analisa</a>
+                <a class="collapse-item" href="{{ route('saccharomat') }}">Saccharomat</a>
+                <a class="collapse-item" href="{{ route('analisa_ampas') }}">Analisa Ampas</a>
                 {{--
                 <a class="collapse-item" href="{{ route('barcode_samples') }}">Barcode</a>
                 <a class="collapse-item" href="{{ route('saccharomats.index') }}">Saccharomat</a>
