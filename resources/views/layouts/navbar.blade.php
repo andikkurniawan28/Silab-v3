@@ -40,12 +40,28 @@
         <!-- Dropdown - User Information -->
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
 
-            {{-- <a class="dropdown-item" href="#" data-toggle="modal" data-target="#uploadImage">
-                <i class="fas fa-image fa-sm fa-fw mr-2 text-gray-400"></i> Upload Image
+
+            <a class="dropdown-item" href="{{ route('users.index') }}">
+                <i class="fas fa-users fa-sm fa-fw mr-2 text-gray-400"></i> User
             </a>
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#changePassword">
-                <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i> Change Password
-            </a> --}}
+            <a class="dropdown-item" href="{{ route('stations.index') }}">
+                <i class="fas fa-filter fa-sm fa-fw mr-2 text-gray-400"></i> Station
+            </a>
+            <a class="dropdown-item" href="{{ route('indicators.index') }}">
+                <i class="fas fa-asterisk fa-sm fa-fw mr-2 text-gray-400"></i> Indicator
+            </a>
+            <a class="dropdown-item" href="{{ route('materials.index') }}">
+                <i class="fas fa-box fa-sm fa-fw mr-2 text-gray-400"></i> Material
+            </a>
+            <a class="dropdown-item" href="{{ route('methods.index') }}">
+                <i class="fas fa-flask fa-sm fa-fw mr-2 text-gray-400"></i> Method
+            </a>
+            <a class="dropdown-item" href="{{ route('samples.index') }}">
+                <i class="fas fa-barcode fa-sm fa-fw mr-2 text-gray-400"></i> Sample
+            </a>
+            <a class="dropdown-item" href="{{ route('kspots.index') }}">
+                <i class="fas fa-map fa-sm fa-fw mr-2 text-gray-400"></i> Titik Keliling
+            </a>
             <a class="dropdown-item" href="{{ route('activities') }}">
                 <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
             </a>

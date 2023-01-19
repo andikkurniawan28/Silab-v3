@@ -67,32 +67,21 @@
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Menu :</h6>
-                <a class="collapse-item" href="{{ route('users.index') }}">User</a>
-                <a class="collapse-item" href="{{ route('stations.index') }}">Stasiun</a>
-                <a class="collapse-item" href="{{ route('indicators.index') }}">Indikator</a>
-                <a class="collapse-item" href="{{ route('materials.index') }}">Material</a>
-                <a class="collapse-item" href="{{ route('methods.index') }}">Metode</a>
-                <a class="collapse-item" href="{{ route('samples.index') }}">Sampel</a>
-                <a class="collapse-item" href="{{ route('cetak_barcode') }}">Cetak Barcode</a>
-                <a class="collapse-item" href="{{ route('balances.index') }}">Balance</a>
-                <a class="collapse-item" href="{{ route('imbibitions.index') }}">Imbibisi</a>
-                <a class="collapse-item" href="{{ route('analyses.index') }}">Analisa</a>
+
+                <h6 class="collapse-header">Analitik :</h6>
                 <a class="collapse-item" href="{{ route('saccharomat') }}">Saccharomat</a>
                 <a class="collapse-item" href="{{ route('analisa_ampas') }}">Analisa Ampas</a>
                 <a class="collapse-item" href="{{ route('analisa_umum') }}">Analisa Umum</a>
                 <a class="collapse-item" href="{{ route('analisa_ketel') }}">Analisa Ketel</a>
                 <a class="collapse-item" href="{{ route('analisa_hplc') }}">Analisa HPLC</a>
+                <a class="collapse-item" href="{{ route('analyses.index') }}">Analisa Lain</a>
+
+                <h6 class="collapse-header">Non-Analitik :</h6>
+                <a class="collapse-item" href="{{ route('cetak_barcode') }}">Cetak Barcode</a>
+                <a class="collapse-item" href="{{ route('balances.index') }}">Flow NM</a>
+                <a class="collapse-item" href="{{ route('imbibitions.index') }}">Imbibisi</a>
+
                 {{--
-                <a class="collapse-item" href="{{ route('barcode_samples') }}">Barcode</a>
-                <a class="collapse-item" href="{{ route('saccharomats.index') }}">Saccharomat</a>
-                <a class="collapse-item" href="{{ route('coloromats.index') }}">Coloromat</a>
-                <a class="collapse-item" href="{{ route('moistures.index') }}">Moisture</a>
-                <a class="collapse-item" href="{{ route('baggases.index') }}">Analisa Ampas</a>
-                <a class="collapse-item" href="{{ route('umums.index') }}">Analisa Umum</a>
-                <a class="collapse-item" href="{{ route('boilers.index') }}">Analisa Ketel</a>
-                <a class="collapse-item" href="{{ route('sugars.index') }}">Analisa Gula</a>
-                <a class="collapse-item" href="{{ route('specials.index') }}">Analisa Khusus</a>
                 <a class="collapse-item" href="{{ route('rafactions.index') }}">Scoring MBS</a>
                 <a class="collapse-item" href="{{ route('core_samples.index') }}">Core Sample</a>
                 <a class="collapse-item" href="{{ route('rejects.index') }}">Reject</a> --}}
