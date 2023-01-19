@@ -18,7 +18,7 @@
 
     {{-- <hr class="sidebar-divider"> --}}
 
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2" aria-expanded="true" aria-controls="collapsePages2">
             <i class="fas fa-fw fa-eye"></i>
             <span>Monitoring</span>
@@ -26,7 +26,7 @@
         <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu :</h6>
-                {{-- <a class="collapse-item" href="{{ route('ronsel_masakan') }}">Masakan</a>
+                <a class="collapse-item" href="{{ route('ronsel_masakan') }}">Masakan</a>
                 <a class="collapse-item" href="{{ route('balances.create') }}">Flow Nira Mentah</a>
                 <a class="collapse-item" href="{{ route('imbibitions.create') }}">Imbibisi</a>
                 <a class="collapse-item" href="{{ route('arounds.index') }}">Data Proses</a>
@@ -73,6 +73,7 @@
                 <a class="collapse-item" href="{{ route('materials.index') }}">Material</a>
                 <a class="collapse-item" href="{{ route('methods.index') }}">Metode</a>
                 <a class="collapse-item" href="{{ route('samples.index') }}">Sampel</a>
+                <a class="collapse-item" href="{{ route('analyses.index') }}">Analisa</a>
                 {{--
                 <a class="collapse-item" href="{{ route('barcode_samples') }}">Barcode</a>
                 <a class="collapse-item" href="{{ route('saccharomats.index') }}">Saccharomat</a>

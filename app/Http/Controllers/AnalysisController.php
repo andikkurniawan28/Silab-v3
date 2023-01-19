@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sample;
+use App\Models\Station;
 use App\Models\Analysis;
+use App\Models\Material;
+use App\Models\Indicator;
 use Illuminate\Http\Request;
 
 class AnalysisController extends Controller
@@ -14,8 +18,11 @@ class AnalysisController extends Controller
      */
     public function index()
     {
-        $analyses = Analysis::all();
-        return view('analysis.index', compact('analyses'));
+        $stations = Station::all();
+        $analyses = Analysis::latest()->paginate(10000);
+        $materials = Material::all();
+        $indicators = Indicator::all();
+        return view('analysis.index', compact('stations', 'analyses', 'materials', 'indicators'));
     }
 
     /**
@@ -36,7 +43,9 @@ class AnalysisController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Analysis::create($request->all());
+        return redirect()->back()
+            ->with('success', 'Analisa berhasil disimpan');
     }
 
     /**
@@ -68,9 +77,16 @@ class AnalysisController extends Controller
      * @param  \App\Models\Analysis  $analysis
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Analysis $analysis)
+    public function update(Request $request, $id)
     {
-        //
+        Analysis::where('id', $id)->update([
+            'sample_id' => $request->sample_id,
+            'indicator_id' => $request->indicator_id,
+            'value' => $request->value,
+            'user_id' => $request->user_id,
+        ]);
+        return redirect()->back()
+            ->with('success', 'Analisa berhasil dirubah');
     }
 
     /**
@@ -79,8 +95,10 @@ class AnalysisController extends Controller
      * @param  \App\Models\Analysis  $analysis
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Analysis $analysis)
+    public function destroy(Request $request, $id)
     {
-        //
+        Analysis::whereId($id)->delete();
+        return redirect()->back()
+            ->with('success', 'Analisa berhasil dihapus');
     }
 }
