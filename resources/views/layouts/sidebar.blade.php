@@ -74,6 +74,8 @@
                 <a class="collapse-item" href="{{ route('materials.index') }}">Material</a>
                 <a class="collapse-item" href="{{ route('methods.index') }}">Metode</a>
                 <a class="collapse-item" href="{{ route('samples.index') }}">Sampel</a>
+                <a class="collapse-item" href="{{ route('cetak_barcode') }}">Cetak Barcode</a>
+                <a class="collapse-item" href="{{ route('balances.index') }}">Balance</a>
                 <a class="collapse-item" href="{{ route('analyses.index') }}">Analisa</a>
                 <a class="collapse-item" href="{{ route('saccharomat') }}">Saccharomat</a>
                 <a class="collapse-item" href="{{ route('analisa_ampas') }}">Analisa Ampas</a>

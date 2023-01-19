@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Method;
 use App\Models\Sample;
 use App\Models\Station;
+use App\Models\Activity;
 use App\Models\Analysis;
 use App\Models\Indicator;
 use Illuminate\Http\Request;
@@ -25,6 +26,7 @@ class AnalisaHplcController extends Controller
         Analysis::insert(['sample_id' => $request->sample_id, 'indicator_id' => 18, 'value' => $request->Succ, 'user_id' => Auth()->user()->id]);
         Analysis::insert(['sample_id' => $request->sample_id, 'indicator_id' => 19, 'value' => $request->Gluc, 'user_id' => Auth()->user()->id]);
         Analysis::insert(['sample_id' => $request->sample_id, 'indicator_id' => 20, 'value' => $request->Fruc, 'user_id' => Auth()->user()->id]);
+        Activity::insert(['subject' => 'Analisa Hplc', 'action' => 'Create', 'user_id' => Auth()->user()->id]);
         return redirect()->back()->with('success', 'Data berhasil disimpan');
     }
 }

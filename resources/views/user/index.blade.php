@@ -37,14 +37,14 @@
                             <td>{{ $user->username }}</td>
                             <td>{{ $user->is_active }}</td>
                             <td>
-                                {{-- <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#edit{{ $user->id }}">
+                                <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#edit{{ $user->id }}">
                                     @include('components.icon', ['icon' => 'edit '])
                                     Edit
                                 </button>
                                 <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#delete{{ $user->id }}">
                                     @include('components.icon', ['icon' => 'trash '])
                                     Hapus
-                                </button> --}}
+                                </button>
                             </td>
                         </tr>
                         @endforeach
@@ -52,12 +52,12 @@
                 </table>
             </div>
         </div>
-        {{-- <div class="card-footer">
+        <div class="card-footer">
             <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#create">
                 @include('components.icon', ['icon' => 'plus '])
                 Tambah
             </button>
-        </div> --}}
+        </div>
     </div>
 </div>
 
@@ -74,12 +74,49 @@
                 @csrf
                 @method('POST')
 
+                <div class="form-group row">
+                    <label for="role_id" class="col-sm-2 col-form-label">Role</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="role_id">
+                            @foreach ($roles as $role)
+                                <option value="{{ $role->id }}">
+                                    {{ $role->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
                 @include('components.input',[
                     'label' => 'Nama',
                     'name' => 'name',
                     'type' => 'text',
                     'value' => '',
                     'modifier' => 'required',
+                ])
+
+                @include('components.input',[
+                    'label' => 'Username',
+                    'name' => 'username',
+                    'type' => 'text',
+                    'value' => '',
+                    'modifier' => 'required',
+                ])
+
+                @include('components.input',[
+                    'label' => 'Password',
+                    'name' => 'password',
+                    'type' => 'password',
+                    'value' => '',
+                    'modifier' => 'required',
+                ])
+
+                @include('components.input',[
+                    'label' => 'ID Card',
+                    'name' => 'hmi_access',
+                    'type' => 'password',
+                    'value' => '',
+                    'modifier' => '',
                 ])
 
             </div>
@@ -107,12 +144,68 @@
                 @csrf
                 @method('PUT')
 
+                <div class="form-group row">
+                    <label for="is_active" class="col-sm-2 col-form-label">Status</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="is_active">
+                            @if($user->is_active == 1)
+                                <option {{ 'selected' }} value="1">Active</option>
+                                <option value="0">Non-Active</option>
+                            @else
+                                <option {{ 'selected' }} value="0">Non-Active</option>
+                                <option value="1">Aktif</option>
+                            @endif
+                          </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="role_id" class="col-sm-2 col-form-label">Role</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="role_id">
+                            @foreach ($roles as $role)
+                                <option
+                                @if($user->role_id == $role->id)
+                                {{ 'selected' }}
+                                @endif
+                                value="{{ $role->id }}">
+                                {{ $role->id }} | {{ $role->name }}
+                                </option>
+                            @endforeach
+                          </select>
+                    </div>
+                </div>
+
                 @include('components.input',[
                     'label' => 'Nama',
                     'name' => 'name',
                     'type' => 'text',
                     'value' => $user->name,
                     'modifier' => 'required',
+                ])
+
+                @include('components.input',[
+                    'label' => 'Username',
+                    'name' => 'username',
+                    'type' => 'text',
+                    'value' => $user->username,
+                    'modifier' => 'required',
+                ])
+
+                @include('components.input',[
+                    'label' => 'Password',
+                    'name' => 'password',
+                    'type' => 'password',
+                    'value' => '',
+                    'modifier' => 'required',
+                ])
+
+                @include('components.input',[
+                    'label' => 'ID Card',
+                    'name' => 'hmi_access',
+                    'type' => 'password',
+                    'value' => $user->hmi_access,
+                    'modifier' => '',
                 ])
 
             </div>

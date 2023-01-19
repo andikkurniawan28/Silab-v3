@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Method;
 use App\Models\Sample;
 use App\Models\Station;
+use App\Models\Activity;
 use App\Models\Analysis;
 use App\Models\Indicator;
 use Illuminate\Http\Request;
@@ -25,6 +26,7 @@ class AnalisaUmumController extends Controller
         Analysis::insert(['sample_id' => $request->sample_id, 'indicator_id' => 9, 'value' => $request->CaO, 'user_id' => Auth()->user()->id]);
         Analysis::insert(['sample_id' => $request->sample_id, 'indicator_id' => 10, 'value' => $request->pH, 'user_id' => Auth()->user()->id]);
         Analysis::insert(['sample_id' => $request->sample_id, 'indicator_id' => 11, 'value' => $request->Turb, 'user_id' => Auth()->user()->id]);
+        Activity::insert(['subject' => 'Analisa Umum', 'action' => 'Create', 'user_id' => Auth()->user()->id]);
         return redirect()->back()->with('success', 'Data berhasil disimpan');
     }
 }

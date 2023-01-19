@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Method;
 use App\Models\Sample;
 use App\Models\Station;
+use App\Models\Activity;
 use App\Models\Analysis;
 use App\Models\Indicator;
 use Illuminate\Http\Request;
@@ -61,6 +62,7 @@ class SaccharomatController extends Controller
                 Analysis::insert(['sample_id' => $request->sample_id, 'user_id' => Auth()->user()->id, 'indicator_id' => 5, 'value' => $data[5]]);
             }
 
+            Activity::insert(['subject' => 'Saccharomat', 'action' => 'Create', 'user_id' => Auth()->user()->id]);
             return redirect()->back()->with('success', 'Data berhasil disimpan');
 
         }

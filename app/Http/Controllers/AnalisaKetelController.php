@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Method;
 use App\Models\Sample;
 use App\Models\Station;
+use App\Models\Activity;
 use App\Models\Analysis;
 use App\Models\Material;
 use App\Models\Indicator;
@@ -42,6 +43,7 @@ class AnalisaKetelController extends Controller
             Analysis::insert(['sample_id' => $request->sample_id, 'indicator_id' => 14, 'value' => $request->P2O5, 'user_id' => Auth()->user()->id]);
         }
 
+        Activity::insert(['subject' => 'Analisa Ketel', 'action' => 'Create', 'user_id' => Auth()->user()->id]);
         return redirect()->back()->with('success', 'Data berhasil disimpan');
 
     }

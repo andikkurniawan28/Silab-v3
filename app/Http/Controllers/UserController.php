@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Station;
+use App\Models\Activity;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -40,14 +41,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $request->request->add(['password' => bcrypt($request->password)]);
         User::create($request->all());
         Activity::insert([
             'subject' => 'User',
             'action' => 'Create',
             'user_id' => Auth()->user()->id,
         ]);
-        return redirect()->back()
-            ->with('success', 'User berhasil disimpan');
+        return redirect()->back()->with('success', 'User berhasil disimpan');
     }
 
     /**
@@ -84,14 +85,22 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->request->add(['password' => bcrypt($request->password)]);
+        User::whereId($id)->update([
+            'is_active' => $request->is_active,
+            'role_id' => $request->role_id,
+            'name' => $request->name,
+            'username' => $request->username,
+            'password' => $request->password,
+            'hmi_access' => $request->hmi_access,
+        ]);
         Activity::insert([
             'subject' => 'User',
             'subject_id' => $id,
             'action' => 'Edit',
             'user_id' => Auth()->user()->id,
         ]);
-        return redirect()->back()
-            ->with('success', 'User berhasil disimpan');
+        return redirect()->back()->with('success', 'User berhasil diedit');
     }
 
     /**
@@ -109,7 +118,6 @@ class UserController extends Controller
             'action' => 'Delete',
             'user_id' => Auth()->user()->id,
         ]);
-        return redirect()->back()
-            ->with('success', 'User berhasil disimpan');
+        return redirect()->back()->with('success', 'User berhasil dihapus');
     }
 }
