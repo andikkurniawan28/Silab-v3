@@ -32,25 +32,15 @@
                             <td>{{ $sample->id }}</td>
                             <td>{{ $sample->created_at }}</td>
                             <td>{{ $sample->material->name }}</td>
-                                @foreach($indicators as $indicator)
-                                    <td>
-                                        @foreach($sample->analysis as $analysis)
-                                            @if($indicator->id == $analysis->indicator_id)
-                                                {{ $analysis->value }}
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                @endforeach
-                            {{--<td>
-                                 <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#edit{{ $sample->id }}">
-                                    @include('components.icon', ['icon' => 'edit '])
-                                    Edit
-                                </button>
-                                <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#delete{{ $sample->id }}">
-                                    @include('components.icon', ['icon' => 'trash '])
-                                    Hapus
-                                </button>
-                            </td>--}}
+                            @foreach($indicators as $indicator)
+                                <td>
+                                    @foreach($sample->analysis as $analysis)
+                                        @if($indicator->id == $analysis->indicator_id)
+                                            {{ $analysis->value }}
+                                        @endif
+                                    @endforeach
+                                </td>
+                            @endforeach
                         </tr>
                         @endforeach
                     </tbody>
@@ -121,75 +111,6 @@
         </div>
     </div>
 </div>
-
-{{-- @foreach($samples as $sample)
-<div class="modal fade" id="edit{{ $sample->id }}" tabindex="-1" sample="dialog" aria-labelledby="edit{{ $sample->id }}Label" aria-hidden="true">
-    <div class="modal-dialog" sample="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="edit{{ $sample->id }}Label">Edit {{ ucfirst('saccharomat') }}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body">
-
-                <form method="POST" action="{{ route('samples.update', $sample->id) }}" class="text-dark">
-                @csrf
-                @method('PUT')
-
-                @include('components.input',[
-                    'label' => 'Nama',
-                    'name' => 'name',
-                    'type' => 'text',
-                    'value' => $sample->name,
-                    'modifier' => 'required',
-                ])
-
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Save
-                    @include('components.icon', ['icon' => 'edit'])
-                </button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-@endforeach
-
-@foreach($samples as $sample)
-<div class="modal fade" id="delete{{ $sample->id }}" tabindex="-1" sample="dialog" aria-labelledby="delete{{ $sample->id }}Label" aria-hidden="true">
-    <div class="modal-dialog" sample="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="delete{{ $sample->id }}Label">Hapus {{ ucfirst('saccharomat') }}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body">
-            <form method="POST" action="{{ route('samples.destroy', $sample->id) }}" class="text-dark">
-                @csrf
-                @method('DELETE')
-                <p>Apakah Anda yakin ?</p>
-
-                @include('components.input',[
-                    'label' => 'Nama',
-                    'name' => 'name',
-                    'type' => 'text',
-                    'value' => $sample->name,
-                    'modifier' => 'readonly',
-                ])
-                <input type="hidden" name="sample_id" value="{{ $sample->sample_id }}">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-                <button type="submit" class="btn btn-primary">Yes
-                    @include('components.icon', ['icon' => 'trash'])
-                </button>
-            </form>
-            </div>
-        </div>
-    </div>
-</div>
-@endforeach --}}
 
 @endsection
 

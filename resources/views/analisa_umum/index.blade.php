@@ -11,7 +11,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h5 class="m-0 font-weight-bold text-primary">{{ ucfirst('analisa Ampas') }}</h5>
+            <h5 class="m-0 font-weight-bold text-primary">{{ ucfirst('analisa Umum') }}</h5>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -60,12 +60,12 @@
     <div class="modal-dialog" sample="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createLabel">Tambah {{ ucfirst('analisa Ampas') }}</h5>
+                <h5 class="modal-title" id="createLabel">Tambah {{ ucfirst('analisa Umum') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
 
-                <form method="POST" action="{{ route('analisa_ampas_store') }}" class="text-dark">
+                <form method="POST" action="{{ route('analisa_umum_store') }}" class="text-dark">
                 @csrf
                 @method('POST')
 
@@ -78,16 +78,24 @@
                 ])
 
                 @include('components.input',[
-                    'label' => 'ZK',
-                    'name' => 'zk',
+                    'label' => 'CaO',
+                    'name' => 'CaO',
                     'type' => 'number',
                     'value' => '',
                     'modifier' => '',
                 ])
 
                 @include('components.input',[
-                    'label' => 'Air',
-                    'name' => 'air',
+                    'label' => 'pH',
+                    'name' => 'pH',
+                    'type' => 'number',
+                    'value' => '',
+                    'modifier' => '',
+                ])
+
+                @include('components.input',[
+                    'label' => 'Turb',
+                    'name' => 'Turb',
                     'type' => 'number',
                     'value' => '',
                     'modifier' => '',
