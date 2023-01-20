@@ -65,7 +65,7 @@ class ChemicalcheckingController extends Controller
             'user_id' => Auth()->user()->id,
         ]);
 
-        return redirect()->back()->with('success', 'Bahan Pembantu Proses berhasil disimpan');
+        return redirect()->back()->with('success', 'Penggunaan BPP berhasil disimpan');
     }
 
     /**
@@ -108,7 +108,7 @@ class ChemicalcheckingController extends Controller
         //     'action' => 'Edit',
         //     'user_id' => Auth()->user()->id,
         // ]);
-        // return redirect()->back()->with('success', 'Bahan Pembantu Proses berhasil dirubah');
+        // return redirect()->back()->with('success', 'Penggunaan BPP berhasil dirubah');
     }
 
     /**
@@ -126,6 +126,6 @@ class ChemicalcheckingController extends Controller
             'action' => 'Delete',
             'user_id' => Auth()->user()->id,
         ]);
-        return redirect()->back()->with('success', 'Bahan Pembantu Proses berhasil dihapus');
+        return redirect()->back()->with('success', 'Penggunaan BPP berhasil dihapus');
     }
 }

@@ -70,6 +70,7 @@
 
                 <h6 class="collapse-header">Menu :</h6>
                 <a class="collapse-item" href="{{ route('cetak_barcode') }}">Barcode</a>
+                <a class="collapse-item" href="">Ronsel</a>
                 <a class="collapse-item" href="{{ route('saccharomat') }}">Saccharomat</a>
                 <a class="collapse-item" href="{{ route('analisa_ampas') }}">Analisa Ampas</a>
                 <a class="collapse-item" href="{{ route('analisa_umum') }}">Analisa Umum</a>
@@ -80,7 +81,7 @@
                 <a class="collapse-item" href="{{ route('imbibitions.index') }}">Imbibisi</a>
                 <a class="collapse-item" href="{{ route('kactivities.index') }}">Keliling Proses</a>
                 <a class="collapse-item" href="{{ route('tactivities.index') }}">Taksasi</a>
-                <a class="collapse-item" href="{{ route('chemicalcheckings.index') }}">Bahan Pembantu</a>
+                <a class="collapse-item" href="{{ route('chemicalcheckings.index') }}">Pengunaan BPP</a>
 
                 {{--
                 <a class="collapse-item" href="{{ route('rafactions.index') }}">Scoring MBS</a>
