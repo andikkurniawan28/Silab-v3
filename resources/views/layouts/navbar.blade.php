@@ -62,6 +62,9 @@
             <a class="dropdown-item" href="{{ route('kspots.index') }}">
                 <i class="fas fa-map fa-sm fa-fw mr-2 text-gray-400"></i> Titik Keliling
             </a>
+            <a class="dropdown-item" href="{{ route('tspots.index') }}">
+                <i class="fas fa-eye fa-sm fa-fw mr-2 text-gray-400"></i> Titik Taksasi
+            </a>
             <a class="dropdown-item" href="{{ route('activities') }}">
                 <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
             </a>

@@ -81,6 +81,7 @@
                 <a class="collapse-item" href="{{ route('balances.index') }}">Flow NM</a>
                 <a class="collapse-item" href="{{ route('imbibitions.index') }}">Imbibisi</a>
                 <a class="collapse-item" href="{{ route('kactivities.index') }}">Keliling Proses</a>
+                <a class="collapse-item" href="{{ route('tactivities.index') }}">Taksasi</a>
 
                 {{--
                 <a class="collapse-item" href="{{ route('rafactions.index') }}">Scoring MBS</a>
