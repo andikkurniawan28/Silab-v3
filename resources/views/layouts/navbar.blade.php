@@ -65,6 +65,9 @@
             <a class="dropdown-item" href="{{ route('tspots.index') }}">
                 <i class="fas fa-eye fa-sm fa-fw mr-2 text-gray-400"></i> Titik Taksasi
             </a>
+            <a class="dropdown-item" href="{{ route('chemicals.index') }}">
+                <i class="fas fa-flask fa-sm fa-fw mr-2 text-gray-400"></i> Bahan Pembantu Proses
+            </a>
             <a class="dropdown-item" href="{{ route('activities') }}">
                 <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
             </a>

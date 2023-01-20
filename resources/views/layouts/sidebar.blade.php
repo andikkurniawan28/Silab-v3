@@ -68,7 +68,7 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
 
-                <h6 class="collapse-header">Analitik :</h6>
+                <h6 class="collapse-header">Menu :</h6>
                 <a class="collapse-item" href="{{ route('cetak_barcode') }}">Barcode</a>
                 <a class="collapse-item" href="{{ route('saccharomat') }}">Saccharomat</a>
                 <a class="collapse-item" href="{{ route('analisa_ampas') }}">Analisa Ampas</a>
@@ -76,12 +76,11 @@
                 <a class="collapse-item" href="{{ route('analisa_ketel') }}">Analisa Ketel</a>
                 <a class="collapse-item" href="{{ route('analisa_hplc') }}">Analisa HPLC</a>
                 <a class="collapse-item" href="{{ route('analyses.index') }}">Analisa Lain</a>
-
-                <h6 class="collapse-header">Non-Analitik :</h6>
                 <a class="collapse-item" href="{{ route('balances.index') }}">Flow NM</a>
                 <a class="collapse-item" href="{{ route('imbibitions.index') }}">Imbibisi</a>
                 <a class="collapse-item" href="{{ route('kactivities.index') }}">Keliling Proses</a>
                 <a class="collapse-item" href="{{ route('tactivities.index') }}">Taksasi</a>
+                <a class="collapse-item" href="{{ route('chemicalcheckings.index') }}">Bahan Pembantu</a>
 
                 {{--
                 <a class="collapse-item" href="{{ route('rafactions.index') }}">Scoring MBS</a>
