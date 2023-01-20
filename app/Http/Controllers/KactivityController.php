@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kspot;
+use App\Models\Kvalue;
+use App\Models\Station;
+use App\Models\Activity;
 use App\Models\Kactivity;
 use Illuminate\Http\Request;
 
@@ -14,7 +18,10 @@ class KactivityController extends Controller
      */
     public function index()
     {
-        //
+        $stations = Station::all();
+        $kactivities = Kactivity::all();
+        $kspots = Kspot::all();
+        return view('kactivity.index', compact('stations', 'kactivities', 'kspots'));
     }
 
     /**
@@ -35,7 +42,30 @@ class KactivityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Kactivity::insert(['user_id' => Auth()->user()->id]);
+        $kactivity_id = Kactivity::orderBy('id', 'desc')->limit(1)->get()->last()->id;
+
+        $kspots = Kspot::all();
+
+        foreach($kspots as $kspot)
+        {
+            $input = 'kspot'.$kspot->id;
+            if($request->$input != NULL){
+                Kvalue::insert([
+                    'kactivity_id' => $kactivity_id,
+                    'kspot_id' => $kspot->id,
+                    'value' => $request->$input
+                ]);
+            }
+        }
+
+        Activity::insert([
+            'subject' => 'Kactivity',
+            'action' => 'Create',
+            'user_id' => Auth()->user()->id,
+        ]);
+
+        return redirect()->back()->with('success', 'Keliling Proses berhasil disimpan');
     }
 
     /**
@@ -67,9 +97,18 @@ class KactivityController extends Controller
      * @param  \App\Models\Kactivity  $kactivity
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kactivity $kactivity)
+    public function update(Request $request, $id)
     {
-        //
+        // Kactivity::where('id', $id)->update([
+        //     'user_id' => $request->user_id,
+        // ]);
+        // Activity::insert([
+        //     'subject' => 'Kactivity',
+        //     'subject_id' => $id,
+        //     'action' => 'Edit',
+        //     'user_id' => Auth()->user()->id,
+        // ]);
+        // return redirect()->back()->with('success', 'Keliling Proses berhasil dirubah');
     }
 
     /**
@@ -78,8 +117,15 @@ class KactivityController extends Controller
      * @param  \App\Models\Kactivity  $kactivity
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kactivity $kactivity)
+    public function destroy($id)
     {
-        //
+        Kactivity::whereId($id)->delete();
+        Activity::insert([
+            'subject' => 'Kactivity',
+            'subject_id' => $id,
+            'action' => 'Delete',
+            'user_id' => Auth()->user()->id,
+        ]);
+        return redirect()->back()->with('success', 'Keliling Proses berhasil dihapus');
     }
 }

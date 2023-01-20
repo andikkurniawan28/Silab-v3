@@ -89,8 +89,7 @@ class KspotController extends Controller
             'action' => 'Edit',
             'user_id' => Auth()->user()->id,
         ]);
-        return redirect()->back()
-            ->with('success', 'Titik Keliling berhasil dirubah');
+        return redirect()->back()->with('success', 'Titik Keliling berhasil dirubah');
     }
 
     /**

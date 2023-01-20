@@ -15,7 +15,7 @@ class CreateKvaluesTable extends Migration
     {
         Schema::create('kvalues', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('kactivity_id')->constrained();
+            $table->foreignId('kactivity_id')->constrained()->onDelete('cascade');
             $table->foreignId('kspot_id')->constrained();
             $table->float('value');
             $table->timestamp('created_at')->useCurrent();
