@@ -69,8 +69,8 @@
             <div class="bg-white py-2 collapse-inner rounded">
 
                 <h6 class="collapse-header">Menu :</h6>
-                <a class="collapse-item" href="{{ route('cetak_barcode') }}">Barcode</a>
-                <a class="collapse-item" href="">Ronsel</a>
+                <a class="collapse-item" href="{{ route('cetak_barcode') }}">Cetak Barcode</a>
+                <a class="collapse-item" href="{{ route('cetak_ronsel') }}">Cetak Ronsel</a>
                 <a class="collapse-item" href="{{ route('saccharomat') }}">Saccharomat</a>
                 <a class="collapse-item" href="{{ route('analisa_ampas') }}">Analisa Ampas</a>
                 <a class="collapse-item" href="{{ route('analisa_umum') }}">Analisa Umum</a>
