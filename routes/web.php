@@ -1,10 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AriController;
+use App\Http\Controllers\RitController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KspotController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\TspotController;
 use App\Http\Controllers\KvalueController;
 use App\Http\Controllers\LogoutController;
@@ -13,11 +16,13 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SampleController;
 use App\Http\Controllers\TvalueController;
 use App\Http\Controllers\BalanceController;
+use App\Http\Controllers\PosbrixController;
 use App\Http\Controllers\StationController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AnalysisController;
 use App\Http\Controllers\ChemicalController;
 use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\AnalisaPenilaianMbs;
 use App\Http\Controllers\IndicatorController;
 use App\Http\Controllers\KactivityController;
 use App\Http\Controllers\TactivityController;
@@ -31,7 +36,9 @@ use App\Http\Controllers\AnalisaKetelController;
 use App\Http\Controllers\CetakBarcodeController;
 use App\Http\Controllers\SampleResultController;
 use App\Http\Controllers\StationResultController;
+use App\Http\Controllers\AnalisaPosBrixController;
 use App\Http\Controllers\ChemicalcheckingController;
+use App\Http\Controllers\AplikasiPenerimaanController;
 
 Route::get('/', HomeController::class)->name('home')->middleware(['auth']);
 Route::resource('stations', StationController::class)->middleware(['auth']);
@@ -73,3 +80,14 @@ Route::post('analisa_ketel_store', [AnalisaKetelController::class, 'store'])->na
 Route::post('analisa_hplc_store', [AnalisaHplcController::class, 'store'])->name('analisa_hplc_store')->middleware(['auth']);
 Route::post('cetak_barcode_store', [CetakBarcodeController::class, 'store'])->name('cetak_barcode_store')->middleware(['auth']);
 Route::post('cetak_ronsel_store', [CetakRonselController::class, 'store'])->name('cetak_ronsel_store')->middleware(['auth']);
+
+
+
+Route::resource('rits', RitController::class)->middleware(['auth']);
+Route::resource('posbrixes', PosbrixController::class)->middleware(['auth']);
+Route::resource('aris', AriController::class)->middleware(['auth']);
+Route::resource('scores', ScoreController::class)->middleware(['auth']);
+
+Route::get('rit', AplikasiPenerimaanController::class)->name('rit')->middleware(['auth']);
+Route::get('posbrix', AnalisaPosBrixController::class)->name('posbrix')->middleware(['auth']);
+Route::get('score', AnalisaPenilaianMbs::class)->name('score')->middleware(['auth']);

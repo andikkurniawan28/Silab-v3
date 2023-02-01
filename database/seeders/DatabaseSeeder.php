@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             [ 'name' => 'Mandor' ],
             [ 'name' => 'Operator QC' ],
             [ 'name' => 'Operator Non QC' ],
+            [ 'name' => 'End User' ],
         ];
 
         $users = [

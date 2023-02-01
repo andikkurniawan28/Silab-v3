@@ -15,9 +15,10 @@ class CreateRitsTable extends Migration
     {
         Schema::create('rits', function (Blueprint $table) {
             $table->id();
-            $table->string('barcode_antrian');
+            $table->string('barcode_antrian')->unique();
             $table->string('spta')->nullable();
             $table->string('register')->nullable();
+            $table->string('nopol')->nullable();
             $table->string('kud')->nullable();
             $table->string('pos')->nullable();
             $table->string('wilayah')->nullable();

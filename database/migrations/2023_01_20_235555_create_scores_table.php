@@ -16,6 +16,7 @@ class CreateScoresTable extends Migration
         Schema::create('scores', function (Blueprint $table) {
             $table->id();
             $table->foreignId('rit_id')->constrained()->unique();
+            $table->foreignId('user_id')->constrained();
             $table->string('value');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();

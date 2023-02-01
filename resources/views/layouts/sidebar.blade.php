@@ -82,6 +82,10 @@
                 <a class="collapse-item" href="{{ route('kactivities.index') }}">Keliling Proses</a>
                 <a class="collapse-item" href="{{ route('tactivities.index') }}">Taksasi</a>
                 <a class="collapse-item" href="{{ route('chemicalcheckings.index') }}">Pengunaan BPP</a>
+                <a class="collapse-item" href="{{ route('rits.index') }}">Penerimaan</a>
+                <a class="collapse-item" href="{{ route('posbrixes.index') }}">Pos Brix</a>
+                <a class="collapse-item" href="{{ route('scores.index') }}">Penilaian MBS</a>
+                <a class="collapse-item" href="{{ route('aris.index') }}">Analisa Rendemen</a>
 
                 {{--
                 <a class="collapse-item" href="{{ route('rafactions.index') }}">Scoring MBS</a>
@@ -102,6 +106,22 @@
                     <a class="collapse-item" href="{{ route('report') }}">Cetak Laporan</a>
                 {{--
                 <a class="collapse-item" href="{{ route('certificates') }}">Sertifikat</a> --}}
+            </div>
+        </div>
+    </li>
+
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
+            <i class="fas fa-fw fa-mobile"></i>
+            <span>Aplikasi</span>
+        </a>
+        <div id="collapse2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Menu :</h6>
+                <a class="collapse-item" href="{{ route('rit') }}" target="_blank">Penerimaan</a>
+                <a class="collapse-item" href="{{ route('posbrix') }}" target="_blank">Pos Brix</a>
+                <a class="collapse-item" href="{{ route('score') }}" target="_blank">Penilaian MBS</a>
             </div>
         </div>
     </li>
