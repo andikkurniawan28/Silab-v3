@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Factor;
 use App\Models\Method;
 use App\Models\Sample;
 use App\Models\Station;
@@ -71,13 +72,13 @@ class SaccharomatController extends Controller
     }
 
     public function findPurity($request){
-        $faktor = 0;
+        $faktor = Factor::where('name', 'Saccharomat')->get()->last()->value;
         return (($request->ppol / $request->pbrix) * 100) + ($faktor * $request->pbrix);
     }
 
     public function findYield($request){
-        $faktor_rendemen = 0.7;
-        $faktor_mellase = 0.5;
+        $faktor_rendemen = Factor::where('name', 'Rendemen')->get()->last()->value;
+        $faktor_mellase = Factor::where('name', 'Mollases')->get()->last()->value;
         return $faktor_rendemen * ($request->ppol - $faktor_mellase * ($request->pbrix - $request->ppol));
     }
 }

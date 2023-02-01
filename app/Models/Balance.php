@@ -35,21 +35,9 @@ class Balance extends Model
         ];
     }
 
-    // public static function editRawJuice($request, $id)
-    // {
-    //     $totalizer_raw_juice_latest = self::where('id', '<', $id)->get()->last()->totalizer_raw_juice;
-    //     $flow_raw_juice = self::findFlow($totalizer_raw_juice_latest, $request->totalizer_raw_juice);
-    //     $raw_juice_percent_sugar_cane = self::findFlowPercentSugarCane($flow_raw_juice, $request->sugar_cane);
-    //     return $data = [
-    //         'flow_raw_juice' => $flow_raw_juice,
-    //         'raw_juice_percent_sugar_cane' => $raw_juice_percent_sugar_cane,
-    //     ];
-    // }
-
     public static function findFlow($totalizer_old, $totalizer_new)
     {
-        // $factor = Factor::findRawJuiceFactor();
-        $factor = 0.85;
+        $factor = Factor::where('name', 'Raw Juice')->get()->last()->value;
         return $factor * ($totalizer_new - $totalizer_old);
     }
 

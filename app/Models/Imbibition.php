@@ -37,8 +37,7 @@ class Imbibition extends Model
 
     public static function findFlow($totalizer_old, $totalizer_new)
     {
-        // $factor = Factor::findRawJuiceFactor();
-        $factor = 1;
+        $factor = Factor::where('name', 'Raw Juice')->get()->last()->value;
         return $factor * ($totalizer_new - $totalizer_old);
     }
 

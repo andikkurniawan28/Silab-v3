@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Factor;
 use App\Models\Method;
 use App\Models\Sample;
 use App\Models\Station;
@@ -780,5 +781,41 @@ class DatabaseSeeder extends Seeder
         Method::insert($methods);
         // Sample::insert($samples);
         // Analysis::insert($analyses);
+
+        $factors = [
+            [
+                'name' => 'Mollases',
+                'value' => 0.5,
+                'description' => 'Faktor Mollase untuk menghitung Rendemen NPP.',
+            ],
+            [
+                'name' => 'Rendemen',
+                'value' => 0.7,
+                'description' => 'Faktor Rendemen untuk menghitung Rendemen NPP.',
+            ],
+            [
+                'name' => 'Raw Juice',
+                'value' => 0.85,
+                'description' => 'Faktor untuk mengkoreksi jumlah Nira Mentah.',
+            ],
+            [
+                'name' => 'Imbibition',
+                'value' => 1,
+                'description' => 'Faktor untuk mengkoreksi jumlah Imbibisi.',
+            ],
+            [
+                'name' => 'Saccharomat',
+                'value' => 0.03,
+                'description' => 'Faktor untuk mengkoreksi % Pol Saccharomat. % Pol Saccharomat ditambahkan dengan faktor * % Brix.',
+            ],
+            [
+                'name' => 'Pol Ampas',
+                'value' => 0.0,
+                'description' => 'Faktor untuk mengkoreksi Pol Ampas. Pol Ampas sebelum koreksi, ditambahkan dengan faktor ini.',
+            ],
+        ];
+
+        Factor::insert($factors);
+
     }
 }

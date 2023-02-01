@@ -50,6 +50,9 @@
             <a class="dropdown-item" href="{{ route('indicators.index') }}">
                 <i class="fas fa-asterisk fa-sm fa-fw mr-2 text-gray-400"></i> Indicator
             </a>
+            <a class="dropdown-item" href="{{ route('factors.index') }}">
+                <i class="fas fa-percent fa-sm fa-fw mr-2 text-gray-400"></i> Factor
+            </a>
             <a class="dropdown-item" href="{{ route('materials.index') }}">
                 <i class="fas fa-box fa-sm fa-fw mr-2 text-gray-400"></i> Material
             </a>
