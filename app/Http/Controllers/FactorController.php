@@ -83,7 +83,7 @@ class FactorController extends Controller
         Factor::where('id', $id)->update([
             'name' => $request->name,
             'description' => $request->description,
-            'value' => $request->description,
+            'value' => $request->value,
         ]);
         Activity::insert([
             'subject' => 'Factor',

@@ -36,7 +36,7 @@ class SaccharomatController extends Controller
 
             $kadar_air = Analysis::where('sample_id', $request->sample_id)->where('indicator_id', 7)->get()->last()->value;
             $data[1] = 100 - $kadar_air;
-            $data[4] = self::findPurity($request);
+            $data[4] = self::findPurity($request, 1);
             $data[2] = $data[4] * $data[1] / 100;
             $data[3] = $request->pol;
 
@@ -52,7 +52,7 @@ class SaccharomatController extends Controller
             $data[1] = $request->pbrix;
             $data[2] = $request->ppol;
             $data[3] = $request->pol;
-            $data[4] = self::findPurity($request);
+            $data[4] = self::findPurity($request, 2);
 
             for($i=1; $i<=4; $i++){
                 Analysis::insert(['sample_id' => $request->sample_id, 'user_id' => Auth()->user()->id, 'indicator_id' => $i, 'value' => $data[$i]]);
@@ -71,9 +71,14 @@ class SaccharomatController extends Controller
         return $data;
     }
 
-    public function findPurity($request){
+    public function findPurity($request, $material_type){
         $faktor = Factor::where('name', 'Saccharomat')->get()->last()->value;
-        return (($request->ppol / $request->pbrix) * 100) + ($faktor * $request->pbrix);
+        if($material_type == 2){
+            return (($request->ppol / $request->pbrix) * 100) + ($faktor * $request->pbrix);
+        }
+        else {
+            return (($request->ppol / $request->pbrix) * 100);
+        }
     }
 
     public function findYield($request){

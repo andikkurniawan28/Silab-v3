@@ -37,13 +37,15 @@ class DatabaseSeeder extends Seeder
                 'username' => 'andik',
                 'password' => bcrypt('andik987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 2,
-                'name' => 'Anas Muallif',
+                'name' => 'M Anas Muallif',
                 'username' => 'anas',
                 'password' => bcrypt('anas987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 3,
@@ -51,6 +53,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'tofan',
                 'password' => bcrypt('tofan987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 3,
@@ -58,6 +61,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'win',
                 'password' => bcrypt('win987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 4,
@@ -65,6 +69,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'yudi',
                 'password' => bcrypt('yudi987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 5,
@@ -72,6 +77,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'tutus',
                 'password' => bcrypt('tutus987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 5,
@@ -79,6 +85,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'dwi',
                 'password' => bcrypt('dwi987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 5,
@@ -86,6 +93,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'nico',
                 'password' => bcrypt('nico987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 5,
@@ -93,6 +101,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'muslimin',
                 'password' => bcrypt('muslimin987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 5,
@@ -100,6 +109,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'riadi',
                 'password' => bcrypt('riadi987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 5,
@@ -107,6 +117,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'awaludin',
                 'password' => bcrypt('awaludin987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 5,
@@ -114,6 +125,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'satria',
                 'password' => bcrypt('satria987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 6,
@@ -121,6 +133,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'zauzi',
                 'password' => bcrypt('zauzi987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 6,
@@ -128,6 +141,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'risky',
                 'password' => bcrypt('risky987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 6,
@@ -135,6 +149,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'arvan',
                 'password' => bcrypt('arvan987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 6,
@@ -142,6 +157,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'aris',
                 'password' => bcrypt('aris987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 7,
@@ -149,6 +165,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'bambang',
                 'password' => bcrypt('bambang987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 7,
@@ -156,6 +173,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'muslimin2',
                 'password' => bcrypt('muslimin987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 7,
@@ -163,6 +181,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'wahyu',
                 'password' => bcrypt('wahyu987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -170,6 +189,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'dita',
                 'password' => bcrypt('dita987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -177,6 +197,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'darmaji',
                 'password' => bcrypt('darmaji987'),
                 'hmi_access' => 1,
+                'is_active' => 1,
 
             ],
             [
@@ -185,6 +206,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'amrizal',
                 'password' => bcrypt('amrizal987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -192,6 +214,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'yoga',
                 'password' => bcrypt('yoga987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -199,6 +222,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'yossy',
                 'password' => bcrypt('yossy987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -206,6 +230,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'm_ali',
                 'password' => bcrypt('m_ali987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -213,6 +238,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'yohan',
                 'password' => bcrypt('yohan987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -220,6 +246,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'ali',
                 'password' => bcrypt('ali987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -227,6 +254,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'dhuha',
                 'password' => bcrypt('dhuha987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -234,6 +262,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'imam',
                 'password' => bcrypt('imam987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -241,6 +270,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'irfano',
                 'password' => bcrypt('irfano987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -248,6 +278,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'fernando',
                 'password' => bcrypt('fernando987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -255,6 +286,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'yovi',
                 'password' => bcrypt('yovi987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -262,6 +294,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'zainul',
                 'password' => bcrypt('zainul987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -269,6 +302,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'hafith',
                 'password' => bcrypt('hafith987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -276,6 +310,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'liga',
                 'password' => bcrypt('liga987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -283,6 +318,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'suwandi',
                 'password' => bcrypt('suwandi987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -290,6 +326,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'fiki',
                 'password' => bcrypt('fiki987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -297,6 +334,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'sofi',
                 'password' => bcrypt('sofi987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -304,6 +342,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'danang',
                 'password' => bcrypt('danang987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -311,6 +350,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'alfin',
                 'password' => bcrypt('alfin987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -318,6 +358,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'ivantio',
                 'password' => bcrypt('ivantio987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -325,6 +366,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'ari_shan',
                 'password' => bcrypt('ari_shan987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -332,6 +374,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'khrisna',
                 'password' => bcrypt('khrisna987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -339,6 +382,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'fery',
                 'password' => bcrypt('fery987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -346,6 +390,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'agus',
                 'password' => bcrypt('agus987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -353,6 +398,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'asit',
                 'password' => bcrypt('asit987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -360,6 +406,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'bagus',
                 'password' => bcrypt('bagus987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -367,6 +414,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'mahmudi',
                 'password' => bcrypt('mahmudi987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -374,6 +422,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'junjung',
                 'password' => bcrypt('junjung987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -381,6 +430,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'dani',
                 'password' => bcrypt('dani987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -388,6 +438,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'm_robi',
                 'password' => bcrypt('m_robi987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -395,6 +446,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'satrio',
                 'password' => bcrypt('satrio987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -402,6 +454,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'vandra',
                 'password' => bcrypt('vandra987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -409,6 +462,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'yudha',
                 'password' => bcrypt('yudha987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -416,6 +470,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'johan',
                 'password' => bcrypt('johan987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -423,6 +478,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'one',
                 'password' => bcrypt('one987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -430,6 +486,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'ismail',
                 'password' => bcrypt('ismail987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -437,6 +494,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'fachrul',
                 'password' => bcrypt('fachrul987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
 
             ],
             [
@@ -445,6 +503,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'feri',
                 'password' => bcrypt('feri987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
             [
                 'role_id' => 8,
@@ -452,6 +511,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'mardiyanto',
                 'password' => bcrypt('mardiyanto987'),
                 'hmi_access' => NULL,
+                'is_active' => 1,
             ],
         ];
         $stations = [
@@ -463,7 +523,7 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Masakan'],
             ['name' => 'Stroop'],
             ['name' => 'Gula'],
-            ['name' => 'Tangki'],
+            ['name' => 'Tangki Tetes'],
             ['name' => 'Ketel'],
             ['name' => 'Packer'],
         ];
@@ -479,20 +539,20 @@ class DatabaseSeeder extends Seeder
             ['name' => '%Zk'],
             ['name' => 'CaO'],
             ['name' => 'pH'],
-            ['name' => 'Turb'],
+            ['name' => 'Turbidity'],
             ['name' => 'TDS'],
             ['name' => 'Sadah'],
             ['name' => 'P2O5'],
             ['name' => 'SO2'],
             ['name' => 'BJB'],
             ['name' => 'TSAI'],
-            ['name' => 'Succ'],
-            ['name' => 'Gluc'],
-            ['name' => 'Fruc'],
+            ['name' => 'Succrose'],
+            ['name' => 'Glucose'],
+            ['name' => 'Fructose'],
             ['name' => 'Suhu'],
             ['name' => 'PI'],
-            ['name' => '%Sbt'],
-            ['name' => '%Kpr'],
+            ['name' => '%Sabut'],
+            ['name' => '%Kapur'],
             ['name' => 'Pol Ampas'],
         ];
 
@@ -773,15 +833,6 @@ class DatabaseSeeder extends Seeder
             array_push($analyses, ['sample_id' => $i, 'indicator_id' => 7, 'value' => 0.05, 'user_id' => 1]);
         }
 
-        Role::insert($roles);
-        User::insert($users);
-        Station::insert($stations);
-        Indicator::insert($indicators);
-        Material::insert($materials);
-        Method::insert($methods);
-        // Sample::insert($samples);
-        // Analysis::insert($analyses);
-
         $factors = [
             [
                 'name' => 'Mollases',
@@ -815,6 +866,12 @@ class DatabaseSeeder extends Seeder
             ],
         ];
 
+        Role::insert($roles);
+        User::insert($users);
+        Station::insert($stations);
+        Indicator::insert($indicators);
+        Material::insert($materials);
+        Method::insert($methods);
         Factor::insert($factors);
 
     }

@@ -8,6 +8,7 @@ use App\Models\Station;
 use App\Models\Activity;
 use App\Models\Analysis;
 use App\Models\Indicator;
+use App\Models\Factor;
 use Illuminate\Http\Request;
 
 class AnalisaAmpasController extends Controller
@@ -31,7 +32,7 @@ class AnalisaAmpasController extends Controller
         }
 
         if(in_array(25, $indicators)){
-            $factor = Factor::where('name', 'Pol Ampas')->get()->last()->name;
+            $factor = Factor::where('name', 'Pol Ampas')->get()->last()->value;
             $pol = Analysis::where('sample_id', $request->sample_id)->where('indicator_id', 3)->get()->last()->value;
             $pol_ampas = (($pol/2) * 0.0286 * ((10000+$request->air)/100)*2.5) + $factor;
             Analysis::insert(['sample_id' => $request->sample_id, 'indicator_id' => 7, 'value' => $request->air, 'user_id' => Auth()->user()->id]);

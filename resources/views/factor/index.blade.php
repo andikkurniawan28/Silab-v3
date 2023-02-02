@@ -11,7 +11,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h5 class="m-0 font-weight-bold text-primary">{{ ucfirst('indikator') }}</h5>
+            <h5 class="m-0 font-weight-bold text-primary">{{ ucfirst('faktor') }}</h5>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -63,7 +63,7 @@
     <div class="modal-dialog" factor="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createLabel">Tambah {{ ucfirst('indikator') }}</h5>
+                <h5 class="modal-title" id="createLabel">Tambah {{ ucfirst('faktor') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
@@ -112,7 +112,7 @@
     <div class="modal-dialog" factor="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="edit{{ $factor->id }}Label">Edit {{ ucfirst('indikator') }}</h5>
+                <h5 class="modal-title" id="edit{{ $factor->id }}Label">Edit {{ ucfirst('faktor') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
@@ -162,7 +162,7 @@
     <div class="modal-dialog" factor="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="delete{{ $factor->id }}Label">Hapus {{ ucfirst('indikator') }}</h5>
+                <h5 class="modal-title" id="delete{{ $factor->id }}Label">Hapus {{ ucfirst('faktor') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
