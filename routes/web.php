@@ -69,6 +69,7 @@ Route::post('login_process', [ LoginController::class, 'process' ])->name('login
 Route::get('logout', LogoutController::class)->name('logout');
 Route::get('activities', ActivityController::class)->name('activities')->middleware(['auth']);
 Route::get('saccharomat', [SaccharomatController::class, 'index'])->name('saccharomat')->middleware(['auth']);
+Route::post('saccharomat_delete', [SaccharomatController::class, 'delete'])->name('saccharomat_delete')->middleware(['auth']);
 Route::get('analisa_ampas', [AnalisaAmpasController::class, 'index'])->name('analisa_ampas')->middleware(['auth']);
 Route::get('analisa_umum', [AnalisaUmumController::class, 'index'])->name('analisa_umum')->middleware(['auth']);
 Route::get('analisa_ketel', [AnalisaKetelController::class, 'index'])->name('analisa_ketel')->middleware(['auth']);

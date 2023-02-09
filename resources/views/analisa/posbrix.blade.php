@@ -7,7 +7,7 @@
 
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-gradient-light text-dark">
 
     <div class="container">
 

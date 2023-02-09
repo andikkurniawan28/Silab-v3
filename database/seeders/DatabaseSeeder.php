@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'role_id' => 2,
-                'name' => 'M Anas Muallif',
+                'name' => "Muhammad Anas Mu'allif",
                 'username' => 'anas',
                 'password' => bcrypt('anas987'),
                 'hmi_access' => NULL,
@@ -668,7 +668,6 @@ class DatabaseSeeder extends Seeder
         {
             array_push($methods, ['material_id' => $i, 'indicator_id' => 1]);
             array_push($methods, ['material_id' => $i, 'indicator_id' => 2]);
-            array_push($methods, ['material_id' => $i, 'indicator_id' => 3]);
             array_push($methods, ['material_id' => $i, 'indicator_id' => 4]);
             array_push($methods, ['material_id' => $i, 'indicator_id' => 6]);
             array_push($methods, ['material_id' => $i, 'indicator_id' => 7]);
@@ -775,7 +774,6 @@ class DatabaseSeeder extends Seeder
         {
             array_push($methods, ['material_id' => $i, 'indicator_id' => 1]);
             array_push($methods, ['material_id' => $i, 'indicator_id' => 2]);
-            array_push($methods, ['material_id' => $i, 'indicator_id' => 3]);
             array_push($methods, ['material_id' => $i, 'indicator_id' => 4]);
             array_push($methods, ['material_id' => $i, 'indicator_id' => 6]);
             array_push($methods, ['material_id' => $i, 'indicator_id' => 7]);

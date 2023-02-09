@@ -86,4 +86,13 @@ class SaccharomatController extends Controller
         $faktor_mellase = Factor::where('name', 'Mollases')->get()->last()->value;
         return $faktor_rendemen * ($request->ppol - $faktor_mellase * ($request->pbrix - $request->ppol));
     }
+
+    public function delete(Request $request){
+        Analysis::where('sample_id', $request->id)->where('indicator_id', 1)->delete();
+        Analysis::where('sample_id', $request->id)->where('indicator_id', 2)->delete();
+        Analysis::where('sample_id', $request->id)->where('indicator_id', 3)->delete();
+        Analysis::where('sample_id', $request->id)->where('indicator_id', 4)->delete();
+        Analysis::where('sample_id', $request->id)->where('indicator_id', 5)->delete();
+        return redirect()->back()->with('success', 'Data berhasil dihapus');
+    }
 }
