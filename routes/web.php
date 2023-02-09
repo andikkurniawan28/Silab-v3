@@ -69,19 +69,22 @@ Route::post('login_process', [ LoginController::class, 'process' ])->name('login
 Route::get('logout', LogoutController::class)->name('logout');
 Route::get('activities', ActivityController::class)->name('activities')->middleware(['auth']);
 Route::get('saccharomat', [SaccharomatController::class, 'index'])->name('saccharomat')->middleware(['auth']);
-Route::post('saccharomat_delete', [SaccharomatController::class, 'delete'])->name('saccharomat_delete')->middleware(['auth']);
 Route::get('analisa_ampas', [AnalisaAmpasController::class, 'index'])->name('analisa_ampas')->middleware(['auth']);
-Route::post('analisa_ampas_delete', [AnalisaAmpasController::class, 'delete'])->name('analisa_ampas_delete')->middleware(['auth']);
 Route::get('analisa_umum', [AnalisaUmumController::class, 'index'])->name('analisa_umum')->middleware(['auth']);
 Route::get('analisa_ketel', [AnalisaKetelController::class, 'index'])->name('analisa_ketel')->middleware(['auth']);
 Route::get('analisa_hplc', [AnalisaHplcController::class, 'index'])->name('analisa_hplc')->middleware(['auth']);
 Route::get('cetak_barcode', [CetakBarcodeController::class, 'index'])->name('cetak_barcode')->middleware(['auth']);
 Route::get('cetak_ronsel', [CetakRonselController::class, 'index'])->name('cetak_ronsel')->middleware(['auth']);
 Route::post('saccharomat_store', [SaccharomatController::class, 'store'])->name('saccharomat_store')->middleware(['auth']);
+Route::post('saccharomat_delete', [SaccharomatController::class, 'delete'])->name('saccharomat_delete')->middleware(['auth']);
 Route::post('analisa_ampas_store', [AnalisaAmpasController::class, 'store'])->name('analisa_ampas_store')->middleware(['auth']);
+Route::post('analisa_ampas_delete', [AnalisaAmpasController::class, 'delete'])->name('analisa_ampas_delete')->middleware(['auth']);
+Route::post('analisa_umum_delete', [AnalisaUmumController::class, 'delete'])->name('analisa_umum_delete')->middleware(['auth']);
 Route::post('analisa_umum_store', [AnalisaUmumController::class, 'store'])->name('analisa_umum_store')->middleware(['auth']);
 Route::post('analisa_ketel_store', [AnalisaKetelController::class, 'store'])->name('analisa_ketel_store')->middleware(['auth']);
+Route::post('analisa_ketel_delete', [AnalisaKetelController::class, 'delete'])->name('analisa_ketel_delete')->middleware(['auth']);
 Route::post('analisa_hplc_store', [AnalisaHplcController::class, 'store'])->name('analisa_hplc_store')->middleware(['auth']);
+Route::post('analisa_hplc_delete', [AnalisaHplcController::class, 'delete'])->name('analisa_hplc_delete')->middleware(['auth']);
 Route::post('cetak_barcode_store', [CetakBarcodeController::class, 'store'])->name('cetak_barcode_store')->middleware(['auth']);
 Route::post('cetak_ronsel_store', [CetakRonselController::class, 'store'])->name('cetak_ronsel_store')->middleware(['auth']);
 

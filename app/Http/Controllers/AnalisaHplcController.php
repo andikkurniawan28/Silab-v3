@@ -29,4 +29,11 @@ class AnalisaHplcController extends Controller
         Activity::insert(['subject' => 'Analisa Hplc', 'action' => 'Create', 'user_id' => Auth()->user()->id]);
         return redirect()->back()->with('success', 'Data berhasil disimpan');
     }
+
+    public function delete(Request $request){
+        Analysis::where('sample_id', $request->id)->where('indicator_id', 18)->delete();
+        Analysis::where('sample_id', $request->id)->where('indicator_id', 19)->delete();
+        Analysis::where('sample_id', $request->id)->where('indicator_id', 20)->delete();
+        return redirect()->back()->with('success', 'Data berhasil dihapus');
+    }
 }

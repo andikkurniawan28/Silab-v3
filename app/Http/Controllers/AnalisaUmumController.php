@@ -29,4 +29,11 @@ class AnalisaUmumController extends Controller
         Activity::insert(['subject' => 'Analisa Umum', 'action' => 'Create', 'user_id' => Auth()->user()->id]);
         return redirect()->back()->with('success', 'Data berhasil disimpan');
     }
+
+    public function delete(Request $request){
+        Analysis::where('sample_id', $request->id)->where('indicator_id', 9)->delete();
+        Analysis::where('sample_id', $request->id)->where('indicator_id', 10)->delete();
+        Analysis::where('sample_id', $request->id)->where('indicator_id', 11)->delete();
+        return redirect()->back()->with('success', 'Data berhasil dihapus');
+    }
 }

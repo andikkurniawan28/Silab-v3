@@ -45,6 +45,13 @@ class AnalisaKetelController extends Controller
 
         Activity::insert(['subject' => 'Analisa Ketel', 'action' => 'Create', 'user_id' => Auth()->user()->id]);
         return redirect()->back()->with('success', 'Data berhasil disimpan');
+    }
 
+    public function delete(Request $request){
+        Analysis::where('sample_id', $request->id)->where('indicator_id', 10)->delete();
+        Analysis::where('sample_id', $request->id)->where('indicator_id', 12)->delete();
+        Analysis::where('sample_id', $request->id)->where('indicator_id', 13)->delete();
+        Analysis::where('sample_id', $request->id)->where('indicator_id', 14)->delete();
+        return redirect()->back()->with('success', 'Data berhasil dihapus');
     }
 }

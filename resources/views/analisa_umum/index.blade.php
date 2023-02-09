@@ -24,6 +24,7 @@
                             @foreach($indicators as $indicator)
                                 <td>{{ $indicator->name }}</td>
                             @endforeach
+                            <td>Action</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,6 +42,12 @@
                                         @endforeach
                                     </td>
                                 @endforeach
+                            <td>
+                                <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#delete{{ $sample->id }}">
+                                    @include('components.icon', ['icon' => 'trash '])
+                                    Hapus
+                                </button>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -111,6 +118,33 @@
         </div>
     </div>
 </div>
+
+@foreach($samples as $sample)
+<div class="modal fade" id="delete{{ $sample->id }}" tabindex="-1" analysis="dialog" aria-labelledby="delete{{ $sample->id }}Label" aria-hidden="true">
+    <div class="modal-dialog" analysis="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="delete{{ $sample->id }}Label">Hapus {{ ucfirst('analisa') }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+            <form method="POST" action="{{ route('analisa_umum_delete') }}" class="text-dark">
+                @csrf
+                @method('POST')
+                <p>Apakah Anda yakin ?</p>
+                <input type="hidden" name="id" value="{{ $sample->id }}">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                <button type="submit" class="btn btn-primary">Yes
+                    @include('components.icon', ['icon' => 'trash'])
+                </button>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
 
 @endsection
 
