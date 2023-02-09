@@ -4,11 +4,14 @@ namespace Database\Seeders;
 
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Kspot;
+use App\Models\Tspot;
 use App\Models\Factor;
 use App\Models\Method;
 use App\Models\Sample;
 use App\Models\Station;
 use App\Models\Analysis;
+use App\Models\Chemical;
 use App\Models\Material;
 use App\Models\Indicator;
 use Illuminate\Database\Seeder;
@@ -513,6 +516,22 @@ class DatabaseSeeder extends Seeder
                 'hmi_access' => NULL,
                 'is_active' => 1,
             ],
+            [
+                'role_id' => 9,
+                'name' => 'Hariono',
+                'username' => 'hariono',
+                'password' => bcrypt('hariono987'),
+                'hmi_access' => NULL,
+                'is_active' => 1,
+            ],
+            [
+                'role_id' => 10,
+                'name' => 'Rahman',
+                'username' => 'rahman',
+                'password' => bcrypt('rahman987'),
+                'hmi_access' => NULL,
+                'is_active' => 1,
+            ],
         ];
         $stations = [
             ['name' => 'Raw Sugar'],
@@ -864,6 +883,165 @@ class DatabaseSeeder extends Seeder
             ],
         ];
 
+        $chemicals = [
+            ['name' => 'Kapur'],
+            ['name' => 'Belerang'],
+            ['name' => 'Flocculant'],
+            ['name' => 'NaOH'],
+            ['name' => 'B894'],
+            ['name' => 'B895'],
+            ['name' => 'B210'],
+            ['name' => 'Blotong'],
+        ];
+
+        $kspots = [
+            ['name' => 'Tekanan Pre Evaporator 1'],
+            ['name' => 'Tekanan Pre Evaporator 2'],
+            ['name' => 'Tekanan Evaporator 1'],
+            ['name' => 'Tekanan Evaporator 2'],
+            ['name' => 'Tekanan Evaporator 3'],
+            ['name' => 'Tekanan Evaporator 4'],
+            ['name' => 'Tekanan Evaporator 5'],
+            ['name' => 'Tekanan Evaporator 6'],
+            ['name' => 'Tekanan Evaporator 7'],
+            ['name' => 'Tekanan Pan 1'],
+            ['name' => 'Tekanan Pan 2'],
+            ['name' => 'Tekanan Pan 3'],
+            ['name' => 'Tekanan Pan 4'],
+            ['name' => 'Tekanan Pan 5'],
+            ['name' => 'Tekanan Pan 6'],
+            ['name' => 'Tekanan Pan 7'],
+            ['name' => 'Tekanan Pan 8'],
+            ['name' => 'Tekanan Pan 9'],
+            ['name' => 'Tekanan Pan 10'],
+            ['name' => 'Tekanan Pan 11'],
+            ['name' => 'Tekanan Pan 12'],
+            ['name' => 'Tekanan Pan 13'],
+            ['name' => 'Tekanan Pan 14'],
+            ['name' => 'Tekanan Pan 15'],
+            ['name' => 'Tekanan Pan 16'],
+            ['name' => 'Tekanan Pan 17'],
+            ['name' => 'Tekanan Pan 18'],
+            ['name' => 'Suhu Pre Evaporator 1'],
+            ['name' => 'Suhu Pre Evaporator 2'],
+            ['name' => 'Suhu Evaporator 1'],
+            ['name' => 'Suhu Evaporator 2'],
+            ['name' => 'Suhu Evaporator 3'],
+            ['name' => 'Suhu Evaporator 4'],
+            ['name' => 'Suhu Evaporator 5'],
+            ['name' => 'Suhu Evaporator 6'],
+            ['name' => 'Suhu Evaporator 7'],
+            ['name' => 'Suhu Heater 1'],
+            ['name' => 'Suhu Heater 2'],
+            ['name' => 'Suhu Heater 3'],
+            ['name' => 'Suhu Air Injeksi'],
+            ['name' => 'Suhu Air Terjun'],
+            ['name' => 'Tekanan Pompa Hampa'],
+            ['name' => 'Tekanan Uap Baru'],
+            ['name' => 'Tekanan Uap Bekas'],
+            ['name' => 'Tekanan Uap 3Ato'],
+        ];
+
+        $tspots = [
+            ['name' => 'Peti Nira Mentah'],
+            ['name' => 'Pemanas Nira Mentah'],
+            ['name' => 'Reaction Tank Pemurnian'],
+            ['name' => 'Defekator'],
+            ['name' => 'Clarifier ST'],
+            ['name' => 'Pemanas Nira Encer'],
+            ['name' => 'Evaporator 1'],
+            ['name' => 'Evaporator 2'],
+            ['name' => 'Evaporator 3'],
+            ['name' => 'Evaporator 4'],
+            ['name' => 'Evaporator 5'],
+            ['name' => 'Evaporator 6'],
+            ['name' => 'Evaporator 7'],
+            ['name' => 'Evaporator 8'],
+            ['name' => 'Evaporator 9'],
+            ['name' => 'NK Sebelum Sulfitasi'],
+            ['name' => 'NK Setelah Sulfitasi Atas'],
+            ['name' => 'NK Setelah Sulfitasi Bawah'],
+            ['name' => 'Klare SHS Atas'],
+            ['name' => 'Klare SHS Bawah'],
+            ['name' => 'Pan 1'],
+            ['name' => 'Pan 2'],
+            ['name' => 'Pan 3'],
+            ['name' => 'Pan 4'],
+            ['name' => 'Pan 5'],
+            ['name' => 'Pan 6'],
+            ['name' => 'Pan 7'],
+            ['name' => 'Pan 8'],
+            ['name' => 'Pan 9'],
+            ['name' => 'Pan 10'],
+            ['name' => 'Pan 11'],
+            ['name' => 'Pan 12'],
+            ['name' => 'Pan 13'],
+            ['name' => 'Pan 14'],
+            ['name' => 'Pan 15'],
+            ['name' => 'Pan 16'],
+            ['name' => 'Pan 17'],
+            ['name' => 'Pan 18'],
+            ['name' => 'Palung 1'],
+            ['name' => 'Palung 2'],
+            ['name' => 'Palung 3'],
+            ['name' => 'Palung 4'],
+            ['name' => 'Palung 5'],
+            ['name' => 'Palung 6'],
+            ['name' => 'Palung 7'],
+            ['name' => 'Palung 8'],
+            ['name' => 'Palung 9'],
+            ['name' => 'Palung 10'],
+            ['name' => 'CVP C'],
+            ['name' => 'Palung CVP C'],
+            ['name' => 'CVP D'],
+            ['name' => 'Palung CVP D'],
+            ['name' => 'Distributor A Utara'],
+            ['name' => 'Distributor A Selatan'],
+            ['name' => 'Distributor C Timur'],
+            ['name' => 'Distributor C Barat'],
+            ['name' => 'Distributor D1'],
+            ['name' => 'Distributor D2'],
+            ['name' => 'Vertical Crystallizer Timur'],
+            ['name' => 'Vertical Crystallizer Barat'],
+            ['name' => 'Stroop A Atas'],
+            ['name' => 'Stroop A Bawah'],
+            ['name' => 'Klare D Atas'],
+            ['name' => 'Klare D Bawah'],
+            ['name' => 'Einwuurf C'],
+            ['name' => 'Einwuurf D'],
+            ['name' => 'Clear Liquor 1'],
+            ['name' => 'Clear Liquor 2'],
+            ['name' => 'Remelt A/NKL'],
+            ['name' => 'R1 Mol Bawah'],
+            ['name' => 'R1 Mol Atas'],
+            ['name' => 'R2 Mol Bawah'],
+            ['name' => 'R2 Mol Atas'],
+            ['name' => 'Remelter A1'],
+            ['name' => 'Remelter A2'],
+            ['name' => 'Remelter C/D'],
+            ['name' => 'Mingler Atas'],
+            ['name' => 'Mingler Bawah'],
+            ['name' => 'Silo Retail'],
+            ['name' => 'Silo 2400'],
+            ['name' => 'PP'],
+            ['name' => 'Reaction Tank DRK'],
+            ['name' => 'Talo Phospatasi'],
+            ['name' => 'Deep Bad Filter'],
+            ['name' => 'CO2 Gas Carbonator 1'],
+            ['name' => 'CO2 Gas Carbonator 2'],
+            ['name' => 'First Filtrat Tank'],
+            ['name' => 'Clear Liquor Tank 1'],
+            ['name' => 'Clear Liquor Tank 2'],
+            ['name' => 'Raw Liquor Tank 1'],
+            ['name' => 'Raw Liquor Tank 2'],
+            ['name' => 'Clarifier Melt Tank 1'],
+            ['name' => 'Clarifier Melt Tank 2'],
+            ['name' => 'Filtered Melt Tank 1'],
+            ['name' => 'Filtered Melt Tank 2'],
+            ['name' => 'Back Wash Tank 1'],
+            ['name' => 'Back Wash Tank 2'],
+        ];
+
         Role::insert($roles);
         User::insert($users);
         Station::insert($stations);
@@ -871,6 +1049,9 @@ class DatabaseSeeder extends Seeder
         Material::insert($materials);
         Method::insert($methods);
         Factor::insert($factors);
+        Chemical::insert($chemicals);
+        Kspot::insert($kspots);
+        Tspot::insert($tspots);
 
     }
 }

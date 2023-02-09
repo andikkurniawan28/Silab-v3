@@ -12,7 +12,8 @@
 
 $(document).ready(function() {
   $('#dataTable').DataTable( {
-      "displayLength":16,
+      "paging": false,
+      "displayLength":10,
       dom: 'Bfrtip',
       buttons: [
         'copy', 'csv', 'excel', 'pdf', 'print'
