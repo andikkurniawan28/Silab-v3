@@ -18,7 +18,7 @@
 
         @foreach ($materials as $material)
         <div class="col-lg-6 mb-4">
-            <div class="card bg-dark text-white text-xs shadow">
+            <div class="card bg-dark text-white text-sm shadow">
                 <div class="card-body">
                     <div class="font-weight-bold text-light text-uppercase mb-1">
                         <a href="{{ route('sample_result', $material->id) }}" class="text-light">{{ $material->name }}</a>

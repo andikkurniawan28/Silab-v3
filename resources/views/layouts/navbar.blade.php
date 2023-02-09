@@ -41,39 +41,60 @@
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
 
 
+            @if(Auth()->user()->role_id <= 1)
             <a class="dropdown-item" href="{{ route('users.index') }}">
                 <i class="fas fa-users fa-sm fa-fw mr-2 text-gray-400"></i> User
             </a>
+            @endif
+
+            @if(Auth()->user()->role_id <= 3)
             <a class="dropdown-item" href="{{ route('stations.index') }}">
-                <i class="fas fa-filter fa-sm fa-fw mr-2 text-gray-400"></i> Station
+                <i class="fas fa-filter fa-sm fa-fw mr-2 text-gray-400"></i> Stasiun
             </a>
             <a class="dropdown-item" href="{{ route('indicators.index') }}">
-                <i class="fas fa-asterisk fa-sm fa-fw mr-2 text-gray-400"></i> Indicator
+                <i class="fas fa-asterisk fa-sm fa-fw mr-2 text-gray-400"></i> Indikator
             </a>
             <a class="dropdown-item" href="{{ route('factors.index') }}">
-                <i class="fas fa-percent fa-sm fa-fw mr-2 text-gray-400"></i> Factor
+                <i class="fas fa-percent fa-sm fa-fw mr-2 text-gray-400"></i> Faktor
             </a>
+            @endif
+
+            @if(Auth()->user()->role_id <= 7)
             <a class="dropdown-item" href="{{ route('materials.index') }}">
                 <i class="fas fa-box fa-sm fa-fw mr-2 text-gray-400"></i> Material
             </a>
             <a class="dropdown-item" href="{{ route('methods.index') }}">
                 <i class="fas fa-flask fa-sm fa-fw mr-2 text-gray-400"></i> Method
             </a>
+            @endif
+
+            @if(Auth()->user()->role_id <= 8)
             <a class="dropdown-item" href="{{ route('samples.index') }}">
                 <i class="fas fa-barcode fa-sm fa-fw mr-2 text-gray-400"></i> Sample
             </a>
+            @endif
+
+            @if(Auth()->user()->role_id <= 3)
             <a class="dropdown-item" href="{{ route('kspots.index') }}">
                 <i class="fas fa-map fa-sm fa-fw mr-2 text-gray-400"></i> Titik Keliling
             </a>
             <a class="dropdown-item" href="{{ route('tspots.index') }}">
                 <i class="fas fa-eye fa-sm fa-fw mr-2 text-gray-400"></i> Titik Taksasi
             </a>
+            @endif
+
+            @if(Auth()->user()->role_id <= 4)
             <a class="dropdown-item" href="{{ route('chemicals.index') }}">
                 <i class="fas fa-flask fa-sm fa-fw mr-2 text-gray-400"></i> Bahan Pembantu Proses
             </a>
+            @endif
+
+            @if(Auth()->user()->role_id <= 2)
             <a class="dropdown-item" href="{{ route('activities') }}">
                 <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
             </a>
+            @endif
+
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
             </a>

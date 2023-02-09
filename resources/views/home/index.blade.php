@@ -8,8 +8,6 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-        <a href="{{ route('report') }}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-        class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
 
     <!-- Notification -->
@@ -19,42 +17,47 @@
         @include('components.alert', ['message'=>$message, 'color'=>'success'])
     @endif
 
-    {{-- <!-- Card Section -->
+    <!-- Card Section -->
     <div class="row">
-        @include('page.card',[
+
+        @include('components.card_home',[
+            'color' => 'primary',
+            'title' => 'ICUMSA RS',
+            'data' => $data['rs'],
+            'id' => 2,
+        ])
+
+        @include('components.card_home',[
             'color' => 'primary',
             'title' => 'Rendemen NPP',
-            'data' => $data['rendemen_npp'],
+            'data' => $data['npp'],
             'id' => 3,
         ])
-        @include('page.card',[
-            'color' => 'secondary',
+
+        @include('components.card_home',[
+            'color' => 'primary',
             'title' => 'Pol Ampas',
-            'data' => $data['pol_ampas'],
+            'data' => $data['ampas'],
             'id' => 12,
         ])
-        @include('page.card',[
-            'color' => 'success',
-            'title' => 'HK Tetes',
-            'data' => $data['hk_tetes'],
-            'id' => 62,
+
+        @include('components.card_home',[
+            'color' => 'primary',
+            'title' => 'Icumsa SHS',
+            'data' => $data['shs'],
+            'id' => 67,
         ])
-        @include('page.card',[
-            'color' => 'danger',
-            'title' => 'ICUMSA SHS',
-            'data' => $data['icumsa_shs'],
-            'id' => 64,
-        ])
+
     </div>
 
     <!-- Chart Section -->
     <div class="row">
-        @include('page.area_chart',[
+        {{-- @include('components.area_chart',[
             'title' => 'Reject SHS',
             'id' => 'myAreaChart',
         ]) --}}
-        {{-- @include('page.pie_chart') --}}
-    {{-- </div> --}}
+        {{-- @include('components.pie_chart') --}}
+    </div>
 
     <!-- Content Section -->
     {{-- <div class="row">
@@ -67,8 +70,7 @@
 
 @endsection
 
-
-{{-- @section('chart_area')
+@section('chart_area')
 <script>
 // Set new default font family and font color to mimic Bootstrap's default styling
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
@@ -105,14 +107,7 @@ var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
     labels: [
-        // "{{ date('d M Y', strtotime($data['reject'][7]['created_at'])) }}",
-        // "{{ date('d M Y', strtotime($data['reject'][6]['created_at'])) }}",
-        // "{{ date('d M Y', strtotime($data['reject'][5]['created_at'])) }}",
-        // "{{ date('d M Y', strtotime($data['reject'][4]['created_at'])) }}",
-        // "{{ date('d M Y', strtotime($data['reject'][3]['created_at'])) }}",
-        // "{{ date('d M Y', strtotime($data['reject'][2]['created_at'])) }}",
-        // "{{ date('d M Y', strtotime($data['reject'][1]['created_at'])) }}",
-        // "{{ date('d M Y', strtotime($data['reject'][0]['created_at'])) }}",
+
     ],
     datasets: [{
       label: "In Kuintal",
@@ -128,14 +123,7 @@ var myLineChart = new Chart(ctx, {
       pointHitRadius: 10,
       pointBorderWidth: 2,
       data: [
-                // {{ $data['reject'][7]['weight'] }},
-                // {{ $data['reject'][6]['weight'] }},
-                // {{ $data['reject'][5]['weight'] }},
-                // {{ $data['reject'][4]['weight'] }},
-                // {{ $data['reject'][3]['weight'] }},
-                // {{ $data['reject'][2]['weight'] }},
-                // {{ $data['reject'][1]['weight'] }},
-                // {{ $data['reject'][0]['weight'] }},
+
             ],
     }],
   },
@@ -193,14 +181,8 @@ var myLineChart = new Chart(ctx, {
       intersect: false,
       mode: 'index',
       caretPadding: 10,
-    //   callbacks: {
-    //     label: function(tooltipItem, chart) {
-    //       var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-    //       return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
-    //     }
-    //   }
     }
   }
 });
 </script>
-@endsection --}}
+@endsection

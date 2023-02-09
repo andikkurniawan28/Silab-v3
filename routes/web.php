@@ -45,8 +45,8 @@ use App\Http\Controllers\MonitoringSaveDateController;
 use App\Http\Controllers\MonitoringSelectDateController;
 
 Route::get('/', HomeController::class)->name('home')->middleware(['auth']);
-Route::resource('stations', StationController::class)->middleware(['auth', 'koordinator']);
-Route::resource('indicators', IndicatorController::class)->middleware(['auth', 'kasubsie']);
+Route::resource('stations', StationController::class)->middleware(['auth', 'kasie']);
+Route::resource('indicators', IndicatorController::class)->middleware(['auth', 'kasie']);
 Route::resource('factors', FactorController::class)->middleware(['auth', 'kasie']);
 Route::resource('materials', MaterialController::class)->middleware(['auth', 'mandor']);
 Route::resource('samples', SampleController::class)->middleware(['auth', 'operator_qc']);
@@ -81,7 +81,7 @@ Route::get('analisa_umum', [AnalisaUmumController::class, 'index'])->name('anali
 Route::get('analisa_ketel', [AnalisaKetelController::class, 'index'])->name('analisa_ketel')->middleware(['auth', 'operator_qc']);
 Route::get('analisa_hplc', [AnalisaHplcController::class, 'index'])->name('analisa_hplc')->middleware(['auth', 'operator_qc']);
 Route::get('cetak_barcode', [CetakBarcodeController::class, 'index'])->name('cetak_barcode')->middleware(['auth', 'operator_qc']);
-Route::get('cetak_ronsel', [CetakRonselController::class, 'index'])->name('cetak_ronsel')->middleware(['auth', 'operator_qc']);
+Route::get('cetak_ronsel', [CetakRonselController::class, 'index'])->name('cetak_ronsel')->middleware(['auth', 'operator_non_qc']);
 Route::post('saccharomat_store', [SaccharomatController::class, 'store'])->name('saccharomat_store')->middleware(['auth', 'operator_qc']);
 Route::post('saccharomat_delete', [SaccharomatController::class, 'delete'])->name('saccharomat_delete')->middleware(['auth', 'operator_qc']);
 Route::post('analisa_ampas_store', [AnalisaAmpasController::class, 'store'])->name('analisa_ampas_store')->middleware(['auth', 'operator_qc']);
