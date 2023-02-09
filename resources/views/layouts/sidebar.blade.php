@@ -18,6 +18,12 @@
 
     {{-- <hr class="sidebar-divider"> --}}
 
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('monitoring_select_date') }}">
+        <i class="fas fa-fw fa-eye"></i>
+        <span>Monitoring</span></a>
+    </li>
+
     {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2" aria-expanded="true" aria-controls="collapsePages2">
             <i class="fas fa-fw fa-eye"></i>
@@ -71,12 +77,12 @@
                 <h6 class="collapse-header">Menu :</h6>
                 <a class="collapse-item" href="{{ route('cetak_barcode') }}">Cetak Barcode</a>
                 <a class="collapse-item" href="{{ route('cetak_ronsel') }}">Cetak Ronsel</a>
+                <a class="collapse-item" href="{{ route('analyses.index') }}">Analisa</a>
                 <a class="collapse-item" href="{{ route('saccharomat') }}">Saccharomat</a>
                 <a class="collapse-item" href="{{ route('analisa_ampas') }}">Analisa Ampas</a>
                 <a class="collapse-item" href="{{ route('analisa_umum') }}">Analisa Umum</a>
                 <a class="collapse-item" href="{{ route('analisa_ketel') }}">Analisa Ketel</a>
                 <a class="collapse-item" href="{{ route('analisa_hplc') }}">Analisa HPLC</a>
-                <a class="collapse-item" href="{{ route('analyses.index') }}">Analisa Lain</a>
                 <a class="collapse-item" href="{{ route('balances.index') }}">Flow NM</a>
                 <a class="collapse-item" href="{{ route('imbibitions.index') }}">Imbibisi</a>
                 <a class="collapse-item" href="{{ route('kactivities.index') }}">Keliling Proses</a>

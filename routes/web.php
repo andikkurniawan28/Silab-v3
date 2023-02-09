@@ -28,6 +28,7 @@ use App\Http\Controllers\IndicatorController;
 use App\Http\Controllers\KactivityController;
 use App\Http\Controllers\TactivityController;
 use App\Http\Controllers\ImbibitionController;
+use App\Http\Controllers\MonitoringController;
 use App\Http\Controllers\AnalisaHplcController;
 use App\Http\Controllers\AnalisaUmumController;
 use App\Http\Controllers\CetakRonselController;
@@ -40,6 +41,8 @@ use App\Http\Controllers\StationResultController;
 use App\Http\Controllers\AnalisaPosBrixController;
 use App\Http\Controllers\ChemicalcheckingController;
 use App\Http\Controllers\AplikasiPenerimaanController;
+use App\Http\Controllers\MonitoringSaveDateController;
+use App\Http\Controllers\MonitoringSelectDateController;
 
 Route::get('/', HomeController::class)->name('home')->middleware(['auth']);
 Route::resource('stations', StationController::class)->middleware(['auth']);
@@ -87,8 +90,9 @@ Route::post('analisa_hplc_store', [AnalisaHplcController::class, 'store'])->name
 Route::post('analisa_hplc_delete', [AnalisaHplcController::class, 'delete'])->name('analisa_hplc_delete')->middleware(['auth']);
 Route::post('cetak_barcode_store', [CetakBarcodeController::class, 'store'])->name('cetak_barcode_store')->middleware(['auth']);
 Route::post('cetak_ronsel_store', [CetakRonselController::class, 'store'])->name('cetak_ronsel_store')->middleware(['auth']);
-
-
+Route::get('monitoring', MonitoringController::class)->name('monitoring')->middleware(['auth']);
+Route::get('monitoring_select_date', MonitoringSelectDateController::class)->name('monitoring_select_date')->middleware(['auth']);
+Route::post('monitoring_save_date', MonitoringSaveDateController::class)->name('monitoring_save_date')->middleware(['auth']);
 
 Route::resource('rits', RitController::class)->middleware(['auth']);
 Route::resource('posbrixes', PosbrixController::class)->middleware(['auth']);

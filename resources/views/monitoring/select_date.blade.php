@@ -7,7 +7,7 @@
 
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-gradient-light">
 
     <div class="container">
 
@@ -23,16 +23,19 @@
                             <div class="col-lg-12">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Penerimaan</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Monitoring</h1>
                                     </div>
-                                    <form class="user" action="{{ route('rits.store') }}" method="POST">
+                                    <form class="user" action="{{ route('monitoring_save_date') }}" method="POST">
                                     @csrf
                                     @method('POST')
                                         <div class="form-group">
-                                            <label for="barcode_antrian" class="col-auto col-form-label">Barcode Antrian</label>
-                                            <input type="text" class="text-lg form-control form-control-user"
-                                                id="barcode_antrian" name="barcode_antrian" placeholder="" autofocus required>
+                                            <label for="date" class="col-auto col-form-label">Tanggal</label>
+                                            <input type="date" class="text-lg form-control form-control-user"
+                                                id="date" name="date" autofocus required>
                                         </div>
+                                        <button type="submit" class="btn btn-dark btn-user btn-block text-white">
+                                            Set
+                                        </button>
                                     </form>
                                 </div>
                             </div>
