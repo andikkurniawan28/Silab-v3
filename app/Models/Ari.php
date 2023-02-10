@@ -11,8 +11,8 @@ class Ari extends Model
 
     protected $guarded = [];
 
-    public function ari_sampling(){
-        return $this->belongsTo(AriSampling::class);
+    public function rit(){
+        return $this->belongsTo(Rit::class);
     }
 
     public function user(){
