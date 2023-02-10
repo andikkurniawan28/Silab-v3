@@ -17,33 +17,10 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('monitoring_select_date') }}">
+        <a class="nav-link" href="{{ route('monitoring_select_date') }}" target="_blank">
         <i class="fas fa-fw fa-eye"></i>
         <span>Monitoring</span></a>
     </li>
-
-    {{-- <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2" aria-expanded="true" aria-controls="collapsePages2">
-            <i class="fas fa-fw fa-eye"></i>
-            <span>Monitoring</span>
-        </a>
-        <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Menu :</h6>
-                <a class="collapse-item" href="{{ route('ronsel_masakan') }}">Masakan</a>
-                <a class="collapse-item" href="{{ route('balances.create') }}">Flow Nira Mentah</a>
-                <a class="collapse-item" href="{{ route('imbibitions.create') }}">Imbibisi</a>
-                <a class="collapse-item" href="{{ route('arounds.index') }}">Data Proses</a>
-                <a class="collapse-item" href="{{ route('chemicals.create') }}">Bahan Kimia</a>
-                <a class="collapse-item" href="{{ route('taxations.index') }}">Taksasi In Proses</a>
-                <a class="collapse-item" href="{{ route('mollases.create') }}">Taksasi Tetes</a>
-                <a class="collapse-item" href="{{ route('timbangan_tetes') }}">Timbangan Tetes</a>
-                <a class="collapse-item" href="{{ route('timbangan_rs_in') }}">Timbangan RS</a>
-                <a class="collapse-item" href="{{ route('timbangan_rs_out') }}">Timbangan RS Out</a>
-                <a class="collapse-item" href="{{ route('agroklimat_view') }}">Agroklimat</a>
-            </div>
-        </div>
-    </li> --}}
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities2" aria-expanded="true" aria-controls="collapseUtilities2">
@@ -68,7 +45,7 @@
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Menu :</h6>
+                <h6 class="collapse-header">Menu Off Farm :</h6>
                 @if(Auth()->user()->role_id < 9)
                 <a class="collapse-item" href="{{ route('cetak_barcode') }}">Cetak Barcode</a>
                 <a class="collapse-item" href="{{ route('analyses.index') }}">Analisa</a>
@@ -80,15 +57,17 @@
                 <a class="collapse-item" href="{{ route('balances.index') }}">Flow NM</a>
                 <a class="collapse-item" href="{{ route('kactivities.index') }}">Keliling Proses</a>
                 <a class="collapse-item" href="{{ route('chemicalcheckings.index') }}">Pengunaan BPP</a>
-                <a class="collapse-item" href="{{ route('rits.index') }}">Penerimaan</a>
-                <a class="collapse-item" href="{{ route('posbrixes.index') }}">Pos Brix</a>
-                <a class="collapse-item" href="{{ route('scores.index') }}">Penilaian MBS</a>
-                <a class="collapse-item" href="{{ route('ari_samplings.index') }}">Sampling ARI</a>
-                <a class="collapse-item" href="{{ route('aris.index') }}">Analisa Rendemen</a>
                 @endif
                 <a class="collapse-item" href="{{ route('cetak_ronsel') }}">Cetak Ronsel</a>
                 <a class="collapse-item" href="{{ route('tactivities.index') }}">Taksasi</a>
                 <a class="collapse-item" href="{{ route('imbibitions.index') }}">Imbibisi</a>
+
+                <h6 class="collapse-header">Menu On Farm :</h6>
+                <a class="collapse-item" href="{{ route('rits.index') }}">Penerimaan</a>
+                <a class="collapse-item" href="{{ route('posbrixes.index') }}">Pos Brix</a>
+                <a class="collapse-item" href="{{ route('scores.index') }}">Penilaian MBS</a>
+                {{-- <a class="collapse-item" href="{{ route('ari_samplings.index') }}">Sampling ARI</a> --}}
+                <a class="collapse-item" href="{{ route('aris.index') }}">Analisa Rendemen</a>
             </div>
         </div>
     </li>
