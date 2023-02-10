@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateArisTable extends Migration
+class CreateAriSamplingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateArisTable extends Migration
      */
     public function up()
     {
-        Schema::create('aris', function (Blueprint $table) {
+        Schema::create('ari_samplings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('ari_sampling_id')->constrained()->unique();
-            $table->foreignId('user_id')->constrained();
-            $table->float('pbrix');
-            $table->float('ppol');
-            $table->float('pol');
-            $table->float('yield');
+            $table->foreignId('rit_id');
+            $table->string('rfid');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
@@ -33,6 +29,6 @@ class CreateArisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('aris');
+        Schema::dropIfExists('ari_samplings');
     }
 }

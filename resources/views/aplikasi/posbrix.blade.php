@@ -7,7 +7,7 @@
 
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-gradient-light">
 
     <div class="container">
 
@@ -28,23 +28,14 @@
                                     <form class="user" action="{{ route('posbrixes.store') }}" method="POST">
                                     @csrf
                                     @method('POST')
-                                        <div class="form-group">
-                                            <label for="rit_id" class="col-auto col-form-label">Nopol -- Barcode Antrian</label>
-                                            <select class="form-control" name="rit_id">
-                                                @foreach ($rits as $rit)
-                                                    <option value="{{ $rit->id }}">
-                                                        {{ $rit->nopol }} -- {{ $rit->barcode_antrian }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                        <input type="hidden" name="rit_id" value="{{ $rit_id }}">
                                         <div class="form-group">
                                             <label for="brix" class="col-auto col-form-label">Brix</label>
                                             <input type="number" class="form-control form-control-user"
                                                 id="brix" name="brix" placeholder="Brix" autofocus required>
                                         </div>
                                         <input type="hidden" name="user_id" value="{{ Auth()->user()->id }}">
-                                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                                        <button type="submit" class="btn btn-dark btn-user btn-block">
                                             Simpan
                                         </button>
                                         <hr>

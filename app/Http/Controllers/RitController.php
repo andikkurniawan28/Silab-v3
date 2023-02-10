@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rit;
+use App\Models\Posbrix;
 use App\Models\Station;
 use Illuminate\Http\Request;
 
@@ -45,7 +46,8 @@ class RitController extends Controller
             'petani' => $data_from_api['nama_petani'],
         ]);
         Rit::create($request->all());
-        return redirect()->back()->with('success', 'Data berhasil disimpan');
+        $rit_id = Rit::where('register', $data_from_api['register'])->get()->last()->id;
+        return view('aplikasi.posbrix', compact('rit_id'));
     }
 
     /**

@@ -14,6 +14,6 @@ class AplikasiPenerimaanController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('analisa.rit');
+        return view('aplikasi.rit');
     }
 }

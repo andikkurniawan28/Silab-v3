@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Rit;
-use App\Models\Posbrix;
-use App\Models\Station;
+use App\Models\AriSampling;
 use Illuminate\Http\Request;
 
-class PosbrixController extends Controller
+class AriSamplingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +14,7 @@ class PosbrixController extends Controller
      */
     public function index()
     {
-        $stations = Station::all();
-        $posbrixes = Posbrix::all();
-        $posbrix_rit_id = Posbrix::select('rit_id')->get();
-        $rits = Rit::whereNotIn('id', $posbrix_rit_id)->get();
-        return view('posbrix.index', compact('posbrixes', 'rits', 'stations'));
+        //
     }
 
     /**
@@ -41,17 +35,16 @@ class PosbrixController extends Controller
      */
     public function store(Request $request)
     {
-        Posbrix::create($request->all());
-        return redirect()->route('rit');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Posbrix  $posbrix
+     * @param  \App\Models\AriSampling  $ariSampling
      * @return \Illuminate\Http\Response
      */
-    public function show(Posbrix $posbrix)
+    public function show(AriSampling $ariSampling)
     {
         //
     }
@@ -59,10 +52,10 @@ class PosbrixController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Posbrix  $posbrix
+     * @param  \App\Models\AriSampling  $ariSampling
      * @return \Illuminate\Http\Response
      */
-    public function edit(Posbrix $posbrix)
+    public function edit(AriSampling $ariSampling)
     {
         //
     }
@@ -71,26 +64,22 @@ class PosbrixController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Posbrix  $posbrix
+     * @param  \App\Models\AriSampling  $ariSampling
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, AriSampling $ariSampling)
     {
-        Posbrix::whereId($id)->update([
-            'brix' => $request->brix,
-        ]);
-        return redirect()->back()->with('success', 'Data berhasil disimpan');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Posbrix  $posbrix
+     * @param  \App\Models\AriSampling  $ariSampling
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(AriSampling $ariSampling)
     {
-        Posbrix::whereId($id)->delete();
-        return redirect()->back()->with('success', 'Data berhasil dihapus');
+        //
     }
 }

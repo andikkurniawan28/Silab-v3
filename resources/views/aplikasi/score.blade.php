@@ -7,7 +7,7 @@
 
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-gradient-light">
 
     <div class="container">
 
@@ -44,7 +44,7 @@
                                                 id="value" name="value" placeholder="Score" autofocus required>
                                         </div>
                                         <input type="hidden" name="user_id" value="{{ Auth()->user()->id }}">
-                                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                                        <button type="submit" class="btn btn-dark btn-user btn-block">
                                             Simpan
                                         </button>
                                         <hr>

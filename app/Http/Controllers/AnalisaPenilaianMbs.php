@@ -18,6 +18,6 @@ class AnalisaPenilaianMbs extends Controller
     {
         $score_rit_id = Score::select('rit_id')->get();
         $rits = Rit::whereNotIn('id', $score_rit_id)->get();
-        return view('analisa.score', compact('rits'));
+        return view('aplikasi.score', compact('rits'));
     }
 }

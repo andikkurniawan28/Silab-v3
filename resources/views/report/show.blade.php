@@ -19,13 +19,16 @@
 
 <body>
     <div class="container-fluid">
+
+
         <div class="row">
             <div class="col col-md-12 text-dark">
-                    <br>
+                <h3>Report</h3><hr>
+                    <h6>Analisa Laboratorium</h6>
                     <table width="100%" class="table table-dark table-striped table-sm table-bordered table-hover text-xs">
                         <thead>
                             <tr>
-                                <th class="text-xs" colspan="3">Tanggal / Shift : {{ $request->date }} / {{ $request->shift }}</th>
+                                <th colspan="3">Tanggal / Shift : {{ $request->date }} / {{ $request->shift }}</th>
                                 <th colspan="{{ count($indicators) }}">Rerata</th>
                             </tr>
                         </thead>
@@ -58,8 +61,113 @@
                             @endforeach
                         </tbody>
                     </table>
-                {{-- </div> --}}
             </div>
         </div>
+
+        <div class="row">
+            <div class="col col-md-6 text-dark">
+                <h6>Keliling Proses</h6>
+                <table width="100%" class="table table-dark table-striped table-sm table-bordered table-hover text-xs">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Titik</th>
+                        <th>Rerata</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($keliling as $keliling)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $keliling['name'] }}</td>
+                        <td>{{ $keliling['average'] }}</td>
+                    </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col col-md-6 text-dark">
+                <h6>Bahan Pembantu Proses</h6>
+                <table width="100%" class="table table-dark table-striped table-sm table-bordered table-hover text-xs">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Titik</th>
+                        <th>Pemakaian</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($chemical as $chemical)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $chemical['name'] }}</td>
+                        <td>{{ $chemical['sum'] }}</td>
+                    </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+
+                <h6>Balance Proses</h6>
+                <table width="100%" class="table table-dark table-striped table-sm table-bordered table-hover text-xs">
+                    <thead>
+                        <tr>
+                            <th>Tebu</th>
+                            <th>Material</th>
+                            <th>Flow</th>
+                            <th>% Tebu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2">{{ $balance['tebu'] }}</td>
+                            <td>Nira Mentah</td>
+                            <td>{{ $balance['flow_nm'] }}</td>
+                            <td>
+                                @if($balance['tebu'] > 0)
+                                {{ $balance['flow_nm'] / $balance['tebu'] * 100 }}
+                                @else
+                                {{ '-' }}
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Imbibisi</td>
+                            <td>{{ $balance['flow_imb'] }}</td>
+                            <td>
+                                @if($balance['tebu'] > 0)
+                                {{ $balance['flow_imb'] / $balance['tebu'] * 100 }}
+                                @else
+                                {{ '-' }}
+                                @endif
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h6>Pos Brix</h6>
+                <table width="100%" class="table table-dark table-striped table-sm table-bordered table-hover text-xs">
+                    <thead>
+                        <tr>
+                            <th>Jenis</th>
+                            <th>Rerata</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Engkel Kecil</td>
+                            <td>{{ $posbrix['ek'] }}</td>
+                        </tr>
+                        <tr>
+                            <td>Engkel Besar Gandeng</td>
+                            <td>{{ $posbrix['eb'] }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+
+            </div>
+        </div>
+
     </div>
 </body>

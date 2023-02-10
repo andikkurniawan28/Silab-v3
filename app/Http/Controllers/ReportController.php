@@ -19,6 +19,11 @@ class ReportController extends Controller
     {
         $indicators = Indicator::all();
         $data = Report::serve($request);
-        return view('report.show', compact('data', 'indicators', 'request'));
+        $keliling = Report::serveKeliling($request);
+        $chemical = Report::serveChemical($request);
+        $balance = Report::serveBalance($request);
+        $posbrix = Report::servePosBrix($request);
+        return view('report.show', compact('data', 'indicators', 'request', 'keliling', 'chemical', 'balance', 'posbrix'));
+        // return $keliling;
     }
 }
