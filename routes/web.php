@@ -31,6 +31,7 @@ use App\Http\Controllers\ImbibitionController;
 use App\Http\Controllers\MonitoringController;
 use App\Http\Controllers\AnalisaHplcController;
 use App\Http\Controllers\AnalisaUmumController;
+use App\Http\Controllers\AriSamplingController;
 use App\Http\Controllers\CetakRonselController;
 use App\Http\Controllers\SaccharomatController;
 use App\Http\Controllers\AnalisaAmpasController;
@@ -66,6 +67,7 @@ Route::resource('chemicalcheckings', ChemicalcheckingController::class)->middlew
 Route::resource('rits', RitController::class)->middleware(['auth', 'operator_qc']);
 Route::resource('posbrixes', PosbrixController::class)->middleware(['auth', 'operator_qc']);
 Route::resource('aris', AriController::class)->middleware(['auth', 'operator_qc']);
+Route::resource('ari_samplings', AriSamplingController::class)->middleware(['auth', 'operator_qc']);
 Route::resource('scores', ScoreController::class)->middleware(['auth', 'operator_qc']);
 Route::get('station_result/{station_id}', StationResultController::class)->name('station_result')->middleware(['auth']);
 Route::get('sample_result/{material_id}', SampleResultController::class)->name('sample_result')->middleware(['auth']);

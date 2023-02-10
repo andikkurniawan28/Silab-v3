@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Station;
 use App\Models\AriSampling;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,9 @@ class AriSamplingController extends Controller
      */
     public function index()
     {
-        //
+        $stations = Station::all();
+        $ari_samplings = AriSampling::all();
+        return view('ari_sampling.index', compact('stations', 'ari_samplings'));
     }
 
     /**
@@ -35,7 +38,8 @@ class AriSamplingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        AriSampling::create($request->all());
+        return redirect()->back()->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -67,9 +71,13 @@ class AriSamplingController extends Controller
      * @param  \App\Models\AriSampling  $ariSampling
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AriSampling $ariSampling)
+    public function update(Request $request, $id)
     {
-        //
+        AriSampling::whereId($id)->update([
+            'rit_id' => $request->rit_id,
+            'rfid' => $request->rfid,
+        ]);
+        return redirect()->back()->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -78,8 +86,9 @@ class AriSamplingController extends Controller
      * @param  \App\Models\AriSampling  $ariSampling
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AriSampling $ariSampling)
+    public function destroy($id)
     {
-        //
+        AriSampling::whereId($id)->delete();
+        return redirect()->back()->with('success', 'Data berhasil dihapus');
     }
 }

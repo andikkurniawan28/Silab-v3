@@ -83,6 +83,7 @@
                 <a class="collapse-item" href="{{ route('rits.index') }}">Penerimaan</a>
                 <a class="collapse-item" href="{{ route('posbrixes.index') }}">Pos Brix</a>
                 <a class="collapse-item" href="{{ route('scores.index') }}">Penilaian MBS</a>
+                <a class="collapse-item" href="{{ route('ari_samplings.index') }}">Sampling ARI</a>
                 <a class="collapse-item" href="{{ route('aris.index') }}">Analisa Rendemen</a>
                 @endif
                 <a class="collapse-item" href="{{ route('cetak_ronsel') }}">Cetak Ronsel</a>
