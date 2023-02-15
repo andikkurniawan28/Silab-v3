@@ -20,9 +20,10 @@
                         <tr>
                             <td>ID</td>
                             <td>Timestamp</td>
-                            <td>Nopol</td>
-                            <td>Barcode</td>
+                            {{-- <td>Nopol</td> --}}
+                            <td>E-SPTA</td>
                             <td>Brix</td>
+                            <td>Status</td>
                             <td>User</td>
                             <td>Action</td>
                         </tr>
@@ -32,9 +33,19 @@
                         <tr>
                             <td>{{ $posbrix->id }}</td>
                             <td>{{ $posbrix->created_at }}</td>
-                            <td>{{ $posbrix->rit->nopol }}</td>
-                            <td>{{ $posbrix->rit->barcode_antrian }}</td>
+                            {{-- <td>{{ $posbrix->rit->nopol }}</td> --}}
+                            <td>{{ $posbrix->spta }}</td>
                             <td>{{ $posbrix->brix }}</td>
+                            <td>{{ $posbrix->is_accepted }}</td>
+
+                            {{-- @if($posbrix->is_accepted == 1)
+                                <td>{{ 'Diterima' }}</td>
+                            @elseif($posbrix->is_accepted == 0)
+                                <td>{{ 'Ditolak' }}</td>
+                            @elseif($posbrix->is_accepted == NULL)
+                                <td>{{ '-' }}</td>
+                            @endif --}}
+
                             <td>{{ $posbrix->user->name }}</td>
                             <td>
                                 <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#edit{{ $posbrix->id }}">
@@ -61,7 +72,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="create" tabindex="-1" posbrix="dialog" aria-labelledby="createLabel" aria-hidden="true">
+{{-- <div class="modal fade" id="create" tabindex="-1" posbrix="dialog" aria-labelledby="createLabel" aria-hidden="true">
     <div class="modal-dialog" posbrix="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -174,7 +185,7 @@
         </div>
     </div>
 </div>
-@endforeach
+@endforeach --}}
 
 @endsection
 

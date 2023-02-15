@@ -39,15 +39,19 @@ class RitController extends Controller
      */
     public function store(Request $request)
     {
-        $data_from_api = Rit::getInfoFromBarcodeAntrian($request->barcode_antrian);
-        $request->request->add([
-            'register' => $data_from_api['register'],
-            'nopol' => $data_from_api['nopol'],
-            'petani' => $data_from_api['nama_petani'],
-        ]);
+
+        // $data_from_api = Rit::getInfoFromBarcodeAntrian($request->barcode_antrian);
+        // $request->request->add([
+        //     'register' => $data_from_api['register'],
+        //     'nopol' => $data_from_api['nopol'],
+        //     'petani' => $data_from_api['nama_petani'],
+        // ]);
+        // Rit::create($request->all());
+        // $rit_id = Rit::where('register', $data_from_api['register'])->get()->last()->id;
         Rit::create($request->all());
-        $rit_id = Rit::where('register', $data_from_api['register'])->get()->last()->id;
-        return view('aplikasi.posbrix', compact('rit_id'));
+        $rit_id = Rit::where('spta', $request->spta)->get()->last()->id;
+        $spta = $request->spta;
+        return view('aplikasi.posbrix', compact('rit_id', 'spta'));
     }
 
     /**

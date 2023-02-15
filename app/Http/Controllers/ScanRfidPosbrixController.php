@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Rit;
-use App\Models\Posbrix;
 use Illuminate\Http\Request;
 
-class AnalisaPosBrixController extends Controller
+class ScanRfidPosbrixController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -14,8 +12,8 @@ class AnalisaPosBrixController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request, $spta)
+    public function __invoke(Request $request)
     {
-        return view('aplikasi.posbrix', compact('spta'));
+        return view('aplikasi.scan_rfid');
     }
 }

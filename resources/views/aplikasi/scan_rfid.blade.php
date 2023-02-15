@@ -32,6 +32,7 @@
                                             <label for="barcode_antrian" class="col-auto col-form-label">E-SPTA</label>
                                             <input type="number" class="text-lg form-control form-control-user"
                                                 id="spta" name="spta" placeholder="Tap Nomor E-SPTA" autofocus required>
+                                            <input type="hidden" name="user_id" value="{{ Auth()->user()->id }}">
                                         </div>
                                     </form>
                                 </div>

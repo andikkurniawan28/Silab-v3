@@ -20,10 +20,11 @@
                         <tr>
                             <td>ID</td>
                             <td>Timestamp</td>
-                            <td>Barcode</td>
+                            <td>E-SPTA</td>
+                            {{-- <td>Barcode</td>
                             <td>Register</td>
                             <td>Nopol</td>
-                            <td>Petani</td>
+                            <td>Petani</td> --}}
                             <td>Action</td>
                         </tr>
                     </thead>
@@ -32,10 +33,11 @@
                         <tr>
                             <td>{{ $rit->id }}</td>
                             <td>{{ $rit->created_at }}</td>
-                            <td>{{ $rit->barcode_antrian }}</td>
+                            <td>{{ $rit->spta }}</td>
+                            {{-- <td>{{ $rit->barcode_antrian }}</td>
                             <td>{{ $rit->register }}</td>
                             <td>{{ $rit->nopol }}</td>
-                            <td>{{ $rit->petani }}</td>
+                            <td>{{ $rit->petani }}</td> --}}
                             <td>
                                 <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#edit{{ $rit->id }}">
                                     @include('components.icon', ['icon' => 'edit '])

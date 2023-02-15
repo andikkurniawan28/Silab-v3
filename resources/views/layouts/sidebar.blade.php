@@ -62,12 +62,14 @@
                 <a class="collapse-item" href="{{ route('tactivities.index') }}">Taksasi</a>
                 <a class="collapse-item" href="{{ route('imbibitions.index') }}">Imbibisi</a>
 
+                @if(Auth()->user()->role_id < 9)
                 <h6 class="collapse-header">Menu On Farm :</h6>
                 <a class="collapse-item" href="{{ route('rits.index') }}">Penerimaan</a>
                 <a class="collapse-item" href="{{ route('posbrixes.index') }}">Pos Brix</a>
                 <a class="collapse-item" href="{{ route('scores.index') }}">Penilaian MBS</a>
                 {{-- <a class="collapse-item" href="{{ route('ari_samplings.index') }}">Sampling ARI</a> --}}
                 <a class="collapse-item" href="{{ route('aris.index') }}">Analisa Rendemen</a>
+                @endif
             </div>
         </div>
     </li>
@@ -97,41 +99,14 @@
         <div id="collapse2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu :</h6>
-                <a class="collapse-item" href="{{ route('rit') }}" target="_blank">Penerimaan</a>
+                <a class="collapse-item" href="{{ route('scan_rfid') }}" target="_blank">Scan RFID</a>
+                {{-- <a class="collapse-item" href="{{ route('rit') }}" target="_blank">Penerimaan</a>
                 <a class="collapse-item" href="{{ route('posbrix') }}" target="_blank">Pos Brix</a>
-                <a class="collapse-item" href="{{ route('score') }}" target="_blank">Penilaian MBS</a>
+                <a class="collapse-item" href="{{ route('score') }}" target="_blank">Penilaian MBS</a> --}}
             </div>
         </div>
     </li>
     @endif
-
-    {{-- @if(Auth()->user()->role_id == 1)
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fa-solid fa-folder-tree"></i>
-            <span>Administrasi</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Menu :</h6>
-                <a class="collapse-item" href="{{ route('users.index') }}">User</a>
-                <a class="collapse-item" href="{{ route('roles.index') }}">Role & Permission</a>
-                <a class="collapse-item" href="{{ route('methods.index') }}">Method</a>
-                <a class="collapse-item" href="{{ route('cooperatives.index') }}">KUD</a>
-                <a class="collapse-item" href="{{ route('outposts.index') }}">Pos Pantau</a>
-                <a class="collapse-item" href="{{ route('programs.index') }}">Asal Tebu</a>
-                <a class="collapse-item" href="{{ route('factors.index') }}">Faktor Koreksi</a>
-                <a class="collapse-item" href="{{ route('dirts.index') }}">Kotoran</a>
-                <a class="collapse-item" href="{{ route('activity_log') }}">Log Aktifitas</a>
-                <a class="collapse-item" href="{{ route('meja_tebu', 1) }}">Meja Tebu 1</a>
-                <a class="collapse-item" href="{{ route('meja_tebu', 2) }}">Meja Tebu 2</a>
-                <a class="collapse-item" href="{{ route('meja_tebu', 3) }}">Meja Tebu 3</a>
-                <a class="collapse-item" href="{{ route('meja_tebu', 4) }}">Meja Tebu 4</a>
-                <a class="collapse-item" href="{{ route('meja_tebu', 5) }}">Meja Tebu 5</a>
-            </div>
-        </div>
-    </li>
-    @endif --}}
 
     <hr class="sidebar-divider">
 

@@ -25,14 +25,24 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Pos Brix</h1>
                                     </div>
-                                    <form class="user" action="{{ route('posbrixes.store') }}" method="POST">
+                                    <form class="user" action="{{ route('process_rfid') }}" method="POST">
                                     @csrf
                                     @method('POST')
-                                        <input type="hidden" name="rit_id" value="{{ $rit_id }}">
+                                        <div class="form-group">
+                                            <label for="spta" class="col-auto col-form-label">E-SPTA</label>
+                                            <input type="text" class="form-control form-control-user" id="spta" name="spta" value="{{ $spta }}" readonly>
+                                        </div>
                                         <div class="form-group">
                                             <label for="brix" class="col-auto col-form-label">Brix</label>
                                             <input type="number" class="form-control form-control-user"
-                                                id="brix" name="brix" placeholder="Brix" autofocus required>
+                                                id="brix" name="brix" placeholder="Masukkan Nilai Brix" autofocus required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputState">Status</label>
+                                            <select id="inputState" class="form-control" name="is_accepted">
+                                                <option value="1" selected>Diterima</option>
+                                                <option value="0">Ditolak</option>
+                                            </select>
                                         </div>
                                         <input type="hidden" name="user_id" value="{{ Auth()->user()->id }}">
                                         <button type="submit" class="btn btn-dark btn-user btn-block">

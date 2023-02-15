@@ -18,9 +18,7 @@ class PosbrixController extends Controller
     {
         $stations = Station::all();
         $posbrixes = Posbrix::all();
-        $posbrix_rit_id = Posbrix::select('rit_id')->get();
-        $rits = Rit::whereNotIn('id', $posbrix_rit_id)->get();
-        return view('posbrix.index', compact('posbrixes', 'rits', 'stations'));
+        return view('posbrix.index', compact('posbrixes', 'stations'));
     }
 
     /**
@@ -42,7 +40,8 @@ class PosbrixController extends Controller
     public function store(Request $request)
     {
         Posbrix::create($request->all());
-        return redirect()->route('rit');
+        $spta = $request->spta;
+        return redirect()->route('posbrix', $spta);
     }
 
     /**
