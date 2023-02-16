@@ -16,7 +16,28 @@
 
             <div class="col-xl-10 col-lg-12 col-md-9">
 
+                @if ($errors->any())
+                <br>
+                    <div class="alert alert-danger">
+                        <p>Error :</p>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                @if($message = Session::get('error'))
+                    <br>
+                    @include('components.alert', ['message'=>$message, 'color'=>'danger'])
+                @elseif($message = Session::get('success'))
+                    <br>
+                    @include('components.alert', ['message'=>$message, 'color'=>'success'])
+                @endif
+
                 <div class="card o-hidden border-0 shadow-lg my-5">
+
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
@@ -31,7 +52,7 @@
                                         <div class="form-group">
                                             <label for="barcode_antrian" class="col-auto col-form-label">E-SPTA</label>
                                             <input type="number" class="text-lg form-control form-control-user"
-                                                id="spta" name="spta" placeholder="Tap Nomor E-SPTA" autofocus required>
+                                                id="spta" name="spta" placeholder="Tap Kartu E-SPTA" autofocus required>
                                             <input type="hidden" name="user_id" value="{{ Auth()->user()->id }}">
                                         </div>
                                     </form>

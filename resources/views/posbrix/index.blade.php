@@ -9,6 +9,17 @@
         @include('components.alert', ['message'=>$message, 'color'=>'success'])
     @endif
 
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <p>Error :</p>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+    </div>
+    @endif
+
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h5 class="m-0 font-weight-bold text-primary">{{ ucfirst('pos Brix') }}</h5>
@@ -20,7 +31,6 @@
                         <tr>
                             <td>ID</td>
                             <td>Timestamp</td>
-                            {{-- <td>Nopol</td> --}}
                             <td>E-SPTA</td>
                             <td>Brix</td>
                             <td>Status</td>
@@ -33,19 +43,9 @@
                         <tr>
                             <td>{{ $posbrix->id }}</td>
                             <td>{{ $posbrix->created_at }}</td>
-                            {{-- <td>{{ $posbrix->rit->nopol }}</td> --}}
                             <td>{{ $posbrix->spta }}</td>
                             <td>{{ $posbrix->brix }}</td>
                             <td>{{ $posbrix->is_accepted }}</td>
-
-                            {{-- @if($posbrix->is_accepted == 1)
-                                <td>{{ 'Diterima' }}</td>
-                            @elseif($posbrix->is_accepted == 0)
-                                <td>{{ 'Ditolak' }}</td>
-                            @elseif($posbrix->is_accepted == NULL)
-                                <td>{{ '-' }}</td>
-                            @endif --}}
-
                             <td>{{ $posbrix->user->name }}</td>
                             <td>
                                 <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#edit{{ $posbrix->id }}">
@@ -72,8 +72,8 @@
     </div>
 </div>
 
-{{-- <div class="modal fade" id="create" tabindex="-1" posbrix="dialog" aria-labelledby="createLabel" aria-hidden="true">
-    <div class="modal-dialog" posbrix="document">
+<div class="modal fade" id="create" tabindex="-1" ari="dialog" aria-labelledby="createLabel" aria-hidden="true">
+    <div class="modal-dialog" ari="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="createLabel">Tambah {{ ucfirst('pos Brix') }}</h5>
@@ -85,22 +85,9 @@
                 @csrf
                 @method('POST')
 
-                <div class="form-group row">
-                    <label for="rit_id" class="col-sm-2 col-form-label">Nopol</label>
-                    <div class="col-sm-10">
-                        <select class="form-control" name="rit_id">
-                            @foreach ($rits as $rit)
-                                <option value="{{ $rit->id }}">
-                                    {{ $rit->nopol }} -- {{ $rit->barcode_antrian }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-
                 @include('components.input',[
-                    'label' => 'Brix',
-                    'name' => 'brix',
+                    'label' => 'E-SPTA',
+                    'name' => 'spta',
                     'type' => 'number',
                     'value' => '',
                     'modifier' => 'required',
@@ -134,11 +121,11 @@
                 @method('PUT')
 
                 @include('components.input',[
-                    'label' => 'Antrian',
-                    'name' => 'rit_id',
+                    'label' => 'E-SPTA',
+                    'name' => 'spta',
                     'type' => 'text',
-                    'value' => $posbrix->rit->barcode_antrian,
-                    'modifier' => 'readonly',
+                    'value' => $posbrix->spta,
+                    'modifier' => 'required',
                 ])
 
                 @include('components.input',[
@@ -148,6 +135,29 @@
                     'value' => $posbrix->brix,
                     'modifier' => 'required',
                 ])
+
+                <div class="form-group row">
+                    <label for="is_accepted" class="col-sm-2 col-form-label">Status</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="is_accepted">
+                            @for($i=0; $i<=1; $i++)
+                                <option value="{{ $i }}"
+                                    @if($posbrix->is_accepted == $i)
+                                    {{ 'selected' }}
+                                    @endif
+                                >
+
+                                    @if($i == 0)
+                                    {{ 'Ditolak' }}
+                                    @elseif($i == 1)
+                                    {{ 'Diterima' }}
+                                    @endif
+
+                                </option>
+                            @endfor
+                        </select>
+                    </div>
+                </div>
 
             </div>
             <div class="modal-footer">
@@ -185,7 +195,7 @@
         </div>
     </div>
 </div>
-@endforeach --}}
+@endforeach
 
 @endsection
 
