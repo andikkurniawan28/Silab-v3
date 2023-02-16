@@ -15,8 +15,9 @@ class CreateAriSamplingsTable extends Migration
     {
         Schema::create('ari_samplings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('rit_id')->constrained();
-            $table->string('rfid');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('rit_id')->constrained()->onDelete('cascade');
+            $table->string('rfid')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

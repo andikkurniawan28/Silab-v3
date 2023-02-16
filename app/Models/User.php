@@ -41,4 +41,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Balance::class);
     }
+
+    public function ari_sampling()
+    {
+        return $this->hasMany(AriSampling::class);
+    }
 }

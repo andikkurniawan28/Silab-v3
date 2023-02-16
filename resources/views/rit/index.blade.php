@@ -20,11 +20,10 @@
                         <tr>
                             <td>ID</td>
                             <td>Timestamp</td>
+                            <td>RFID</td>
                             <td>E-SPTA</td>
-                            {{-- <td>Barcode</td>
+                            <td>Antrian</td>
                             <td>Register</td>
-                            <td>Nopol</td>
-                            <td>Petani</td> --}}
                             <td>Action</td>
                         </tr>
                     </thead>
@@ -33,11 +32,10 @@
                         <tr>
                             <td>{{ $rit->id }}</td>
                             <td>{{ $rit->created_at }}</td>
+                            <td>{{ $rit->rfid }}</td>
                             <td>{{ $rit->spta }}</td>
-                            {{-- <td>{{ $rit->barcode_antrian }}</td>
+                            <td>{{ $rit->barcode_antrian }}</td>
                             <td>{{ $rit->register }}</td>
-                            <td>{{ $rit->nopol }}</td>
-                            <td>{{ $rit->petani }}</td> --}}
                             <td>
                                 <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#edit{{ $rit->id }}">
                                     @include('components.icon', ['icon' => 'edit '])
@@ -55,10 +53,10 @@
             </div>
         </div>
         <div class="card-footer">
-            <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#create">
+            {{-- <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#create">
                 @include('components.icon', ['icon' => 'plus '])
                 Tambah
-            </button>
+            </button> --}}
         </div>
     </div>
 </div>
@@ -77,8 +75,8 @@
                 @method('POST')
 
                 @include('components.input',[
-                    'label' => 'Antrian',
-                    'name' => 'barcode_antrian',
+                    'label' => 'RFID',
+                    'name' => 'rfid',
                     'type' => 'text',
                     'value' => '',
                     'modifier' => 'required',
@@ -110,10 +108,10 @@
                 @method('PUT')
 
                 @include('components.input',[
-                    'label' => 'Nama',
-                    'name' => 'name',
+                    'label' => 'RFID',
+                    'name' => 'rfid',
                     'type' => 'text',
-                    'value' => $rit->name,
+                    'value' => $rit->rfid,
                     'modifier' => 'required',
                 ])
 
@@ -144,10 +142,10 @@
                 <p>Apakah Anda yakin ?</p>
 
                 @include('components.input',[
-                    'label' => 'Nama',
-                    'name' => 'name',
+                    'label' => 'RFID',
+                    'name' => 'rfid',
                     'type' => 'text',
-                    'value' => $rit->name,
+                    'value' => $rit->rfid,
                     'modifier' => 'readonly',
                 ])
                 <input type="hidden" name="rit_id" value="{{ $rit->rit_id }}">

@@ -39,7 +39,6 @@ class RitController extends Controller
      */
     public function store(Request $request)
     {
-
         // $data_from_api = Rit::getInfoFromBarcodeAntrian($request->barcode_antrian);
         // $request->request->add([
         //     'register' => $data_from_api['register'],
@@ -86,6 +85,7 @@ class RitController extends Controller
     public function update(Request $request, $id)
     {
         Rit::whereid($id)->update([
+            'rfid' => $request->rfid,
             'barcode_antrian' => $request->barcode_antrian,
             'spta' => $request->spta,
             'register' => $request->register,

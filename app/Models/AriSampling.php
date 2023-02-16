@@ -14,6 +14,9 @@ class AriSampling extends Model
     public function rit(){
         return $this->belongsTo(Rit::class);
     }
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 
     public function ari(){
         return $this->hasMany(Ari::class);

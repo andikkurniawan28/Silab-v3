@@ -48,6 +48,8 @@ use App\Http\Controllers\AplikasiPosBrixEbController;
 use App\Http\Controllers\AplikasiPosBrixEkController;
 use App\Http\Controllers\AplikasiPenerimaanController;
 use App\Http\Controllers\MonitoringSaveDateController;
+use App\Http\Controllers\AplikasiTapSampleAriController;
+use App\Http\Controllers\AplikasiTapTimbanganController;
 use App\Http\Controllers\MonitoringSelectDateController;
 
 Route::get('/', HomeController::class)->name('home')->middleware(['auth']);
@@ -115,3 +117,11 @@ Route::post('process_rfid', PosbrixRfidController::class)->name('process_rfid')-
 Route::post('process_rfid_eb', PosbrixRfidController::class)->name('process_rfid_eb')->middleware(['auth', 'operator_qc']);
 Route::post('process_posbrix_ek', AplikasiPosBrixEkController::class)->name('process_posbrix_ek')->middleware(['auth', 'operator_qc']);
 Route::post('process_posbrix_eb', AplikasiPosBrixEbController::class)->name('process_posbrix_eb')->middleware(['auth', 'operator_qc']);
+
+// Aplikasi Tap Timbangan
+Route::get('tap_timbangan', [AplikasiTapTimbanganController::class, 'index'])->name('tap_timbangan')->middleware(['auth', 'operator_qc']);
+Route::post('tap_timbangan_process', [AplikasiTapTimbanganController::class, 'process'])->name('tap_timbangan_process')->middleware(['auth', 'operator_qc']);
+
+// Aplikasi Tap Sample Ari
+Route::get('tap_sample_ari', [AplikasiTapSampleAriController::class, 'index'])->name('tap_sample_ari')->middleware(['auth', 'operator_qc']);
+Route::post('tap_sample_ari_process', [AplikasiTapSampleAriController::class, 'process'])->name('tap_sample_ari_process')->middleware(['auth', 'operator_qc']);
