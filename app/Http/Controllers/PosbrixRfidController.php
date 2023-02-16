@@ -21,6 +21,12 @@ class PosbrixRfidController extends Controller
             'is_accepted' => $request->is_accepted,
         ]);
 
-        return redirect()->route('scan_rfid')->with('success', 'Data berhasil disimpan');
+        if($request->category == 'EK'){
+            return redirect()->route('scan_rfid')->with('success', 'Data berhasil disimpan');
+        }
+        else{
+            return redirect()->route('scan_rfid_eb')->with('success', 'Data berhasil disimpan');
+        }
+
     }
 }

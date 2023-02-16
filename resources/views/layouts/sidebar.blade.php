@@ -66,9 +66,9 @@
                 <h6 class="collapse-header">Menu On Farm :</h6>
                 <a class="collapse-item" href="{{ route('rits.index') }}">Penerimaan</a>
                 <a class="collapse-item" href="{{ route('posbrixes.index') }}">Pos Brix</a>
+                <a class="collapse-item" href="{{ route('aris.index') }}">Analisa Rendemen</a>
                 <a class="collapse-item" href="{{ route('scores.index') }}">Penilaian MBS</a>
                 {{-- <a class="collapse-item" href="{{ route('ari_samplings.index') }}">Sampling ARI</a> --}}
-                <a class="collapse-item" href="{{ route('aris.index') }}">Analisa Rendemen</a>
                 @endif
             </div>
         </div>
@@ -99,7 +99,8 @@
         <div id="collapse2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu :</h6>
-                <a class="collapse-item" href="{{ route('scan_rfid') }}" target="_blank">Scan RFID</a>
+                <a class="collapse-item" href="{{ route('scan_rfid') }}" target="_blank">Pos Brix EK</a>
+                <a class="collapse-item" href="{{ route('scan_rfid_eb') }}" target="_blank">Pos Brix EB/GD</a>
                 {{-- <a class="collapse-item" href="{{ route('rit') }}" target="_blank">Penerimaan</a>
                 <a class="collapse-item" href="{{ route('posbrix') }}" target="_blank">Pos Brix</a>
                 <a class="collapse-item" href="{{ route('score') }}" target="_blank">Penilaian MBS</a> --}}

@@ -7,7 +7,7 @@
 
 </head>
 
-<body class="bg-gradient-light">
+<body class="bg-gradient-warning">
 
     <div class="container">
 
@@ -33,9 +33,13 @@
                                             <input type="text" class="form-control form-control-user" id="spta" name="spta" value="{{ $spta }}" readonly>
                                         </div>
                                         <div class="form-group">
+                                            <label for="spta" class="col-auto col-form-label">Jenis</label>
+                                            <input type="text" class="form-control form-control-user" id="category" name="category" value="{{ $category }}" readonly>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="brix" class="col-auto col-form-label">Brix</label>
                                             <input type="number" class="form-control form-control-user"
-                                                id="brix" name="brix" placeholder="Masukkan Nilai Brix" autofocus required>
+                                                id="brix" name="brix" placeholder="Masukkan Nilai Brix" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="inputState">Status</label>
@@ -44,6 +48,7 @@
                                                 <option value="0">Ditolak</option>
                                             </select>
                                         </div>
+                                        <br><br>
                                         <input type="hidden" name="user_id" value="{{ Auth()->user()->id }}">
                                         <button type="submit" class="btn btn-dark btn-user btn-block">
                                             Simpan

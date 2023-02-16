@@ -7,7 +7,7 @@
 
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-gradient-danger">
 
     <div class="container">
 
@@ -36,16 +36,16 @@
                             <div class="col-lg-12">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Pos Brix EK</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Pos Brix EB/GD</h1>
                                     </div>
-                                    <form class="user" action="{{ route('process_posbrix_ek') }}" method="POST">
+                                    <form class="user" action="{{ route('process_posbrix_eb') }}" method="POST">
                                     @csrf
                                     @method('POST')
                                         <div class="form-group">
                                             <label for="spta" class="col-auto col-form-label">E-SPTA</label>
                                             <input type="number" class="text-lg form-control form-control-user"
                                                 id="spta" name="spta" placeholder="Tap Kartu E-SPTA" autofocus required>
-                                            <input type="hidden" name="category" value="EK">
+                                            <input type="hidden" name="category" value="EB|GD">
                                             <input type="hidden" name="user_id" value="{{ Auth()->user()->id }}">
                                         </div>
                                     </form>

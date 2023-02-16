@@ -40,11 +40,13 @@ class PosbrixController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'spta' => 'required|unique:posbrixes'
+            'spta' => 'required|unique:posbrixes',
+            'category' => 'required',
+            'brix' => 'required',
+            'is_accepted' => 'required',
         ]);
         Posbrix::create($request->all());
-        $spta = $request->spta;
-        return redirect()->route('posbrix', $spta);
+        return redirect()->back()->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -79,14 +81,17 @@ class PosbrixController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'spta' => 'required|unique:posbrixes',
+            'category' => 'required',
+            'brix' => 'required',
+            'is_accepted' => 'required',
         ]);
 
         Posbrix::whereId($id)->update([
-            'spta' => $request->spta,
+            'category' => $request->category,
             'brix' => $request->brix,
             'is_accepted' => $request->is_accepted,
         ]);
+
         return redirect()->back()->with('success', 'Data berhasil disimpan');
     }
 

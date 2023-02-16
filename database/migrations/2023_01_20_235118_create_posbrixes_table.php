@@ -17,6 +17,7 @@ class CreatePosbrixesTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->string('spta')->unique();
+            $table->string('category');
             $table->integer('brix')->nullable();
             $table->boolean('is_accepted')->nullable();
             $table->timestamp('created_at')->useCurrent();

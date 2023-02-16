@@ -43,6 +43,9 @@ use App\Http\Controllers\StationResultController;
 use App\Http\Controllers\AnalisaPosBrixController;
 use App\Http\Controllers\ScanRfidPosbrixController;
 use App\Http\Controllers\ChemicalcheckingController;
+use App\Http\Controllers\ScanRfidPosbrixEbControlle;
+use App\Http\Controllers\AplikasiPosBrixEbController;
+use App\Http\Controllers\AplikasiPosBrixEkController;
 use App\Http\Controllers\AplikasiPenerimaanController;
 use App\Http\Controllers\MonitoringSaveDateController;
 use App\Http\Controllers\MonitoringSelectDateController;
@@ -102,7 +105,13 @@ Route::get('monitoring', MonitoringController::class)->name('monitoring')->middl
 Route::get('monitoring_select_date', MonitoringSelectDateController::class)->name('monitoring_select_date')->middleware(['auth']);
 Route::post('monitoring_save_date', MonitoringSaveDateController::class)->name('monitoring_save_date')->middleware(['auth']);
 Route::get('rit', AplikasiPenerimaanController::class)->name('rit')->middleware(['auth', 'koordinator']);
-Route::get('posbrix/{spta}', AnalisaPosBrixController::class)->name('posbrix')->middleware(['auth', 'koordinator']);
 Route::get('score', AnalisaPenilaianMbs::class)->name('score')->middleware(['auth', 'koordinator']);
-Route::get('scan_rfid', ScanRfidPosbrixController::class)->name('scan_rfid')->middleware(['auth', 'koordinator']);
-Route::post('process_rfid', PosbrixRfidController::class)->name('process_rfid')->middleware(['auth', 'koordinator']);
+
+// Aplikasi Posbrix
+Route::get('posbrix/{spta}/{category}', AnalisaPosBrixController::class)->name('posbrix')->middleware(['auth', 'operator_qc']);
+Route::get('scan_rfid', ScanRfidPosbrixController::class)->name('scan_rfid')->middleware(['auth', 'operator_qc']);
+Route::get('scan_rfid_eb', ScanRfidPosbrixEbControlle::class)->name('scan_rfid_eb')->middleware(['auth', 'operator_qc']);
+Route::post('process_rfid', PosbrixRfidController::class)->name('process_rfid')->middleware(['auth', 'operator_qc']);
+Route::post('process_rfid_eb', PosbrixRfidController::class)->name('process_rfid_eb')->middleware(['auth', 'operator_qc']);
+Route::post('process_posbrix_ek', AplikasiPosBrixEkController::class)->name('process_posbrix_ek')->middleware(['auth', 'operator_qc']);
+Route::post('process_posbrix_eb', AplikasiPosBrixEbController::class)->name('process_posbrix_eb')->middleware(['auth', 'operator_qc']);

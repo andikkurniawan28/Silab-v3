@@ -32,6 +32,7 @@
                             <td>ID</td>
                             <td>Timestamp</td>
                             <td>E-SPTA</td>
+                            <td>Jenis</td>
                             <td>Brix</td>
                             <td>Status</td>
                             <td>User</td>
@@ -44,6 +45,7 @@
                             <td>{{ $posbrix->id }}</td>
                             <td>{{ $posbrix->created_at }}</td>
                             <td>{{ $posbrix->spta }}</td>
+                            <td>{{ $posbrix->category }}</td>
                             <td>{{ $posbrix->brix }}</td>
                             <td>{{ $posbrix->is_accepted }}</td>
                             <td>{{ $posbrix->user->name }}</td>
@@ -93,6 +95,34 @@
                     'modifier' => 'required',
                 ])
 
+                <div class="form-group row">
+                    <label for="category" class="col-sm-2 col-form-label">Jenis</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="category">
+                            <option value="EK">EK</option>
+                            <option value="EB|GD">EB/GD</option>
+                        </select>
+                    </div>
+                </div>
+
+                @include('components.input',[
+                    'label' => 'Brix',
+                    'name' => 'brix',
+                    'type' => 'number',
+                    'value' => '',
+                    'modifier' => 'required',
+                ])
+
+                <div class="form-group row">
+                    <label for="is_accepted" class="col-sm-2 col-form-label">Status</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="is_accepted">
+                            <option value="1">Diterima</option>
+                            <option value="0">Ditolak</option>
+                        </select>
+                    </div>
+                </div>
+
                 <input type="hidden" name="user_id" value="{{ Auth()->user()->id }}">
 
             </div>
@@ -125,8 +155,23 @@
                     'name' => 'spta',
                     'type' => 'text',
                     'value' => $posbrix->spta,
-                    'modifier' => 'required',
+                    'modifier' => 'readonly',
                 ])
+
+                <div class="form-group row">
+                    <label for="category" class="col-sm-2 col-form-label">Jenis</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="category">
+                            @if($posbrix->category == 'EK')
+                                <option value="EK" {{ 'selected' }}>EK</option>
+                                <option value="EB|GD">EB/GD</option>
+                            @else
+                                <option value="EB|GD" {{ 'selected' }}>EB/GD</option>
+                                <option value="EK">EK</option>
+                            @endif
+                        </select>
+                    </div>
+                </div>
 
                 @include('components.input',[
                     'label' => 'Brix',
