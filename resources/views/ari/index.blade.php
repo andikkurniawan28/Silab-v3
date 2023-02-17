@@ -20,7 +20,7 @@
                         <tr>
                             <td>ID</td>
                             <td>Timestamp</td>
-                            <td>Barcode</td>
+                            <td>Sample ID</td>
                             <td>%Brix</td>
                             <td>%Pol</td>
                             <td>Pol</td>
@@ -34,7 +34,7 @@
                         <tr>
                             <td>{{ $ari->id }}</td>
                             <td>{{ $ari->created_at }}</td>
-                            <td>{{ $ari->rit->barcode_antrian }}</td>
+                            <td>{{ $ari->ari_sampling_id }}</td>
                             <td>{{ $ari->pbrix }}</td>
                             <td>{{ $ari->ppol }}</td>
                             <td>{{ $ari->pol }}</td>
@@ -78,18 +78,13 @@
                 @csrf
                 @method('POST')
 
-                <div class="form-group row">
-                    <label for="rit_id" class="col-sm-2 col-form-label">Nopol</label>
-                    <div class="col-sm-10">
-                        <select class="form-control" name="rit_id">
-                            @foreach ($rits as $rit)
-                                <option value="{{ $rit->id }}">
-                                    {{ $rit->nopol }} -- {{ $rit->barcode_antrian }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
+                @include('components.input',[
+                    'label' => 'Sample ID',
+                    'name' => 'ari_sampling_id',
+                    'type' => 'number',
+                    'value' => '',
+                    'modifier' => 'required',
+                ])
 
                 @include('components.input',[
                     'label' => '%Brix',
@@ -151,10 +146,10 @@
                 @method('PUT')
 
                 @include('components.input',[
-                    'label' => 'Antrian',
-                    'name' => 'rit_id',
+                    'label' => 'Sample ID',
+                    'name' => 'ari_sampling_id',
                     'type' => 'text',
-                    'value' => $ari->rit->barcode_antrian,
+                    'value' => $ari->ari_sampling_id,
                     'modifier' => 'readonly',
                 ])
 

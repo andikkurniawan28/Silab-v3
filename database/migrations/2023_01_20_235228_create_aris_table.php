@@ -15,7 +15,7 @@ class CreateArisTable extends Migration
     {
         Schema::create('aris', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('rit_id')->constrained()->unique();
+            $table->foreignId('ari_sampling_id')->constrained()->unique();
             $table->foreignId('user_id')->constrained();
             $table->float('pbrix');
             $table->float('ppol');

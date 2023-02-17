@@ -18,9 +18,10 @@ class AriController extends Controller
     {
         $stations = Station::all();
         $aris = Ari::all();
-        $ari_rit_id = Ari::select('rit_id')->get();
-        $rits = Rit::whereNotIn('id', $ari_rit_id)->get();
-        return view('ari.index', compact('aris', 'rits', 'stations'));
+        // $ari_rit_id = Ari::select('rit_id')->get();
+        // $rits = Rit::whereNotIn('id', $ari_rit_id)->get();
+        // return view('ari.index', compact('aris', 'rits', 'stations'));
+        return view('ari.index', compact('aris', 'stations'));
     }
 
     /**
@@ -77,6 +78,7 @@ class AriController extends Controller
     public function update(Request $request, $id)
     {
         Ari::whereId($id)->update([
+            'ari_sampling_id' => $request->ari_sampling_id,
             'pbrix' => $request->pbrix,
             'ppol' => $request->ppol,
             'pol' => $request->pol,
