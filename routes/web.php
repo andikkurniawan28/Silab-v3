@@ -51,6 +51,7 @@ use App\Http\Controllers\MonitoringSaveDateController;
 use App\Http\Controllers\AplikasiTapSampleAriController;
 use App\Http\Controllers\AplikasiTapTimbanganController;
 use App\Http\Controllers\MonitoringSelectDateController;
+use App\Http\Controllers\AplikasiTapSampleAriEbController;
 use App\Http\Controllers\AplikasiTapTimbanganEbController;
 
 Route::get('/', HomeController::class)->name('home')->middleware(['auth']);
@@ -127,4 +128,6 @@ Route::post('tap_timbangan_eb_process', [AplikasiTapTimbanganEbController::class
 
 // Aplikasi Tap Sample Ari
 Route::get('tap_sample_ari', [AplikasiTapSampleAriController::class, 'index'])->name('tap_sample_ari')->middleware(['auth', 'operator_qc']);
+Route::get('tap_sample_ari_eb', [AplikasiTapSampleAriEbController::class, 'index'])->name('tap_sample_ari_eb')->middleware(['auth', 'operator_qc']);
 Route::post('tap_sample_ari_process', [AplikasiTapSampleAriController::class, 'process'])->name('tap_sample_ari_process')->middleware(['auth', 'operator_qc']);
+Route::post('tap_sample_ari_eb_process', [AplikasiTapSampleAriEbController::class, 'process'])->name('tap_sample_ari_eb_process')->middleware(['auth', 'operator_qc']);

@@ -7,7 +7,7 @@
 
 </head>
 
-<body class="bg-gradient-secondary">
+<body class="bg-gradient-dark">
 
     <div class="container">
 
@@ -46,9 +46,9 @@
                             <div class="col-lg-12">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Tap Sampling ARI EK</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Tap Sampling ARI EB/GD</h1>
                                     </div>
-                                    <form class="user" action="{{ route('tap_sample_ari_process') }}" method="POST">
+                                    <form class="user" action="{{ route('tap_sample_ari_eb_process') }}" method="POST">
                                     @csrf
                                     @method('POST')
                                         <div class="form-group">

@@ -102,8 +102,9 @@
                 <a class="collapse-item" href="{{ route('scan_rfid') }}" target="_blank">Pos Brix EK</a>
                 <a class="collapse-item" href="{{ route('scan_rfid_eb') }}" target="_blank">Pos Brix EB/GD</a>
                 <a class="collapse-item" href="{{ route('tap_timbangan') }}" target="_blank">Tap Timbangan EK</a>
-                <a class="collapse-item" href="{{ route('tap_timbangan_eb') }}" target="_blank">Tap Timbangan EB</a>
-                <a class="collapse-item" href="{{ route('tap_sample_ari') }}" target="_blank">Tap Sampel ARI</a>
+                <a class="collapse-item" href="{{ route('tap_timbangan_eb') }}" target="_blank">Tap Timbangan EB/GD</a>
+                <a class="collapse-item" href="{{ route('tap_sample_ari') }}" target="_blank">Tap Sampel ARI EK</a>
+                <a class="collapse-item" href="{{ route('tap_sample_ari_eb') }}" target="_blank">Tap Sampel ARI EB/GD</a>
                 {{-- <a class="collapse-item" href="{{ route('rit') }}" target="_blank">Penerimaan</a>
                 <a class="collapse-item" href="{{ route('posbrix') }}" target="_blank">Pos Brix</a>
                 <a class="collapse-item" href="{{ route('score') }}" target="_blank">Penilaian MBS</a> --}}

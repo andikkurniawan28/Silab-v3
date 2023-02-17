@@ -23,6 +23,6 @@ class AplikasiTapTimbanganEbController extends Controller
             'category' => 'EB|GD',
         ]);
 
-        return view('aplikasi.tap_sukses');
+        return view('aplikasi.tap_sukses2');
     }
 }
