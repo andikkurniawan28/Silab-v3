@@ -51,6 +51,7 @@ use App\Http\Controllers\MonitoringSaveDateController;
 use App\Http\Controllers\AplikasiTapSampleAriController;
 use App\Http\Controllers\AplikasiTapTimbanganController;
 use App\Http\Controllers\MonitoringSelectDateController;
+use App\Http\Controllers\AplikasiTapTimbanganEbController;
 
 Route::get('/', HomeController::class)->name('home')->middleware(['auth']);
 Route::resource('stations', StationController::class)->middleware(['auth', 'kasie']);
@@ -120,7 +121,9 @@ Route::post('process_posbrix_eb', AplikasiPosBrixEbController::class)->name('pro
 
 // Aplikasi Tap Timbangan
 Route::get('tap_timbangan', [AplikasiTapTimbanganController::class, 'index'])->name('tap_timbangan')->middleware(['auth', 'operator_qc']);
+Route::get('tap_timbangan_eb', [AplikasiTapTimbanganEbController::class, 'index'])->name('tap_timbangan_eb')->middleware(['auth', 'operator_qc']);
 Route::post('tap_timbangan_process', [AplikasiTapTimbanganController::class, 'process'])->name('tap_timbangan_process')->middleware(['auth', 'operator_qc']);
+Route::post('tap_timbangan_eb_process', [AplikasiTapTimbanganEbController::class, 'process'])->name('tap_timbangan_eb_process')->middleware(['auth', 'operator_qc']);
 
 // Aplikasi Tap Sample Ari
 Route::get('tap_sample_ari', [AplikasiTapSampleAriController::class, 'index'])->name('tap_sample_ari')->middleware(['auth', 'operator_qc']);

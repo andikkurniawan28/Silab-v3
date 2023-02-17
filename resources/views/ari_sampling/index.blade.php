@@ -9,6 +9,17 @@
         @include('components.alert', ['message'=>$message, 'color'=>'success'])
     @endif
 
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <p>Error :</p>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+    </div>
+    @endif
+
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h5 class="m-0 font-weight-bold text-primary">{{ ucfirst('sampling ARI') }}</h5>
@@ -21,7 +32,9 @@
                             <td>ID</td>
                             <td>Timestamp</td>
                             <td>Rit ID</td>
+                            <td>Jenis</td>
                             <td>RFID</td>
+                            <td>User</td>
                             <td>Action</td>
                         </tr>
                     </thead>
@@ -31,7 +44,9 @@
                             <td>{{ $ari_sampling->id }}</td>
                             <td>{{ $ari_sampling->created_at }}</td>
                             <td>{{ $ari_sampling->rit_id }}</td>
+                            <td>{{ $ari_sampling->category }}</td>
                             <td>{{ $ari_sampling->rfid }}</td>
+                            <td>{{ $ari_sampling->user->name }}</td>
                             <td>
                                 <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#edit{{ $ari_sampling->id }}">
                                     @include('components.icon', ['icon' => 'edit '])
@@ -49,10 +64,10 @@
             </div>
         </div>
         <div class="card-footer">
-            <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#create">
+            {{-- <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#create">
                 @include('components.icon', ['icon' => 'plus '])
                 Tambah
-            </button>
+            </button> --}}
         </div>
     </div>
 </div>

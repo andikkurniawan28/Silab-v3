@@ -7,7 +7,7 @@
 
 </head>
 
-<body class="bg-gradient-info">
+<body class="bg-gradient-secondary">
 
     <div class="container">
 
@@ -15,6 +15,8 @@
         <div class="row justify-content-center">
 
             <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <br><br>
 
                 @if ($errors->any())
                 <br>
@@ -28,6 +30,14 @@
                     </div>
                 @endif
 
+                @if($message = Session::get('error'))
+                    @include('components.alert', ['message'=>$message, 'color'=>'danger'])
+                @endif
+
+                @if($message = Session::get('success'))
+                    @include('components.alert', ['message'=>$message, 'color'=>'success'])
+                @endif
+
                 <div class="card o-hidden border-0 shadow-lg my-5">
 
                     <div class="card-body p-0">
@@ -36,9 +46,9 @@
                             <div class="col-lg-12">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Tap Timbangan EK</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Tap Sampling ARI</h1>
                                     </div>
-                                    <form class="user" action="{{ route('tap_timbangan_process') }}" method="POST">
+                                    <form class="user" action="{{ route('tap_sample_ari_process') }}" method="POST">
                                     @csrf
                                     @method('POST')
                                         <div class="form-group">

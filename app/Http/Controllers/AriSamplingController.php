@@ -73,6 +73,10 @@ class AriSamplingController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'rit_id' => 'required|unique:ari_samplings',
+        ]);
+
         AriSampling::whereId($id)->update([
             'rit_id' => $request->rit_id,
             'rfid' => $request->rfid,

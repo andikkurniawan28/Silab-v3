@@ -6,10 +6,10 @@ use App\Models\Rit;
 use App\Models\AriSampling;
 use Illuminate\Http\Request;
 
-class AplikasiTapTimbanganController extends Controller
+class AplikasiTapTimbanganEbController extends Controller
 {
     public function index(){
-        return view('aplikasi.tap_timbangan');
+        return view('aplikasi.tap_timbangan2');
     }
 
     public function process(Request $request){
@@ -20,7 +20,7 @@ class AplikasiTapTimbanganController extends Controller
         AriSampling::insert([
             'rit_id' => $rit_id,
             'user_id' => Auth()->user()->id,
-            'category' => 'EK',
+            'category' => 'EB|GD',
         ]);
 
         return view('aplikasi.tap_sukses');
