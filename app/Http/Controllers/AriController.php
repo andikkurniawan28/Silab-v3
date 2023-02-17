@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Ari;
 use App\Models\Rit;
 use App\Models\Station;
+use App\Models\AriSampling;
 use Illuminate\Http\Request;
 
 class AriController extends Controller
@@ -18,9 +19,6 @@ class AriController extends Controller
     {
         $stations = Station::all();
         $aris = Ari::all();
-        // $ari_rit_id = Ari::select('rit_id')->get();
-        // $rits = Rit::whereNotIn('id', $ari_rit_id)->get();
-        // return view('ari.index', compact('aris', 'rits', 'stations'));
         return view('ari.index', compact('aris', 'stations'));
     }
 
@@ -42,6 +40,10 @@ class AriController extends Controller
      */
     public function store(Request $request)
     {
+        $category = AriSampling::whereId($request->ari_sampling_id)->get()->last()->category;
+        $request->request->add([
+            'category' => $category,
+        ]);
         Ari::create($request->all());
         return redirect()->back()->with('success', 'Data berhasil disimpan');
     }
@@ -77,8 +79,13 @@ class AriController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $category = AriSampling::whereId($request->ari_sampling_id)->get()->last()->category;
+        $request->request->add([
+            'category' => $category,
+        ]);
         Ari::whereId($id)->update([
             'ari_sampling_id' => $request->ari_sampling_id,
+            'category' => $category,
             'pbrix' => $request->pbrix,
             'ppol' => $request->ppol,
             'pol' => $request->pol,

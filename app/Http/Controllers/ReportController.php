@@ -23,7 +23,7 @@ class ReportController extends Controller
         $chemical = Report::serveChemical($request);
         $balance = Report::serveBalance($request);
         $posbrix = Report::servePosBrix($request);
-        return view('report.show', compact('data', 'indicators', 'request', 'keliling', 'chemical', 'balance', 'posbrix'));
-        // return $keliling;
+        $ari = Report::serveAri($request);
+        return view('report.show', compact('data', 'indicators', 'request', 'keliling', 'chemical', 'balance', 'posbrix', 'ari'));
     }
 }

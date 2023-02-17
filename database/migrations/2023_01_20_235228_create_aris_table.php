@@ -17,6 +17,7 @@ class CreateArisTable extends Migration
             $table->id();
             $table->foreignId('ari_sampling_id')->constrained()->unique();
             $table->foreignId('user_id')->constrained();
+            $table->string('category');
             $table->float('pbrix');
             $table->float('ppol');
             $table->float('pol');

@@ -87,10 +87,38 @@ class Report extends Model
         $time = self::determineTimeRange($request);
         $data['ek'] = Posbrix::where('created_at', '>=', $time['current'])
             ->where('created_at', '<', $time['tomorrow'])
-            ->avg('brix');
+            ->where('category', 'EK');
+
         $data['eb'] = Posbrix::where('created_at', '>=', $time['current'])
             ->where('created_at', '<', $time['tomorrow'])
+            ->where('category', 'EB|GD');
+
+        $data['brix_ek'] = Posbrix::where('created_at', '>=', $time['current'])
+            ->where('created_at', '<', $time['tomorrow'])
+            ->where('category', 'EK')
+            ->where('is_accepted', 1)
             ->avg('brix');
+
+        $data['brix_eb'] = Posbrix::where('created_at', '>=', $time['current'])
+            ->where('created_at', '<', $time['tomorrow'])
+            ->where('category', 'EB|GD')
+            ->where('is_accepted', 1)
+            ->avg('brix');
+
+        return $data;
+    }
+
+    public function serveAri($request){
+        $time = self::determineTimeRange($request);
+
+        $data['ek'] = Ari::where('created_at', '>=', $time['current'])
+            ->where('created_at', '<', $time['tomorrow'])
+            ->where('category', 'EK');
+
+        $data['eb'] = Ari::where('created_at', '>=', $time['current'])
+            ->where('created_at', '<', $time['tomorrow'])
+            ->where('category', 'EB|GD');
+
         return $data;
     }
 

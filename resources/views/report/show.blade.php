@@ -93,7 +93,7 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Titik</th>
+                        <th>Bahan Kimia</th>
                         <th>Pemakaian</th>
                     </tr>
                     </thead>
@@ -150,17 +150,52 @@
                     <thead>
                         <tr>
                             <th>Jenis</th>
-                            <th>Rerata</th>
+                            <th>Masuk<sub>(rit)</sub></th>
+                            <th>Diterima<sub>(rit)</sub></th>
+                            <th>Brix Rerata Diterima</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>Engkel Kecil</td>
-                            <td>{{ $posbrix['ek'] }}</td>
+                            <td>{{ $posbrix['ek']->count() }}</td>
+                            <td>{{ $posbrix['ek']->where('is_accepted', 1)->count() }}</td>
+                            <td>{{ number_format($posbrix['brix_ek'], 2) }}</td>
                         </tr>
                         <tr>
-                            <td>Engkel Besar Gandeng</td>
-                            <td>{{ $posbrix['eb'] }}</td>
+                            <td>Engkel Besar & Gandeng</td>
+                            <td>{{ $posbrix['eb']->count() }}</td>
+                            <td>{{ $posbrix['eb']->where('is_accepted', 1)->count() }}</td>
+                            <td>{{ number_format($posbrix['brix_eb'], 2) }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h6>Analisa Rendemen</h6>
+                <table width="100%" class="table table-dark table-striped table-sm table-bordered table-hover text-xs">
+                    <thead>
+                        <tr>
+                            <th>Jenis</th>
+                            <th>Masuk<sub>(rit)</sub></th>
+                            <th>%Brix</th>
+                            <th>%Pol</th>
+                            <th>Rendemen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Engkel Kecil</td>
+                            <td>{{ $ari['ek']->count() }}</td>
+                            <td>{{ $ari['ek']->avg('pbrix') }}</td>
+                            <td>{{ $ari['ek']->avg('ppol') }}</td>
+                            <td>{{ $ari['ek']->avg('yield') }}</td>
+                        </tr>
+                        <tr>
+                            <td>Engkel Besar & Gandeng</td>
+                            <td>{{ $ari['eb']->count() }}</td>
+                            <td>{{ $ari['eb']->avg('pbrix') }}</td>
+                            <td>{{ $ari['eb']->avg('ppol') }}</td>
+                            <td>{{ $ari['eb']->avg('yield') }}</td>
                         </tr>
                     </tbody>
                 </table>
