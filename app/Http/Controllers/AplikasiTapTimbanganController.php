@@ -13,7 +13,15 @@ class AplikasiTapTimbanganController extends Controller
     }
 
     public function process(Request $request){
-        Rit::insert(['rfid' => $request->rfid]);
+        $data = Rit::generateDataFromPdeApi($request->rfid);
+
+        Rit::where('spta', $data['spta'])->update([
+            'rfid' => $request->rfid,
+            'barcode_antrian' => $data['barcode_antrian'],
+            'register' => $data['register'],
+            'nopol' => $data['nopol'],
+            'petani' => $data['nama_petani'],
+        ]);
 
         $rit_id = Rit::where('rfid', $request->rfid)->get()->last()->id;
 

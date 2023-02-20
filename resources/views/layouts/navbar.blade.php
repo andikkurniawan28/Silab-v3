@@ -59,6 +59,12 @@
             </a>
             @endif
 
+            @if(Auth()->user()->role_id <= 4)
+            <a class="dropdown-item" href="{{ route('dirts.index') }}">
+                <i class="fas fa-trash fa-sm fa-fw mr-2 text-gray-400"></i> Kotoran
+            </a>
+            @endif
+
             @if(Auth()->user()->role_id <= 7)
             <a class="dropdown-item" href="{{ route('materials.index') }}">
                 <i class="fas fa-box fa-sm fa-fw mr-2 text-gray-400"></i> Material

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Dirt;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Kspot;
@@ -1042,6 +1043,16 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Back Wash Tank 2'],
         ];
 
+        $dirts = [
+            ['name' => ucfirst('pucuk')],
+            ['name' => ucfirst('sogolan')],
+            ['name' => ucfirst('daduk')],
+            ['name' => ucfirst('akar')],
+            ['name' => ucfirst('tali pucuk')],
+            ['name' => ucfirst('tebu muda')],
+            ['name' => ucfirst('lelesan')],
+        ];
+
         Role::insert($roles);
         User::insert($users);
         Station::insert($stations);
@@ -1052,6 +1063,7 @@ class DatabaseSeeder extends Seeder
         Chemical::insert($chemicals);
         Kspot::insert($kspots);
         Tspot::insert($tspots);
+        Dirt::insert($dirts);
 
     }
 }

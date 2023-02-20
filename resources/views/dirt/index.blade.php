@@ -11,7 +11,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h5 class="m-0 font-weight-bold text-primary">{{ ucfirst('penerimaan') }}</h5>
+            <h5 class="m-0 font-weight-bold text-primary">{{ ucfirst('kotoran') }}</h5>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -20,34 +20,22 @@
                         <tr>
                             <td>ID</td>
                             <td>Timestamp</td>
-                            <td>Kategori</td>
-                            <td>E-SPTA</td>
-                            <td>RFID</td>
-                            <td>Antrian</td>
-                            <td>Register</td>
-                            <td>Nopol</td>
-                            <td>Petani</td>
+                            <td>Nama</td>
                             <td>Action</td>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($rits as $rit)
+                        @foreach ($dirts as $dirt)
                         <tr>
-                            <td>{{ $rit->id }}</td>
-                            <td>{{ $rit->created_at }}</td>
-                            <td>{{ $rit->category }}</td>
-                            <td>{{ $rit->spta }}</td>
-                            <td>{{ $rit->rfid }}</td>
-                            <td>{{ $rit->barcode_antrian }}</td>
-                            <td>{{ $rit->register }}</td>
-                            <td>{{ $rit->nopol }}</td>
-                            <td>{{ $rit->petani }}</td>
+                            <td>{{ $dirt->id }}</td>
+                            <td>{{ $dirt->created_at }}</td>
+                            <td>{{ $dirt->name }}</td>
                             <td>
-                                <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#edit{{ $rit->id }}">
+                                <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#edit{{ $dirt->id }}">
                                     @include('components.icon', ['icon' => 'edit '])
                                     Edit
                                 </button>
-                                <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#delete{{ $rit->id }}">
+                                <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#delete{{ $dirt->id }}">
                                     @include('components.icon', ['icon' => 'trash '])
                                     Hapus
                                 </button>
@@ -59,30 +47,30 @@
             </div>
         </div>
         <div class="card-footer">
-            {{-- <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#create">
+            <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#create">
                 @include('components.icon', ['icon' => 'plus '])
                 Tambah
-            </button> --}}
+            </button>
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="create" tabindex="-1" rit="dialog" aria-labelledby="createLabel" aria-hidden="true">
-    <div class="modal-dialog" rit="document">
+<div class="modal fade" id="create" tabindex="-1" dirt="dialog" aria-labelledby="createLabel" aria-hidden="true">
+    <div class="modal-dialog" dirt="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createLabel">Tambah {{ ucfirst('penerimaan') }}</h5>
+                <h5 class="modal-title" id="createLabel">Tambah {{ ucfirst('kotoran') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
 
-                <form method="POST" action="{{ route('rits.store') }}" class="text-dark">
+                <form method="POST" action="{{ route('dirts.store') }}" class="text-dark">
                 @csrf
                 @method('POST')
 
                 @include('components.input',[
-                    'label' => 'RFID',
-                    'name' => 'rfid',
+                    'label' => 'Nama',
+                    'name' => 'name',
                     'type' => 'text',
                     'value' => '',
                     'modifier' => 'required',
@@ -99,25 +87,25 @@
     </div>
 </div>
 
-@foreach($rits as $rit)
-<div class="modal fade" id="edit{{ $rit->id }}" tabindex="-1" rit="dialog" aria-labelledby="edit{{ $rit->id }}Label" aria-hidden="true">
-    <div class="modal-dialog" rit="document">
+@foreach($dirts as $dirt)
+<div class="modal fade" id="edit{{ $dirt->id }}" tabindex="-1" dirt="dialog" aria-labelledby="edit{{ $dirt->id }}Label" aria-hidden="true">
+    <div class="modal-dialog" dirt="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="edit{{ $rit->id }}Label">Edit {{ ucfirst('penerimaan') }}</h5>
+                <h5 class="modal-title" id="edit{{ $dirt->id }}Label">Edit {{ ucfirst('kotoran') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
 
-                <form method="POST" action="{{ route('rits.update', $rit->id) }}" class="text-dark">
+                <form method="POST" action="{{ route('dirts.update', $dirt->id) }}" class="text-dark">
                 @csrf
                 @method('PUT')
 
                 @include('components.input',[
-                    'label' => 'RFID',
-                    'name' => 'rfid',
+                    'label' => 'Nama',
+                    'name' => 'name',
                     'type' => 'text',
-                    'value' => $rit->rfid,
+                    'value' => $dirt->name,
                     'modifier' => 'required',
                 ])
 
@@ -133,28 +121,28 @@
 </div>
 @endforeach
 
-@foreach($rits as $rit)
-<div class="modal fade" id="delete{{ $rit->id }}" tabindex="-1" rit="dialog" aria-labelledby="delete{{ $rit->id }}Label" aria-hidden="true">
-    <div class="modal-dialog" rit="document">
+@foreach($dirts as $dirt)
+<div class="modal fade" id="delete{{ $dirt->id }}" tabindex="-1" dirt="dialog" aria-labelledby="delete{{ $dirt->id }}Label" aria-hidden="true">
+    <div class="modal-dialog" dirt="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="delete{{ $rit->id }}Label">Hapus {{ ucfirst('penerimaan') }}</h5>
+                <h5 class="modal-title" id="delete{{ $dirt->id }}Label">Hapus {{ ucfirst('kotoran') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-            <form method="POST" action="{{ route('rits.destroy', $rit->id) }}" class="text-dark">
+            <form method="POST" action="{{ route('dirts.destroy', $dirt->id) }}" class="text-dark">
                 @csrf
                 @method('DELETE')
                 <p>Apakah Anda yakin ?</p>
 
                 @include('components.input',[
-                    'label' => 'RFID',
-                    'name' => 'rfid',
+                    'label' => 'Nama',
+                    'name' => 'name',
                     'type' => 'text',
-                    'value' => $rit->rfid,
+                    'value' => $dirt->name,
                     'modifier' => 'readonly',
                 ])
-                <input type="hidden" name="rit_id" value="{{ $rit->rit_id }}">
+                <input type="hidden" name="dirt_id" value="{{ $dirt->dirt_id }}">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>

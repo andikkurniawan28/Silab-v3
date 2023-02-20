@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AriController;
 use App\Http\Controllers\RitController;
+use App\Http\Controllers\DirtController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KspotController;
@@ -78,6 +79,7 @@ Route::resource('posbrixes', PosbrixController::class)->middleware(['auth', 'ope
 Route::resource('aris', AriController::class)->middleware(['auth', 'operator_qc']);
 Route::resource('ari_samplings', AriSamplingController::class)->middleware(['auth', 'operator_qc']);
 Route::resource('scores', ScoreController::class)->middleware(['auth', 'operator_qc']);
+Route::resource('dirts', DirtController::class)->middleware(['auth', 'kasubsie']);
 Route::get('station_result/{station_id}', StationResultController::class)->name('station_result')->middleware(['auth']);
 Route::get('sample_result/{material_id}', SampleResultController::class)->name('sample_result')->middleware(['auth']);
 Route::get('report', [ ReportController::class, 'index' ])->name('report')->middleware(['auth', 'mandor']);
