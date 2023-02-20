@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ari;
 use App\Models\Rit;
+use App\Models\Factor;
 use App\Models\Station;
 use App\Models\AriSampling;
 use Illuminate\Http\Request;
@@ -40,9 +41,20 @@ class AriController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'ari_sampling_id' => 'required|unique:aris',
+            'pbrix' => 'required',
+            'ppol' => 'required',
+            'pol' => 'required',
+            'user_id' => 'required',
+        ]);
         $category = AriSampling::whereId($request->ari_sampling_id)->get()->last()->category;
+        $ppol = self::correctPol($request);
+        $request->request->add(['ppol' => $ppol]);
+        $yield = self::findYield($request);
         $request->request->add([
             'category' => $category,
+            'yield' => $yield,
         ]);
         Ari::create($request->all());
         return redirect()->back()->with('success', 'Data berhasil disimpan');
@@ -79,13 +91,22 @@ class AriController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'pbrix' => 'required',
+            'ppol' => 'required',
+            'pol' => 'required',
+        ]);
         $category = AriSampling::whereId($request->ari_sampling_id)->get()->last()->category;
+        $ppol = self::correctPol($request);
+        $request->request->add(['ppol' => $ppol]);
+        $yield = self::findYield($request);
         $request->request->add([
             'category' => $category,
+            'yield' => $yield,
         ]);
         Ari::whereId($id)->update([
             'ari_sampling_id' => $request->ari_sampling_id,
-            'category' => $category,
+            'category' => $request->category,
             'pbrix' => $request->pbrix,
             'ppol' => $request->ppol,
             'pol' => $request->pol,
@@ -104,5 +125,16 @@ class AriController extends Controller
     {
         Ari::whereId($id)->delete();
         return redirect()->back()->with('success', 'Data berhasil dihapus');
+    }
+
+    public function correctPol($request){
+        $faktor = Factor::where('name', 'Saccharomat')->get()->last()->value;
+        return $request->ppol + ($faktor * $request->pbrix);
+    }
+
+    public function findYield($request){
+        $faktor_rendemen = Factor::where('name', 'Rendemen')->get()->last()->value;
+        $faktor_mellase = Factor::where('name', 'Mollases')->get()->last()->value;
+        return $faktor_rendemen * ($request->ppol - $faktor_mellase * ($request->pbrix - $request->ppol));
     }
 }

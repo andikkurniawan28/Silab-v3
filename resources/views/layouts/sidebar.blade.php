@@ -41,11 +41,11 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-edit"></i>
-            <span>Input Data</span>
+            <span>Data Off Farm</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Menu Off Farm :</h6>
+                <h6 class="collapse-header">Menu :</h6>
                 @if(Auth()->user()->role_id < 9)
                 <a class="collapse-item" href="{{ route('cetak_barcode') }}">Cetak Barcode</a>
                 <a class="collapse-item" href="{{ route('analyses.index') }}">Analisa</a>
@@ -61,15 +61,25 @@
                 <a class="collapse-item" href="{{ route('cetak_ronsel') }}">Cetak Ronsel</a>
                 <a class="collapse-item" href="{{ route('tactivities.index') }}">Taksasi</a>
                 <a class="collapse-item" href="{{ route('imbibitions.index') }}">Imbibisi</a>
+            </div>
+        </div>
+    </li>
+    @endif
 
-                @if(Auth()->user()->role_id < 9)
-                <h6 class="collapse-header">Menu On Farm :</h6>
+    @if(Auth()->user()->role_id < 9)
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities1" aria-expanded="true" aria-controls="collapseUtilities1">
+            <i class="fas fa-fw fa-edit"></i>
+            <span>Data On Farm</span>
+        </a>
+        <div id="collapseUtilities1" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Menu :</h6>
                 <a class="collapse-item" href="{{ route('rits.index') }}">Penerimaan</a>
                 <a class="collapse-item" href="{{ route('posbrixes.index') }}">Pos Brix</a>
                 <a class="collapse-item" href="{{ route('ari_samplings.index') }}">Sampling ARI</a>
                 <a class="collapse-item" href="{{ route('aris.index') }}">Analisa Rendemen</a>
                 <a class="collapse-item" href="{{ route('scores.index') }}">Penilaian MBS</a>
-                @endif
             </div>
         </div>
     </li>
@@ -90,7 +100,7 @@
     </li>
     @endif
 
-    @if(Auth()->user()->role_id <= 6)
+    @if(Auth()->user()->role_id <= 7)
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
             <i class="fas fa-fw fa-mobile"></i>
@@ -105,9 +115,6 @@
                 <a class="collapse-item" href="{{ route('tap_timbangan_eb') }}" target="_blank">Tap Timbangan EB/GD</a>
                 <a class="collapse-item" href="{{ route('tap_sample_ari') }}" target="_blank">Tap Sampel ARI EK</a>
                 <a class="collapse-item" href="{{ route('tap_sample_ari_eb') }}" target="_blank">Tap Sampel ARI EB/GD</a>
-                {{-- <a class="collapse-item" href="{{ route('rit') }}" target="_blank">Penerimaan</a>
-                <a class="collapse-item" href="{{ route('posbrix') }}" target="_blank">Pos Brix</a>
-                <a class="collapse-item" href="{{ route('score') }}" target="_blank">Penilaian MBS</a> --}}
             </div>
         </div>
     </li>

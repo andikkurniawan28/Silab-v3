@@ -20,8 +20,9 @@
                         <tr>
                             <td>ID</td>
                             <td>Timestamp</td>
-                            <td>RFID</td>
+                            <td>Kategori</td>
                             <td>E-SPTA</td>
+                            <td>RFID</td>
                             <td>Antrian</td>
                             <td>Register</td>
                             <td>Action</td>
@@ -32,8 +33,9 @@
                         <tr>
                             <td>{{ $rit->id }}</td>
                             <td>{{ $rit->created_at }}</td>
-                            <td>{{ $rit->rfid }}</td>
+                            <td>{{ $rit->category }}</td>
                             <td>{{ $rit->spta }}</td>
+                            <td>{{ $rit->rfid }}</td>
                             <td>{{ $rit->barcode_antrian }}</td>
                             <td>{{ $rit->register }}</td>
                             <td>

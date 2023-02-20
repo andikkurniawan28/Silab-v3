@@ -23,7 +23,8 @@
 
         <div class="row">
             <div class="col col-md-12 text-dark">
-                <h3>Report</h3><hr>
+                <br>
+                <h3>REPORT</h3><hr>
                     <h6>Analisa Laboratorium</h6>
                     <table width="100%" class="table table-dark table-striped table-sm table-bordered table-hover text-xs">
                         <thead>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rit;
 use App\Models\Posbrix;
 use Illuminate\Http\Request;
 
@@ -16,11 +17,16 @@ class AplikasiPosBrixEkController extends Controller
     public function __invoke(Request $request)
     {
         $request->validate([
-            'spta' => 'required|unique:posbrixes'
+            'spta' => 'required|unique:posbrixes|unique:rits'
         ]);
+
         Posbrix::create($request->all());
-        $spta = $request->spta;
-        $category = $request->category;
-        return redirect()->route('posbrix', array('spta' => $spta, 'category' => $category));
+
+        Rit::insert([
+            'spta' => $request->spta,
+            'category' => $request->category,
+        ]);
+
+        return redirect()->route('posbrix', array('spta' => $request->spta, 'category' => $request->category));
     }
 }

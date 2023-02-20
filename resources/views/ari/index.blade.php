@@ -9,6 +9,17 @@
         @include('components.alert', ['message'=>$message, 'color'=>'success'])
     @endif
 
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <p>Error :</p>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+    </div>
+    @endif
+
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h5 class="m-0 font-weight-bold text-primary">{{ ucfirst('analisa Rendemen') }}</h5>
@@ -79,7 +90,7 @@
                 @method('POST')
 
                 @include('components.input',[
-                    'label' => 'Sample ID',
+                    'label' => 'Sample',
                     'name' => 'ari_sampling_id',
                     'type' => 'number',
                     'value' => '',
@@ -105,14 +116,6 @@
                 @include('components.input',[
                     'label' => 'Pol',
                     'name' => 'pol',
-                    'type' => 'number',
-                    'value' => '',
-                    'modifier' => 'required',
-                ])
-
-                @include('components.input',[
-                    'label' => 'Rend',
-                    'name' => 'yield',
                     'type' => 'number',
                     'value' => '',
                     'modifier' => 'required',
@@ -146,7 +149,7 @@
                 @method('PUT')
 
                 @include('components.input',[
-                    'label' => 'Sample ID',
+                    'label' => 'Sample',
                     'name' => 'ari_sampling_id',
                     'type' => 'text',
                     'value' => $ari->ari_sampling_id,
@@ -174,14 +177,6 @@
                     'name' => 'pol',
                     'type' => 'number',
                     'value' => $ari->pol,
-                    'modifier' => 'required',
-                ])
-
-                @include('components.input',[
-                    'label' => 'Rend',
-                    'name' => 'yield',
-                    'type' => 'number',
-                    'value' => $ari->yield,
                     'modifier' => 'required',
                 ])
 
