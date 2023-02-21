@@ -19,9 +19,9 @@ class Rit extends Model
         return $this->hasMany(Ari::class);
     }
 
-    public function score(){
-        return $this->hasMany(Score::class);
-    }
+    // public function score(){
+    //     return $this->hasMany(Score::class);
+    // }
 
     public static function getInfoFromBarcodeAntrian($barcode){
         $url = 'http://192.168.20.45:8111/getregisterinfo/';

@@ -10,4 +10,8 @@ class Dirt extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function scoring_value(){
+        return $this->hasMany(ScoringValue::class);
+    }
 }

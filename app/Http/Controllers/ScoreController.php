@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rit;
+use App\Models\Dirt;
 use App\Models\Score;
 use App\Models\Station;
+use App\Models\ScoringValue;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ScoreController extends Controller
 {
@@ -18,9 +21,11 @@ class ScoreController extends Controller
     {
         $stations = Station::all();
         $scores = Score::all();
-        $score_rit_id = Score::select('rit_id')->get();
-        $rits = Rit::whereNotIn('id', $score_rit_id)->get();
-        return view('score.index', compact('scores', 'rits', 'stations'));
+        $dirts = Dirt::all();
+        // $score_rit_id = Score::select('rit_id')->get();
+        // $rits = Rit::whereNotIn('id', $score_rit_id)->get();
+        return view('score.index', compact('scores', 'stations', 'dirts'));
+        // return view('score.index', compact('scores', 'rits', 'stations', 'dirts'));
     }
 
     /**
@@ -41,7 +46,24 @@ class ScoreController extends Controller
      */
     public function store(Request $request)
     {
-        Score::create($request->all());
+        $name = self::getImage($request);
+        $score = 'D';
+        Score::insert([
+            // 'rit_id' => $request->rit_id,
+            'user_id' => $request->user_id,
+            'cane_table' => $request->cane_table,
+            'value' => $score,
+            'image1' => $name['img1'],
+            'image2' => $name['img2'],
+        ]);
+        $score_id = Score::where('cane_table', $request->cane_table)->get()->last()->id;
+        foreach(Dirt::all() as $dirt){
+            ScoringValue::insert([
+                'score_id' => $score_id,
+                'dirt_id' => $dirt->id,
+                'value' => $request->{$dirt->id},
+            ]);
+        }
         return redirect()->back()->with('success', 'Data berhasil disimpan');
     }
 
@@ -92,5 +114,57 @@ class ScoreController extends Controller
     {
         Score::whereId($id)->delete();
         return redirect()->back()->with('success', 'Data berhasil dihapus');
+    }
+
+    public function getImage($request)
+    {
+        if(Score::count() == 0){
+            $score_id = 0;
+        }
+        else {
+            $score_id = (Score::get()->last()->id) + 1;
+        }
+
+        switch($request->cane_table){
+            case 1 :
+                $url = "http://admin:qc_12345@192.168.40.30/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+                $url2 = "http://admin:qc_12345@192.168.40.32/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+            break;
+            case 2 :
+                $url = "http://admin:qc_12345@192.168.40.30/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+                $url2 = "http://admin:qc_12345@192.168.40.32/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+            break;
+            case 3 :
+                $url = "http://admin:qc_12345@192.168.40.30/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+                $url2 = "http://admin:qc_12345@192.168.40.32/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+            break;
+            case 4 :
+                $url = "http://admin:qc_12345@192.168.40.30/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+                $url2 = "http://admin:qc_12345@192.168.40.32/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+            break;
+            case 5 :
+                $url = "http://admin:qc_12345@192.168.40.30/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+                $url2 = "http://admin:qc_12345@192.168.40.32/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+            break;
+        }
+
+        // Save Image 1
+        header("Content-type: image/jpeg");
+        $image = file_get_contents($url);
+
+        // Save Image 2
+        header("Content-type: image/jpeg");
+        $image2 = file_get_contents($url2);
+
+        $img1 = 'skmt/'.$score_id.'-1.jpg';
+        $img2 = 'skmt/'.$score_id.'-2.jpg';
+
+        file_put_contents($img1, $image);
+        file_put_contents($img2, $image2);
+
+        $data['img1'] = $img1;
+        $data['img2'] = $img2;
+
+        return $data;
     }
 }

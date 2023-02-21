@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateScoresTable extends Migration
+class CreateScoringValuesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateScoresTable extends Migration
      */
     public function up()
     {
-        Schema::create('scores', function (Blueprint $table) {
+        Schema::create('scoring_values', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('rit_id')->constrained()->unique();
-            $table->foreignId('user_id')->constrained();
-            $table->integer('cane_table');
-            $table->string('value');
-            $table->string('image1');
-            $table->string('image2');
+            $table->foreignId('score_id')->constrained();
+            $table->foreignId('dirt_id')->constrained();
+            $table->float('value');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
@@ -33,6 +30,6 @@ class CreateScoresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('scores');
+        Schema::dropIfExists('scoring_values');
     }
 }

@@ -20,8 +20,8 @@
                         <tr>
                             <td>ID</td>
                             <td>Timestamp</td>
-                            <td>Nopol</td>
-                            <td>Barcode</td>
+                            {{-- <td>Nopol</td>
+                            <td>Barcode</td> --}}
                             <td>Score</td>
                             <td>User</td>
                             <td>Action</td>
@@ -32,8 +32,8 @@
                         <tr>
                             <td>{{ $score->id }}</td>
                             <td>{{ $score->created_at }}</td>
-                            <td>{{ $score->rit->nopol }}</td>
-                            <td>{{ $score->rit->barcode_antrian }}</td>
+                            {{-- <td>{{ $score->rit->nopol }}</td>
+                            <td>{{ $score->rit->barcode_antrian }}</td> --}}
                             <td>{{ $score->value }}</td>
                             <td>{{ $score->user->name }}</td>
                             <td>
@@ -53,30 +53,33 @@
             </div>
         </div>
         <div class="card-footer">
-            <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#create">
+            @for($i=1; $i<=5; $i++)
+            <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#create{{ $i }}">
                 @include('components.icon', ['icon' => 'plus '])
-                Tambah
+                Meja Tebu {{ $i }}
             </button>
+            @endfor
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="create" tabindex="-1" score="dialog" aria-labelledby="createLabel" aria-hidden="true">
+@for($i=1; $i<=5; $i++)
+<div class="modal fade" id="create{{ $i }}" tabindex="-1" score="dialog" aria-labelledby="createLabel" aria-hidden="true">
     <div class="modal-dialog" score="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createLabel">Tambah {{ ucfirst('penilaian MBS') }}</h5>
+                <h5 class="modal-title" id="createLabel">{{ ucfirst('penilaian MBS') }} Meja {{ $i }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
 
-                <form method="POST" action="{{ route('scores.store') }}" class="text-dark">
+                <form method="POST" action="{{ route('scores.store') }}" class="text-dark" enctype="multipart/form-data">
                 @csrf
                 @method('POST')
 
-                <div class="form-group row">
-                    <label for="rit_id" class="col-sm-2 col-form-label">Nopol</label>
-                    <div class="col-sm-10">
+                {{-- <div class="form-group row">
+                    <label for="rit_id" class="col-sm-6 col-form-label">Nopol</label>
+                    <div class="col-sm-6">
                         <select class="form-control" name="rit_id">
                             @foreach ($rits as $rit)
                                 <option value="{{ $rit->id }}">
@@ -85,16 +88,19 @@
                             @endforeach
                         </select>
                     </div>
-                </div>
+                </div> --}}
 
-                @include('components.input',[
-                    'label' => 'Score',
-                    'name' => 'value',
-                    'type' => 'text',
-                    'value' => '',
-                    'modifier' => 'required',
-                ])
+                @foreach($dirts as $dirt)
+                    @include('components.input3',[
+                        'label' => $dirt->name,
+                        'name' => $dirt->id,
+                        'type' => 'number',
+                        'value' => '',
+                        'modifier' => '',
+                    ])
+                @endforeach
 
+                <input type="hidden" name="cane_table" value="{{ $i }}">
                 <input type="hidden" name="user_id" value="{{ Auth()->user()->id }}">
 
             </div>
@@ -107,6 +113,7 @@
         </div>
     </div>
 </div>
+@endfor
 
 @foreach($scores as $score)
 <div class="modal fade" id="edit{{ $score->id }}" tabindex="-1" score="dialog" aria-labelledby="edit{{ $score->id }}Label" aria-hidden="true">
@@ -122,13 +129,13 @@
                 @csrf
                 @method('PUT')
 
-                @include('components.input',[
+                {{-- @include('components.input',[
                     'label' => 'Antrian',
                     'name' => 'rit_id',
                     'type' => 'text',
                     'value' => $score->rit->barcode_antrian,
                     'modifier' => 'readonly',
-                ])
+                ]) --}}
 
                 @include('components.input',[
                     'label' => 'Score',

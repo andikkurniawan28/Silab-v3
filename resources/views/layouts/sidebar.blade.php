@@ -80,6 +80,7 @@
                 <a class="collapse-item" href="{{ route('ari_samplings.index') }}">Sampling ARI</a>
                 <a class="collapse-item" href="{{ route('aris.index') }}">Analisa Rendemen</a>
                 <a class="collapse-item" href="{{ route('scores.index') }}">Penilaian MBS</a>
+                <a class="collapse-item" href="{{ route('scoring_values.index') }}">Penilaian Kotoran</a>
             </div>
         </div>
     </li>
