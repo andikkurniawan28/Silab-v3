@@ -63,6 +63,9 @@
             <a class="dropdown-item" href="{{ route('dirts.index') }}">
                 <i class="fas fa-trash fa-sm fa-fw mr-2 text-gray-400"></i> Kotoran
             </a>
+            <a class="dropdown-item" href="{{ route('certificates.index') }}">
+                <i class="fas fa-file fa-sm fa-fw mr-2 text-gray-400"></i> Sertifikat
+            </a>
             @endif
 
             @if(Auth()->user()->role_id <= 7)
@@ -71,6 +74,9 @@
             </a>
             <a class="dropdown-item" href="{{ route('methods.index') }}">
                 <i class="fas fa-flask fa-sm fa-fw mr-2 text-gray-400"></i> Method
+            </a>
+            <a class="dropdown-item" href="{{ route('certificate_contents.index') }}">
+                <i class="fas fa-box fa-sm fa-fw mr-2 text-gray-400"></i> Isi Sertifikat
             </a>
             @endif
 

@@ -15,7 +15,9 @@ use App\Models\Analysis;
 use App\Models\Chemical;
 use App\Models\Material;
 use App\Models\Indicator;
+use App\Models\Certificate;
 use Illuminate\Database\Seeder;
+use App\Models\CertificateContent;
 
 class DatabaseSeeder extends Seeder
 {
@@ -1053,9 +1055,22 @@ class DatabaseSeeder extends Seeder
             ['name' => ucfirst('lelesan')],
         ];
 
-        for($i=1; $i<=1000; $i++){
-            $samples[$i] = ['material_id' => 1, 'user_id' => 1];
-        }
+        // for($i=1; $i<=1000; $i++){
+        //     $samples[$i] = ['material_id' => 1, 'user_id' => 1];
+        // }
+
+        $certificates = [
+            ['name' => 'Tetes'],
+            ['name' => 'Gula'],
+        ];
+
+        $certificate_contents = [
+            ['certificate_id' => '1', 'material_id' => 77],
+            ['certificate_id' => '1', 'material_id' => 78],
+            ['certificate_id' => '1', 'material_id' => 79],
+            ['certificate_id' => '1', 'material_id' => 80],
+            ['certificate_id' => '1', 'material_id' => 81],
+        ];
 
         Role::insert($roles);
         User::insert($users);
@@ -1068,7 +1083,9 @@ class DatabaseSeeder extends Seeder
         Kspot::insert($kspots);
         Tspot::insert($tspots);
         Dirt::insert($dirts);
-        Sample::insert($samples);
+        // Sample::insert($samples);
+        Certificate::insert($certificates);
+        CertificateContent::insert($certificate_contents);
 
     }
 }

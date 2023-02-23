@@ -34,6 +34,7 @@ use App\Http\Controllers\MonitoringController;
 use App\Http\Controllers\AnalisaHplcController;
 use App\Http\Controllers\AnalisaUmumController;
 use App\Http\Controllers\AriSamplingController;
+use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\CetakRonselController;
 use App\Http\Controllers\PosbrixRfidController;
 use App\Http\Controllers\SaccharomatController;
@@ -50,6 +51,7 @@ use App\Http\Controllers\ScanRfidPosbrixEbControlle;
 use App\Http\Controllers\AplikasiPosBrixEbController;
 use App\Http\Controllers\AplikasiPosBrixEkController;
 use App\Http\Controllers\AplikasiPenerimaanController;
+use App\Http\Controllers\CertificateContentController;
 use App\Http\Controllers\MonitoringSaveDateController;
 use App\Http\Controllers\AplikasiTapSampleAriController;
 use App\Http\Controllers\AplikasiTapTimbanganController;
@@ -139,3 +141,7 @@ Route::post('tap_sample_ari_eb_process', [AplikasiTapSampleAriEbController::clas
 
 // Aplikasi SKMT
 Route::get('skmt/{id}', SkmtController::class)->name('skmt')->middleware(['auth', 'operator_qc']);
+
+// Certificate
+Route::resource('certificates', CertificateController::class)->middleware(['auth', 'kasubsie']);
+Route::resource('certificate_contents', CertificateContentController::class)->middleware(['auth', 'pic']);

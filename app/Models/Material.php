@@ -27,4 +27,8 @@ class Material extends Model
     {
         return $this->hasMany(Sample::class);
     }
+
+    public function certificate_content(){
+        return $this->hasMany(CertificateContent::class);
+    }
 }
