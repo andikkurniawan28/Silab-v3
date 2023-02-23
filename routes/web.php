@@ -5,6 +5,7 @@ use App\Http\Controllers\AriController;
 use App\Http\Controllers\RitController;
 use App\Http\Controllers\DirtController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SkmtController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KspotController;
 use App\Http\Controllers\LoginController;
@@ -135,3 +136,6 @@ Route::get('tap_sample_ari', [AplikasiTapSampleAriController::class, 'index'])->
 Route::get('tap_sample_ari_eb', [AplikasiTapSampleAriEbController::class, 'index'])->name('tap_sample_ari_eb')->middleware(['auth', 'operator_qc']);
 Route::post('tap_sample_ari_process', [AplikasiTapSampleAriController::class, 'process'])->name('tap_sample_ari_process')->middleware(['auth', 'operator_qc']);
 Route::post('tap_sample_ari_eb_process', [AplikasiTapSampleAriEbController::class, 'process'])->name('tap_sample_ari_eb_process')->middleware(['auth', 'operator_qc']);
+
+// Aplikasi SKMT
+Route::get('skmt/{id}', SkmtController::class)->name('skmt')->middleware(['auth', 'operator_qc']);

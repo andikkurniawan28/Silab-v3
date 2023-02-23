@@ -22,6 +22,7 @@
                             <td>Timestamp</td>
                             {{-- <td>Nopol</td>
                             <td>Barcode</td> --}}
+                            <td>Kotoran</td>
                             <td>Score</td>
                             <td>User</td>
                             <td>Action</td>
@@ -34,6 +35,15 @@
                             <td>{{ $score->created_at }}</td>
                             {{-- <td>{{ $score->rit->nopol }}</td>
                             <td>{{ $score->rit->barcode_antrian }}</td> --}}
+                            <td>
+                                <ul>
+                                @forelse($score->scoring_value as $scoring_value)
+                                    <li>{{ $scoring_value->dirt->name }} : {{ $scoring_value->value }}</li>
+                                @empty
+
+                                @endforelse
+                                </ul>
+                            </td>
                             <td>{{ $score->value }}</td>
                             <td>{{ $score->user->name }}</td>
                             <td>
@@ -45,6 +55,10 @@
                                     @include('components.icon', ['icon' => 'trash '])
                                     Hapus
                                 </button>
+                                <a href="{{ route('skmt', $score->id) }}" class="btn btn-outline-info btn-sm">
+                                    @include('components.icon', ['icon' => 'file '])
+                                    SKMT
+                                </a>
                             </td>
                         </tr>
                         @endforeach
