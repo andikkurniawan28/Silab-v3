@@ -19,7 +19,7 @@ class KactivityController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $kactivities = Kactivity::all();
+        $kactivities = Kactivity::latest()->paginate(env('TABLE_LIMIT'));
         $kspots = Kspot::all();
         return view('kactivity.index', compact('stations', 'kactivities', 'kspots'));
     }

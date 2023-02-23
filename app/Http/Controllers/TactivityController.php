@@ -19,7 +19,7 @@ class TactivityController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $tactivities = Tactivity::all();
+        $tactivities = Tactivity::latest()->paginate(env('TABLE_LIMIT'));
         $tspots = Tspot::all();
         return view('tactivity.index', compact('stations', 'tactivities', 'tspots'));
     }

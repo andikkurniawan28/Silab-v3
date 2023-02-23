@@ -17,7 +17,7 @@ class PosbrixController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $posbrixes = Posbrix::all();
+        $posbrixes = Posbrix::latest()->paginate(env('TABLE_LIMIT'));
         return view('posbrix.index', compact('posbrixes', 'stations'));
     }
 

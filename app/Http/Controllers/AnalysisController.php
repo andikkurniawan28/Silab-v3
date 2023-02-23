@@ -20,7 +20,7 @@ class AnalysisController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $analyses = Analysis::latest()->paginate(10000);
+        $analyses = Analysis::latest()->paginate(env('TABLE_LIMIT'));
         $indicators = Indicator::all();
         return view('analysis.index', compact('stations', 'analyses', 'indicators'));
     }

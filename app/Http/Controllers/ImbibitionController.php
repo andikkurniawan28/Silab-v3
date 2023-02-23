@@ -17,7 +17,7 @@ class ImbibitionController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $imbibitions = Imbibition::all();
+        $imbibitions = Imbibition::latest()->paginate(env('TABLE_LIMIT'));
         return view('imbibition.index', compact('stations', 'imbibitions'));
     }
 

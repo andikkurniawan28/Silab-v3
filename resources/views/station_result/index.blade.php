@@ -32,7 +32,7 @@
                                     <td>{{ $method->indicator->name }}</td>
                                 @endforeach
                             </tr>
-                            @foreach($material->sample as $sample)
+                            @foreach($material->sample()->orderBy('id', 'desc')->get() as $sample)
                             <tr>
                                 <td>{{ $sample->id }}</td>
                                 <td>{{ date('H:i', strtotime($sample->created_at)) }}</td>

@@ -17,7 +17,7 @@ class RitController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $rits = Rit::all();
+        $rits = Rit::latest()->paginate(env('TABLE_LIMIT'));
         return view('rit.index', compact('rits', 'stations'));
     }
 

@@ -19,7 +19,7 @@ class AriController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $aris = Ari::all();
+        $aris = Ari::latest()->paginate(env('TABLE_LIMIT'));
         return view('ari.index', compact('aris', 'stations'));
     }
 

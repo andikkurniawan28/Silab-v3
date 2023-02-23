@@ -18,7 +18,7 @@ class SampleController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $samples = Sample::latest()->paginate(10000);
+        $samples = Sample::latest()->paginate(env('TABLE_LIMIT'));
         $materials = Material::all();
         return view('sample.index', compact('stations', 'samples', 'materials'));
     }

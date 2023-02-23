@@ -17,7 +17,7 @@ class BalanceController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $balances = Balance::all();
+        $balances = Balance::latest()->paginate(env('TABLE_LIMIT'));
         return view('balance.index', compact('stations', 'balances'));
     }
 

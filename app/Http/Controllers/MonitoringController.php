@@ -37,6 +37,7 @@ class MonitoringController extends Controller
                     $materialx->sample = Sample::where('material_id', $materialx->id)
                         ->where('created_at', '>=', $min_time)
                         ->where('created_at', '<', $max_time)
+                        ->orderBy('id', 'desc')
                         ->get();
                     $materialx->method = Method::where('material_id', $materialx->id)->get();
                 }
@@ -44,30 +45,37 @@ class MonitoringController extends Controller
 
             $kactivities = Kactivity::where('created_at', '>=', $min_time)
                 ->where('created_at', '<', $max_time)
+                ->orderBy('id', 'desc')
                 ->get();
 
             $chemicalcheckings = Chemicalchecking::where('created_at', '>=', $min_time)
                 ->where('created_at', '<', $max_time)
+                ->orderBy('id', 'desc')
                 ->get();
 
             $balances = Balance::where('created_at', '>=', $min_time)
                 ->where('created_at', '<', $max_time)
+                ->orderBy('id', 'desc')
                 ->get();
 
             $imbibitions = Imbibition::where('created_at', '>=', $min_time)
                 ->where('created_at', '<', $max_time)
+                ->orderBy('id', 'desc')
                 ->get();
 
             $posbrixes = Posbrix::where('created_at', '>=', $min_time)
                 ->where('created_at', '<', $max_time)
+                ->orderBy('id', 'desc')
                 ->get();
 
             $aris = Ari::where('created_at', '>=', $min_time)
                 ->where('created_at', '<', $max_time)
+                ->orderBy('id', 'desc')
                 ->get();
 
             $scores = Score::where('created_at', '>=', $min_time)
                 ->where('created_at', '<', $max_time)
+                ->orderBy('id', 'desc')
                 ->get();
 
             return view('monitoring.index', compact(

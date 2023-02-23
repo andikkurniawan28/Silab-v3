@@ -16,7 +16,7 @@ class AnalisaUmumController extends Controller
     {
         $stations = Station::all();
         $materials = Method::whereIn('indicator_id', [9,10,11])->select('material_id');
-        $samples = Sample::whereIn('material_id', $materials)->orderBy('id', 'desc')->limit(1000)->get();
+        $samples = Sample::whereIn('material_id', $materials)->orderBy('id', 'desc')->limit(env('TABLE_LIMIT'))->get();
         $indicators = Indicator::whereIn('id', [9,10,11])->get();
         return view('analisa_umum.index', compact('stations', 'samples', 'indicators'));
     }

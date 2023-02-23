@@ -19,7 +19,7 @@ class ChemicalcheckingController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $chemicalcheckings = Chemicalchecking::all();
+        $chemicalcheckings = Chemicalchecking::latest()->paginate(env('TABLE_LIMIT'));
         $chemicals = Chemical::all();
         return view('chemicalchecking.index', compact('stations', 'chemicalcheckings', 'chemicals'));
     }

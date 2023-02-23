@@ -16,7 +16,7 @@ class AnalisaHplcController extends Controller
     {
         $stations = Station::all();
         $materials = Method::whereIn('indicator_id', [18,19,20])->select('material_id');
-        $samples = Sample::whereIn('material_id', $materials)->orderBy('id', 'desc')->limit(1000)->get();
+        $samples = Sample::whereIn('material_id', $materials)->orderBy('id', 'desc')->limit(env('TABLE_LIMIT'))->get();
         $indicators = Indicator::whereIn('id', [18,19,20])->get();
         return view('analisa_hplc.index', compact('stations', 'samples', 'indicators'));
     }

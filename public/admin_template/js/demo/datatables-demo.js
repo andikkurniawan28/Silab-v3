@@ -12,7 +12,7 @@
 
 $(document).ready(function() {
   $('#dataTable').DataTable( {
-      "paging": false,
+    //   "paging": false,
       "displayLength":10,
       dom: 'Bfrtip',
       buttons: [

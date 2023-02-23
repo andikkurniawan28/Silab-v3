@@ -16,7 +16,7 @@ class AriSamplingController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $ari_samplings = AriSampling::all();
+        $ari_samplings = AriSampling::latest()->paginate(env('TABLE_LIMIT'));
         return view('ari_sampling.index', compact('stations', 'ari_samplings'));
     }
 

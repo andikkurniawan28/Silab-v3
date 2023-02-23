@@ -17,7 +17,7 @@ class ScoringValueController extends Controller
      */
     public function index()
     {
-        $scoring_values = ScoringValue::all();
+        $scoring_values = ScoringValue::latest()->paginate(env('TABLE_LIMIT'));
         $stations = Station::all();
         $dirts = Dirt::all();
         $scores = Score::all();

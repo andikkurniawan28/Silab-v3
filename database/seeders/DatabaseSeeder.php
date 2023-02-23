@@ -1053,6 +1053,10 @@ class DatabaseSeeder extends Seeder
             ['name' => ucfirst('lelesan')],
         ];
 
+        for($i=1; $i<=1000; $i++){
+            $samples[$i] = ['material_id' => 1, 'user_id' => 1];
+        }
+
         Role::insert($roles);
         User::insert($users);
         Station::insert($stations);
@@ -1064,6 +1068,7 @@ class DatabaseSeeder extends Seeder
         Kspot::insert($kspots);
         Tspot::insert($tspots);
         Dirt::insert($dirts);
+        Sample::insert($samples);
 
     }
 }

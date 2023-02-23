@@ -17,7 +17,7 @@ class AnalisaKetelController extends Controller
     {
         $stations = Station::all();
         $materials = Material::where('station_id', 10)->select('id');
-        $samples = Sample::whereIn('material_id', $materials)->orderBy('id', 'desc')->limit(1000)->get();
+        $samples = Sample::whereIn('material_id', $materials)->orderBy('id', 'desc')->limit(env('TABLE_LIMIT'))->get();
         $indicators = Indicator::whereIn('id', [10,12,13,14])->get();
         return view('analisa_ketel.index', compact('stations', 'samples', 'indicators'));
     }

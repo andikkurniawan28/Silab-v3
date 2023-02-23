@@ -8,6 +8,7 @@ use App\Models\Score;
 use App\Models\Station;
 use App\Models\ScoringValue;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class ScoreController extends Controller
@@ -20,7 +21,7 @@ class ScoreController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $scores = Score::all();
+        $scores = Score::latest()->paginate(env('TABLE_LIMIT'));
         $dirts = Dirt::all();
         // $score_rit_id = Score::select('rit_id')->get();
         // $rits = Rit::whereNotIn('id', $score_rit_id)->get();
@@ -112,6 +113,10 @@ class ScoreController extends Controller
      */
     public function destroy($id)
     {
+        $image1 = Score::whereId($id)->get()->last()->image1;
+        $image2 = Score::whereId($id)->get()->last()->image2;
+        File::delete(public_path($image1));
+        File::delete(public_path($image2));
         Score::whereId($id)->delete();
         return redirect()->back()->with('success', 'Data berhasil dihapus');
     }

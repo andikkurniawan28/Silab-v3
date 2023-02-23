@@ -72,8 +72,26 @@
                                 <td>{{ $score->farmer }}</td>
                             </tr> --}}
                             <tr>
+                                <th bgcolor='#00FFFF'>Timestamp</th>
+                                <td>{{ $score->created_at }}</td>
+                            </tr>
+                            <tr>
+                                <th bgcolor='#00FFFF'>Meja Tebu</th>
+                                <td>{{ $score->cane_table }}</td>
+                            </tr>
+                            <tr>
+                                <th bgcolor='#00FFFF'>Kotoran</th>
+                                <td>
+                                    <ul>
+                                        @foreach($score->scoring_value as $scoring_value)
+                                            <li>{{ $scoring_value->dirt->name }} : {{ $scoring_value->value }}</li>
+                                        @endforeach
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
                                 <th bgcolor='#00FFFF'>Score</th>
-                                <td>{{ $score->value }}</td>
+                                <td><strong>{{ $score->value }}</strong></td>
                             </tr>
                         </table>
 
@@ -114,7 +132,7 @@
                                     @break
                             @endswitch
                              persyaratan Manis Bersih Segar (MBS), sesuai hasil kesepakatan rapat Forum Temu Mitra antara perwakilan petani, pengurus KUD, Koperasi dan APTRI serta Instansi terkait dengan PG. Kebon
-                            Agung saat menjelang pelaksanaan giling tahun 2021.
+                            Agung saat menjelang pelaksanaan giling tahun {{ date('Y') }}.
                         </h6>
 
                         <br>
