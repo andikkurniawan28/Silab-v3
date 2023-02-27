@@ -59,15 +59,15 @@
                 <a class="collapse-item" href="{{ route('chemicalcheckings.index') }}">Pengunaan BPP</a>
                 @endif
 
-                @if(Auth()->user()->role_id <= 5)
+                <a class="collapse-item" href="{{ route('cetak_ronsel') }}">Cetak Ronsel</a>
+                <a class="collapse-item" href="{{ route('tactivities.index') }}">Taksasi</a>
+                <a class="collapse-item" href="{{ route('imbibitions.index') }}">Imbibisi</a>
+
+                @if(Auth()->user()->role_id < 6)
                 <a class="collapse-item" href="{{ route('mollases.index') }}">Timbangan Tetes</a>
                 <a class="collapse-item" href="{{ route('rawsugarinputs.index') }}">Timbangan RS In</a>
                 <a class="collapse-item" href="{{ route('rawsugaroutputs.index') }}">Timbangan RS Out</a>
                 @endif
-
-                <a class="collapse-item" href="{{ route('cetak_ronsel') }}">Cetak Ronsel</a>
-                <a class="collapse-item" href="{{ route('tactivities.index') }}">Taksasi</a>
-                <a class="collapse-item" href="{{ route('imbibitions.index') }}">Imbibisi</a>
             </div>
         </div>
     </li>

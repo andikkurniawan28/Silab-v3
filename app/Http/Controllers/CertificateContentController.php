@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Station;
+use App\Models\Material;
+use App\Models\Certificate;
 use Illuminate\Http\Request;
 use App\Models\CertificateContent;
 
@@ -16,8 +18,10 @@ class CertificateContentController extends Controller
     public function index()
     {
         $stations = Station::all();
+        $certificates = Certificate::all();
+        $materials = Material::all();
         $certificate_contents = CertificateContent::all();
-        return view('certificate_content.index', compact('stations', 'certificate_contents'));
+        return view('certificate_content.index', compact('stations', 'certificate_contents', 'certificates', 'materials'));
     }
 
     /**
@@ -38,7 +42,8 @@ class CertificateContentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        CertificateContent::create($request->all());
+        return redirect()->back()->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -70,9 +75,13 @@ class CertificateContentController extends Controller
      * @param  \App\Models\CertificateContent  $certificateContent
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CertificateContent $certificateContent)
+    public function update(Request $request, $id)
     {
-        //
+        CertificateContent::whereId($id)->update([
+            'certificate_id' => $request->certificate_id,
+            'material_id' => $request->material_id,
+        ]);
+        return redirect()->back()->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -81,8 +90,9 @@ class CertificateContentController extends Controller
      * @param  \App\Models\CertificateContent  $certificateContent
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CertificateContent $certificateContent)
+    public function destroy($id)
     {
-        //
+        CertificateContent::whereId($id)->delete();
+        return redirect()->back()->with('success', 'Data berhasil dihapus');
     }
 }

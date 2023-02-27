@@ -70,13 +70,31 @@
                 @csrf
                 @method('POST')
 
-                @include('components.input',[
-                    'label' => 'Nama',
-                    'name' => 'name',
-                    'type' => 'text',
-                    'value' => '',
-                    'modifier' => 'required',
-                ])
+                <div class="form-group row">
+                    <label for="certificate_id" class="col-sm-3 col-form-label">Sertifikat</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" name="certificate_id">
+                            @foreach ($certificates as $certificate)
+                                <option value="{{ $certificate->id }}">
+                                    {{ $certificate->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="material_id" class="col-sm-3 col-form-label">Material</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" name="material_id">
+                            @foreach ($materials as $material)
+                                <option value="{{ $material->id }}">
+                                    {{ $material->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
 
             </div>
             <div class="modal-footer">
@@ -103,13 +121,39 @@
                 @csrf
                 @method('PUT')
 
-                @include('components.input',[
-                    'label' => 'Nama',
-                    'name' => 'name',
-                    'type' => 'text',
-                    'value' => $certificate_content->name,
-                    'modifier' => 'required',
-                ])
+                <div class="form-group row">
+                    <label for="certificate_id" class="col-sm-3 col-form-label">Sertifikat</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" name="certificate_id">
+                            @foreach ($certificates as $certificate)
+                                <option value="{{ $certificate->id }}"
+                                @if($certificate_content->certificate_id == $certificate->id)
+                                {{ 'selected' }}
+                                @endif
+                                >
+                                    {{ $certificate->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="material_id" class="col-sm-3 col-form-label">Material</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" name="material_id">
+                            @foreach ($materials as $material)
+                                <option value="{{ $material->id }}"
+                                @if($certificate_content->material_id == $material->id)
+                                {{ 'selected' }}
+                                @endif
+                                >
+                                    {{ $material->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
 
             </div>
             <div class="modal-footer">

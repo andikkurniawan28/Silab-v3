@@ -38,7 +38,8 @@ class CertificateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Certificate::create($request->all());
+        return redirect()->back()->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -70,9 +71,12 @@ class CertificateController extends Controller
      * @param  \App\Models\Certificate  $certificate
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Certificate $certificate)
+    public function update(Request $request, $id)
     {
-        //
+        Certificate::whereId($id)->update([
+            'name' => $request->name,
+        ]);
+        return redirect()->back()->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -83,6 +87,7 @@ class CertificateController extends Controller
      */
     public function destroy(Certificate $certificate)
     {
-        //
+        Certificate::whereId($id)->delete();
+        return redirect()->back()->with('success', 'Data berhasil dihapus');
     }
 }
