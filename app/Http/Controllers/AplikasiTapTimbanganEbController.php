@@ -15,14 +15,24 @@ class AplikasiTapTimbanganEbController extends Controller
     public function process(Request $request){
         Rit::insert(['rfid' => $request->rfid]);
 
-        $rit_id = Rit::where('rfid', $request->rfid)->get()->last()->id;
+        // Rit::where('spta', $data['spta'])->update([
+        //     'rfid' => $request->rfid,
+        //     'barcode_antrian' => $data['barcode_antrian'],
+        //     'register' => $data['register'],
+        //     'nopol' => $data['nopol'],
+        //     'petani' => $data['nama_petani'],
+        // ]);
 
-        AriSampling::insert([
-            'rit_id' => $rit_id,
-            'user_id' => Auth()->user()->id,
-            'category' => 'EB|GD',
-        ]);
+        // $rit_id = Rit::where('rfid', $request->rfid)->get()->last()->id;
 
-        return view('aplikasi.tap_sukses2');
+        // AriSampling::insert([
+        //     'rit_id' => $rit_id,
+        //     'user_id' => Auth()->user()->id,
+        //     'category' => 'EB|GD',
+        // ]);
+
+        // return view('aplikasi.tap_sukses2');
+
+        return $data;
     }
 }

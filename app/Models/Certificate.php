@@ -14,4 +14,8 @@ class Certificate extends Model
     public function certificate_content(){
         return $this->hasMany(CertificateContent::class);
     }
+
+    public function coa(){
+        return $this->hasMany(Coa::class);
+    }
 }

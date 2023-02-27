@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AriController;
+use App\Http\Controllers\CoaController;
 use App\Http\Controllers\RitController;
 use App\Http\Controllers\DirtController;
 use App\Http\Controllers\HomeController;
@@ -148,6 +149,7 @@ Route::get('skmt/{id}', SkmtController::class)->name('skmt')->middleware(['auth'
 // Certificate
 Route::resource('certificates', CertificateController::class)->middleware(['auth', 'kasubsie']);
 Route::resource('certificate_contents', CertificateContentController::class)->middleware(['auth', 'pic']);
+Route::resource('coas', CoaController::class)->middleware(['auth', 'pic']);
 
 // Timbangan
 Route::resource('mollases', MollaseController::class)->middleware(['auth', 'koordinator']);

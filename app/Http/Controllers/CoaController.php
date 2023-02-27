@@ -3,7 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Coa;
+use App\Models\Sample;
+use App\Models\Station;
+use App\Models\Analysis;
+use App\Models\Material;
+use App\Models\Certificate;
 use Illuminate\Http\Request;
+use App\Models\CertificateContent;
 
 class CoaController extends Controller
 {
@@ -14,7 +20,10 @@ class CoaController extends Controller
      */
     public function index()
     {
-        //
+        $stations = Station::all();
+        $certificates = Certificate::all();
+        $coas = Coa::all();
+        return view('coa.index', compact('stations', 'certificates', 'coas'));
     }
 
     /**
@@ -35,7 +44,8 @@ class CoaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Coa::create($request->all());
+        return redirect()->back()->with('success', 'Cerficate berhasil digenerate');
     }
 
     /**
@@ -44,9 +54,24 @@ class CoaController extends Controller
      * @param  \App\Models\Coa  $coa
      * @return \Illuminate\Http\Response
      */
-    public function show(Coa $coa)
+    public function show($id)
     {
-        //
+        $coa = Coa::whereId($id)->get()->last();
+
+        $datetime = date('Y-m-d 5:00', strtotime($coa->created_at));
+
+        $material_id = CertificateContent::where('certificate_id', $coa->certificate_id)->get('material_id');
+
+        foreach($material_id as $material_id){
+            $data[$material_id->material_id] = Sample::where('material_id', $material_id->material_id)
+                ->where('created_at', '>=', $datetime)
+                ->where('created_at', '<', date('Y-m-d H:i', strtotime($datetime . "+24 hours")))
+                ->get();
+        }
+
+        // return $data;
+        return view('coa.show', compact('coa', 'data'));
+
     }
 
     /**
@@ -67,9 +92,9 @@ class CoaController extends Controller
      * @param  \App\Models\Coa  $coa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Coa $coa)
+    public function update(Request $request, $id)
     {
-        //
+        return redirect()->back()->with('success', 'Cerficate berhasil digenerate');
     }
 
     /**
@@ -78,8 +103,8 @@ class CoaController extends Controller
      * @param  \App\Models\Coa  $coa
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Coa $coa)
+    public function destroy($id)
     {
-        //
+        return redirect()->back()->with('success', 'Cerficate berhasil dihapus');
     }
 }

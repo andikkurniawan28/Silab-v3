@@ -15,7 +15,9 @@ class CreateCoasTable extends Migration
     {
         Schema::create('coas', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('certificate_id')->constrained();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 
