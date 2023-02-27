@@ -19,6 +19,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SampleController;
 use App\Http\Controllers\TvalueController;
 use App\Http\Controllers\BalanceController;
+use App\Http\Controllers\MollaseController;
 use App\Http\Controllers\PosbrixController;
 use App\Http\Controllers\StationController;
 use App\Http\Controllers\ActivityController;
@@ -43,8 +44,10 @@ use App\Http\Controllers\AnalisaKetelController;
 use App\Http\Controllers\CetakBarcodeController;
 use App\Http\Controllers\SampleResultController;
 use App\Http\Controllers\ScoringValueController;
+use App\Http\Controllers\RawsugarinputController;
 use App\Http\Controllers\StationResultController;
 use App\Http\Controllers\AnalisaPosBrixController;
+use App\Http\Controllers\RawsugaroutputController;
 use App\Http\Controllers\ScanRfidPosbrixController;
 use App\Http\Controllers\ChemicalcheckingController;
 use App\Http\Controllers\ScanRfidPosbrixEbControlle;
@@ -145,3 +148,9 @@ Route::get('skmt/{id}', SkmtController::class)->name('skmt')->middleware(['auth'
 // Certificate
 Route::resource('certificates', CertificateController::class)->middleware(['auth', 'kasubsie']);
 Route::resource('certificate_contents', CertificateContentController::class)->middleware(['auth', 'pic']);
+
+// Timbangan
+Route::resource('mollases', MollaseController::class)->middleware(['auth', 'koordinator']);
+Route::resource('rawsugarinputs', RawsugarinputController::class)->middleware(['auth', 'koordinator']);
+Route::resource('rawsugaroutputs', RawsugaroutputController::class)->middleware(['auth', 'koordinator']);
+
