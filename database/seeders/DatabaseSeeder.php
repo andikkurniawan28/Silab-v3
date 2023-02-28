@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Kud;
 use App\Models\Dirt;
 use App\Models\Role;
 use App\Models\User;
@@ -11,10 +12,12 @@ use App\Models\Factor;
 use App\Models\Method;
 use App\Models\Sample;
 use App\Models\Station;
+use App\Models\Wilayah;
 use App\Models\Analysis;
 use App\Models\Chemical;
 use App\Models\Material;
 use App\Models\Indicator;
+use App\Models\Pospantau;
 use App\Models\Certificate;
 use Illuminate\Database\Seeder;
 use App\Models\CertificateContent;
@@ -1072,6 +1075,89 @@ class DatabaseSeeder extends Seeder
             ['certificate_id' => '1', 'material_id' => 81],
         ];
 
+        $kuds = [
+             [ 'code' => '1', 'name' => 'Gondanglegi' ],
+            [ 'code' => '2', 'name' => 'Pagelaran' ],
+            [ 'code' => '3', 'name' => 'Dampit' ],
+            [ 'code' => '4', 'name' => 'Bantur' ],
+            [ 'code' => '5', 'name' => 'Donomulyo' ],
+            [ 'code' => 'A', 'name' => 'Lawang' ],
+            [ 'code' => 'B', 'name' => 'Dengkol' ],
+            [ 'code' => 'C', 'name' => 'Karangploso' ],
+            [ 'code' => 'D', 'name' => 'Jabung' ],
+            [ 'code' => 'E', 'name' => 'Pakis' ],
+            [ 'code' => 'F', 'name' => 'Tumpang Agung' ],
+            [ 'code' => 'G', 'name' => 'Poncokusumo' ],
+            [ 'code' => 'H', 'name' => 'Wagir' ],
+            [ 'code' => 'I', 'name' => 'Tajinan' ],
+            [ 'code' => 'J', 'name' => 'Bululawang' ],
+            [ 'code' => 'K', 'name' => 'Pakisaji' ],
+            [ 'code' => 'L', 'name' => 'Kromengan' ],
+            [ 'code' => 'M', 'name' => 'Wonosari' ],
+            [ 'code' => 'N', 'name' => 'Sumberpucung' ],
+            [ 'code' => 'O', 'name' => 'Ngajum' ],
+            [ 'code' => 'P', 'name' => 'Pagak' ],
+            [ 'code' => 'Q', 'name' => 'Kalipare' ],
+            [ 'code' => 'R', 'name' => 'Sri Sedono' ],
+            [ 'code' => 'S', 'name' => 'Rekanan Utara' ],
+            [ 'code' => 'T', 'name' => 'Kesamben' ],
+            [ 'code' => 'U', 'name' => 'Kedungkandang' ],
+            [ 'code' => 'V', 'name' => 'Kepanjen' ],
+            [ 'code' => 'W', 'name' => 'Sari Madu' ],
+            [ 'code' => 'X', 'name' => 'Rekanan Selatan Timur' ],
+            [ 'code' => 'Y', 'name' => 'Rekanan Selatan Barat' ],
+            [ 'code' => 'Z', 'name' => 'Tumpang Padita' ],
+        ];
+
+        $pospantaus = [
+            [ 'code' => 'O', 'name' => 'Banyuglugur' ],
+            [ 'code' => 'P', 'name' => 'Tongas' ],
+            [ 'code' => 'Q', 'name' => 'Turen' ],
+            [ 'code' => 'R', 'name' => 'Purwosari' ],
+            [ 'code' => 'S', 'name' => 'Ngoro' ],
+            [ 'code' => 'T', 'name' => 'Brongkos' ],
+            [ 'code' => 'U', 'name' => 'Talun' ],
+            [ 'code' => 'V', 'name' => 'Gumitir' ],
+            [ 'code' => 'W', 'name' => 'Gedok' ],
+            [ 'code' => 'X', 'name' => 'Peteng' ],
+            [ 'code' => 'Y', 'name' => 'Pagak' ],
+            [ 'code' => 'Z', 'name' => 'Pronojiwo' ],
+            [ 'code' => '1', 'name' => 'Kromengan' ],
+            [ 'code' => '2', 'name' => 'Jatikerto' ],
+            [ 'code' => '4', 'name' => 'Pagelaran' ],
+            [ 'code' => '5', 'name' => 'Singosari' ],
+            [ 'code' => '6', 'name' => 'Ngajum' ],
+            [ 'code' => '7', 'name' => 'Gondanglegi' ],
+            [ 'code' => '8', 'name' => 'Donomulyo' ],
+            [ 'code' => '9', 'name' => 'Pakis' ],
+        ];
+
+        $wilayahs = [
+            [ 'code' => 'A', 'name' => 'Banyuwangi' ],
+            [ 'code' => 'B', 'name' => 'Jember' ],
+            [ 'code' => 'C', 'name' => 'Situbondo' ],
+            [ 'code' => 'D', 'name' => 'Bondowoso' ],
+            [ 'code' => 'E', 'name' => 'Probolinggo' ],
+            [ 'code' => 'F', 'name' => 'Lumajang' ],
+            [ 'code' => 'G', 'name' => 'Pasuruan' ],
+            [ 'code' => 'H', 'name' => 'Mojokerto' ],
+            [ 'code' => 'I', 'name' => 'Jombang' ],
+            [ 'code' => 'J', 'name' => 'Blitar' ],
+            [ 'code' => 'K', 'name' => 'Kredit DW TR' ],
+            [ 'code' => 'L', 'name' => 'Kediri' ],
+            [ 'code' => 'M', 'name' => 'Tulungagung' ],
+            [ 'code' => 'N', 'name' => 'Non Kredit DW' ],
+            [ 'code' => 'P', 'name' => 'Kebun Benih Datar' ],
+            [ 'code' => 'Q', 'name' => 'Kebun Benih Induk' ],
+            [ 'code' => 'R', 'name' => 'Kebun Benih Nenek' ],
+            [ 'code' => 'S', 'name' => 'Kebun Benih Pokok' ],
+            [ 'code' => 'T', 'name' => 'Kebun Persilangan P3GI' ],
+            [ 'code' => 'U', 'name' => 'Kebun Percobaan' ],
+            [ 'code' => 'V', 'name' => 'Kebun Pengenalan Jenis' ],
+            [ 'code' => 'X', 'name' => 'Tebu Giling TS' ],
+            [ 'code' => 'Z', 'name' => 'SPT' ],
+        ];
+
         Role::insert($roles);
         User::insert($users);
         Station::insert($stations);
@@ -1086,6 +1172,9 @@ class DatabaseSeeder extends Seeder
         // Sample::insert($samples);
         Certificate::insert($certificates);
         CertificateContent::insert($certificate_contents);
+        Kud::insert($kuds);
+        Pospantau::insert($pospantaus);
+        Wilayah::insert($wilayahs);
 
     }
 }

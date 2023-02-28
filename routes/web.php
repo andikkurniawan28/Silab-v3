@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AriController;
 use App\Http\Controllers\CoaController;
+use App\Http\Controllers\KudController;
 use App\Http\Controllers\RitController;
 use App\Http\Controllers\DirtController;
 use App\Http\Controllers\HomeController;
@@ -23,6 +24,7 @@ use App\Http\Controllers\BalanceController;
 use App\Http\Controllers\MollaseController;
 use App\Http\Controllers\PosbrixController;
 use App\Http\Controllers\StationController;
+use App\Http\Controllers\WilayahController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AnalysisController;
 use App\Http\Controllers\ChemicalController;
@@ -30,6 +32,7 @@ use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\AnalisaPenilaianMbs;
 use App\Http\Controllers\IndicatorController;
 use App\Http\Controllers\KactivityController;
+use App\Http\Controllers\PospantauController;
 use App\Http\Controllers\TactivityController;
 use App\Http\Controllers\ImbibitionController;
 use App\Http\Controllers\MonitoringController;
@@ -155,4 +158,9 @@ Route::resource('coas', CoaController::class)->middleware(['auth', 'pic']);
 Route::resource('mollases', MollaseController::class)->middleware(['auth', 'koordinator']);
 Route::resource('rawsugarinputs', RawsugarinputController::class)->middleware(['auth', 'koordinator']);
 Route::resource('rawsugaroutputs', RawsugaroutputController::class)->middleware(['auth', 'koordinator']);
+
+// Wilayah
+Route::resource('kuds', KudController::class)->middleware(['auth', 'kasubsie']);
+Route::resource('pospantaus', PospantauController::class)->middleware(['auth', 'kasubsie']);
+Route::resource('wilayahs', WilayahController::class)->middleware(['auth', 'kasubsie']);
 

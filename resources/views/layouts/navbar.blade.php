@@ -66,6 +66,15 @@
             <a class="dropdown-item" href="{{ route('certificates.index') }}">
                 <i class="fas fa-file fa-sm fa-fw mr-2 text-gray-400"></i> Sertifikat
             </a>
+            <a class="dropdown-item" href="{{ route('kuds.index') }}">
+                <i class="fas fa-shop fa-sm fa-fw mr-2 text-gray-400"></i> KUD
+            </a>
+            <a class="dropdown-item" href="{{ route('pospantaus.index') }}">
+                <i class="fas fa-shop fa-sm fa-fw mr-2 text-gray-400"></i> Pos Pantau
+            </a>
+            <a class="dropdown-item" href="{{ route('wilayahs.index') }}">
+                <i class="fas fa-shop fa-sm fa-fw mr-2 text-gray-400"></i> Wilayah
+            </a>
             @endif
 
             @if(Auth()->user()->role_id <= 7)

@@ -23,6 +23,18 @@ class Rit extends Model
     //     return $this->hasMany(Score::class);
     // }
 
+    public function kud(){
+        return $this->belongsTo(Kud::class);
+    }
+
+    public function pospantau(){
+        return $this->belongsTo(Pospantau::class);
+    }
+
+    public function wilayah(){
+        return $this->belongsTo(Wilayah::class);
+    }
+
     public static function getInfoFromBarcodeAntrian($barcode){
         $url = 'http://192.168.20.45:8111/getregisterinfo/';
         $request_url = $url.$barcode;
