@@ -13,26 +13,40 @@ class AplikasiTapTimbanganEbController extends Controller
     }
 
     public function process(Request $request){
-        Rit::insert(['rfid' => $request->rfid]);
 
-        // Rit::where('spta', $data['spta'])->update([
-        //     'rfid' => $request->rfid,
-        //     'barcode_antrian' => $data['barcode_antrian'],
-        //     'register' => $data['register'],
-        //     'nopol' => $data['nopol'],
-        //     'petani' => $data['nama_petani'],
-        // ]);
+        $data = Rit::generateDataFromPdeApi($request->rfid);
 
-        // $rit_id = Rit::where('rfid', $request->rfid)->get()->last()->id;
+        if(Rit::where('spta', $data['spta'])->count() == 1){
 
-        // AriSampling::insert([
-        //     'rit_id' => $rit_id,
-        //     'user_id' => Auth()->user()->id,
-        //     'category' => 'EB|GD',
-        // ]);
+            Rit::where('spta', $data['spta'])->update([
+                'rfid' => $request->rfid,
+                'barcode_antrian' => $data['barcode_antrian'],
+                'register' => $data['register'],
+                'nopol' => $data['nopol'],
+                'petani' => $data['nama_petani'],
+                'kud_id' => $data['kud'],
+                'pospantau_id' => $data['pospantau'],
+                'wilayah_id' => $data['wilayah'],
+            ]);
 
-        // return view('aplikasi.tap_sukses2');
+            $rit_id = Rit::where('rfid', $request->rfid)->get()->last()->id;
 
-        return $data;
+            if(AriSampling::where('rit_id', $rit_id)->count() == 0){
+                AriSampling::insert([
+                    'rit_id' => $rit_id,
+                    'user_id' => Auth()->user()->id,
+                    'category' => 'EB|GD',
+                ]);
+            }
+            else {
+                return redirect()->back()->with('error', 'Gagal simpan');
+            }
+
+            return view('aplikasi.tap_sukses2');
+        }
+        else
+        {
+            return redirect()->back()->with('error', 'Gagal simpan');
+        }
     }
 }

@@ -15,7 +15,11 @@ class CreateAnalysisAveragesTable extends Migration
     {
         Schema::create('analysis_averages', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('material_id')->constrained();
+            $table->foreignId('indicator_id')->constrained();
+            $table->float('value');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

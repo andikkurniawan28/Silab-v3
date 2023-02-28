@@ -31,4 +31,8 @@ class Material extends Model
     public function certificate_content(){
         return $this->hasMany(CertificateContent::class);
     }
+
+    public function analysis_average(){
+        return $this->hasMany(AnalysisAverage::class);
+    }
 }

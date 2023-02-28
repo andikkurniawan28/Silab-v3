@@ -20,4 +20,8 @@ class Indicator extends Model
     {
         return $this->hasMany(Analysis::class);
     }
+
+    public function analysis_average(){
+        return $this->hasMany(AnalysisAverage::class);
+    }
 }

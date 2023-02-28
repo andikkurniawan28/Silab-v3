@@ -13,26 +13,40 @@ class AplikasiTapTimbanganController extends Controller
     }
 
     public function process(Request $request){
+
         $data = Rit::generateDataFromPdeApi($request->rfid);
 
-        // Rit::where('spta', $data['spta'])->update([
-        //     'rfid' => $request->rfid,
-        //     'barcode_antrian' => $data['barcode_antrian'],
-        //     'register' => $data['register'],
-        //     'nopol' => $data['nopol'],
-        //     'petani' => $data['nama_petani'],
-        // ]);
+        if(Rit::where('spta', $data['spta'])->count() == 1){
 
-        // $rit_id = Rit::where('rfid', $request->rfid)->get()->last()->id;
+            Rit::where('spta', $data['spta'])->update([
+                'rfid' => $request->rfid,
+                'barcode_antrian' => $data['barcode_antrian'],
+                'register' => $data['register'],
+                'nopol' => $data['nopol'],
+                'petani' => $data['nama_petani'],
+                'kud_id' => $data['kud'],
+                'pospantau_id' => $data['pospantau'],
+                'wilayah_id' => $data['wilayah'],
+            ]);
 
-        // AriSampling::insert([
-        //     'rit_id' => $rit_id,
-        //     'user_id' => Auth()->user()->id,
-        //     'category' => 'EK',
-        // ]);
+            $rit_id = Rit::where('rfid', $request->rfid)->get()->last()->id;
 
-        // return view('aplikasi.tap_sukses');
+            if(AriSampling::where('rit_id', $rit_id)->count() == 0){
+                AriSampling::insert([
+                    'rit_id' => $rit_id,
+                    'user_id' => Auth()->user()->id,
+                    'category' => 'EK',
+                ]);
+            }
+            else {
+                return redirect()->back()->with('error', 'Gagal simpan');
+            }
 
-        return $data;
+            return view('aplikasi.tap_sukses');
+        }
+        else
+        {
+            return redirect()->back()->with('error', 'Gagal simpan');
+        }
     }
 }

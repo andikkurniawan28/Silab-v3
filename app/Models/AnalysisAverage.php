@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class AnalysisAverage extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+
+    public function material(){
+        return $this->belongsTo(Material::class);
+    }
+
+    public function indicator(){
+        return $this->belongsTo(Indicator::class);
+    }
 }

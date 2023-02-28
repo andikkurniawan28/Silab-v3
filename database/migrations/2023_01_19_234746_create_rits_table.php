@@ -15,9 +15,6 @@ class CreateRitsTable extends Migration
     {
         Schema::create('rits', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('kud_id')->constrained()->nullable();
-            $table->foreignId('pospantau_id')->constrained()->nullable();
-            $table->foreignId('wilayah_id')->constrained()->nullable();
             $table->string('category');
             $table->string('spta')->unique();
             $table->string('rfid')->nullable();
@@ -25,6 +22,9 @@ class CreateRitsTable extends Migration
             $table->string('register')->nullable();
             $table->string('nopol')->nullable();
             $table->string('petani')->nullable();
+            $table->foreignId('kud_id')->nullable()->constrained();
+            $table->foreignId('pospantau_id')->nullable()->constrained();
+            $table->foreignId('wilayah_id')->nullable()->constrained();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
