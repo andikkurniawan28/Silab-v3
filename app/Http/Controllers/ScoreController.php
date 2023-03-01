@@ -50,7 +50,7 @@ class ScoreController extends Controller
             'rit_id' => 'required|unique:scores',
         ]);
         $name = self::getImage($request);
-        $score = 'D';
+        $score = self::generateScore($request);
         Score::insert([
             'rit_id' => $request->rit_id,
             'user_id' => $request->user_id,
@@ -173,5 +173,9 @@ class ScoreController extends Controller
         $data['img2'] = $img2;
 
         return $data;
+    }
+
+    public function generateScore($request){
+        return 'D';
     }
 }

@@ -31,6 +31,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item"><a class="nav-link" href="#20">Bahan Baku</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#24">Timbangan in Proses</a></li>
                         @foreach($stations as $station)
                             <li class="nav-item"><a class="nav-link" href="#{{ $station->id }}">{{ $station->name }}</a></li>
                         @endforeach
@@ -166,6 +167,92 @@
                         <br>
                     </div>
 
+                </div>
+            </div>
+        </section>
+
+        <section class="page-section bg-white" id="24">
+            <h2 class="text-dark text-center mt-0">Timbangan in Proses</h2><br><br>
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center text-left">
+                    <div class="col-lg-4 text-left text-xs">
+                        <div class="card bg-dark text-white shadow">
+                            <div class="card-header">
+                                <h5>Tetes</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table width="100%" class="table table-sm table-hovered text-light text-sm-left">
+                                        <thead>
+                                            <tr>
+                                                <th>Time</th>
+                                                <th>Netto<sub>(kg)</sub></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Harian</td>
+                                                <td>{{ number_format($timbangan['tetes']) }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    <div class="col-lg-4 text-left text-xs">
+                        <div class="card bg-dark text-white shadow">
+                            <div class="card-header">
+                                <h5>Raw Sugar In</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table width="100%" class="table table-sm table-hovered text-light text-sm-left">
+                                        <thead>
+                                            <tr>
+                                                <th>Time</th>
+                                                <th>Netto<sub>(kg)</sub></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Harian</td>
+                                                <td>{{ number_format($timbangan['rawsugarinput']) }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    <div class="col-lg-4 text-left text-xs">
+                        <div class="card bg-dark text-white shadow">
+                            <div class="card-header">
+                                <h5>Raw Sugar Out</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table width="100%" class="table table-sm table-hovered text-light text-sm-left">
+                                        <thead>
+                                            <tr>
+                                                <th>Time</th>
+                                                <th>Netto<sub>(kg)</sub></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Harian</td>
+                                                <td>{{ number_format($timbangan['rawsugaroutput']) }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
                 </div>
             </div>
         </section>

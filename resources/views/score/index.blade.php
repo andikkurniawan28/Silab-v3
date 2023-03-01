@@ -31,7 +31,7 @@
                         <tr>
                             <td>ID</td>
                             <td>Timestamp</td>
-                            <td>Nopol</td>
+                            {{-- <td>Nopol</td> --}}
                             <td>Barcode</td>
                             <td>Kotoran</td>
                             <td>Score</td>
@@ -44,7 +44,7 @@
                         <tr>
                             <td>{{ $score->id }}</td>
                             <td>{{ $score->created_at }}</td>
-                            <td>{{ $score->rit->nopol }}</td>
+                            {{-- <td>{{ $score->rit->nopol }}</td> --}}
                             <td>{{ $score->rit->barcode_antrian }}</td>
                             <td>
                                 <ul>

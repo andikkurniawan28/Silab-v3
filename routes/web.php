@@ -36,6 +36,7 @@ use App\Http\Controllers\PospantauController;
 use App\Http\Controllers\TactivityController;
 use App\Http\Controllers\ImbibitionController;
 use App\Http\Controllers\MonitoringController;
+use App\Http\Controllers\TestApiPdeController;
 use App\Http\Controllers\AnalisaHplcController;
 use App\Http\Controllers\AnalisaUmumController;
 use App\Http\Controllers\AriSamplingController;
@@ -163,4 +164,7 @@ Route::resource('rawsugaroutputs', RawsugaroutputController::class)->middleware(
 Route::resource('kuds', KudController::class)->middleware(['auth', 'kasubsie']);
 Route::resource('pospantaus', PospantauController::class)->middleware(['auth', 'kasubsie']);
 Route::resource('wilayahs', WilayahController::class)->middleware(['auth', 'kasubsie']);
+
+// TestApiPde
+Route::get('test_api_pde/{rfid}', TestApiPdeController::class)->name('test_api_pde');
 

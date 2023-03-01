@@ -7,13 +7,16 @@ use App\Models\Score;
 use App\Models\Method;
 use App\Models\Sample;
 use App\Models\Balance;
+use App\Models\Mollase;
 use App\Models\Posbrix;
 use App\Models\Station;
 use App\Models\Material;
 use App\Models\Kactivity;
 use App\Models\Imbibition;
-use App\Models\Chemicalchecking;
 use Illuminate\Http\Request;
+use App\Models\Rawsugarinput;
+use App\Models\Rawsugaroutput;
+use App\Models\Chemicalchecking;
 
 class MonitoringController extends Controller
 {
@@ -78,9 +81,21 @@ class MonitoringController extends Controller
                 ->orderBy('id', 'desc')
                 ->get();
 
+            $timbangan['tetes'] = Mollase::where('created_at', '>=', $min_time)
+                ->where('created_at', '<', $max_time)
+                ->sum('netto');
+
+            $timbangan['rawsugarinput'] = Rawsugarinput::where('created_at', '>=', $min_time)
+                ->where('created_at', '<', $max_time)
+                ->sum('netto');
+
+            $timbangan['rawsugaroutput'] = Rawsugaroutput::where('created_at', '>=', $min_time)
+                ->where('created_at', '<', $max_time)
+                ->sum('netto');
+
             return view('monitoring.index', compact(
                 'stations', 'material', 'kactivities', 'chemicalcheckings', 'balances', 'imbibitions',
-                'posbrixes', 'aris', 'scores')
+                'posbrixes', 'aris', 'scores', 'timbangan')
             );
         }
     }
