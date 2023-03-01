@@ -18,13 +18,13 @@ class Rit extends Model
         return $this->hasMany(Posbrix::class);
     }
 
-    public function ari(){
-        return $this->hasMany(Ari::class);
+    public function ari_sampling(){
+        return $this->hasMany(AriSampling::class);
     }
 
-    // public function score(){
-    //     return $this->hasMany(Score::class);
-    // }
+    public function score(){
+        return $this->hasMany(Score::class);
+    }
 
     public function kud(){
         return $this->belongsTo(Kud::class);

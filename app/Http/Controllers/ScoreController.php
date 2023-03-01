@@ -23,10 +23,9 @@ class ScoreController extends Controller
         $stations = Station::all();
         $scores = Score::latest()->paginate(env('TABLE_LIMIT'));
         $dirts = Dirt::all();
-        // $score_rit_id = Score::select('rit_id')->get();
-        // $rits = Rit::whereNotIn('id', $score_rit_id)->get();
-        return view('score.index', compact('scores', 'stations', 'dirts'));
-        // return view('score.index', compact('scores', 'rits', 'stations', 'dirts'));
+        $score_rit_id = Score::select('rit_id')->get();
+        $rits = Rit::whereNotIn('id', $score_rit_id)->get();
+        return view('score.index', compact('scores', 'rits', 'stations', 'dirts'));
     }
 
     /**
@@ -47,10 +46,13 @@ class ScoreController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'rit_id' => 'required|unique:scores',
+        ]);
         $name = self::getImage($request);
         $score = 'D';
         Score::insert([
-            // 'rit_id' => $request->rit_id,
+            'rit_id' => $request->rit_id,
             'user_id' => $request->user_id,
             'cane_table' => $request->cane_table,
             'value' => $score,

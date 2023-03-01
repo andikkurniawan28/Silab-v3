@@ -67,6 +67,30 @@
 
         <div class="row">
             <div class="col col-md-6 text-dark">
+                <h6>Timbangan in Proses</h6>
+                <table width="100%" class="table table-dark table-striped table-sm table-bordered table-hover text-xs">
+                    <thead>
+                    <tr>
+                        <th>Material</th>
+                        <th>Netto<sub>(Kg)</sub></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Tetes</td>
+                        <td>{{ number_format($timbangan['mollases']) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Rawsugar Input</td>
+                        <td>{{ number_format($timbangan['rawsugarinputs']) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Rawsugar Output</td>
+                        <td>{{ number_format($timbangan['rawsugaroutputs']) }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
                 <h6>Keliling Proses</h6>
                 <table width="100%" class="table table-dark table-striped table-sm table-bordered table-hover text-xs">
                     <thead>
@@ -86,6 +110,35 @@
                     @endforeach
                     </tbody>
                 </table>
+
+                <h6>Analisa Rendemen per Wilayah</h6>
+                <table width="100%" class="table table-dark table-striped table-sm table-bordered table-hover text-xs">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Wilayah</th>
+                            <th>Register</th>
+                            <th>Masuk<sub>(rit)</sub></th>
+                            <th>%Brix</th>
+                            <th>%Pol</th>
+                            <th>Rendemen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($wilayah as $wilayah)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $wilayah['name'] }}</td>
+                            <td>{{ $wilayah['register'] }}</td>
+                            <td>{{ $wilayah['rit'] }}</td>
+                            <td>{{ $wilayah['pbrix'] }}</td>
+                            <td>{{ $wilayah['ppol'] }}</td>
+                            <td>{{ $wilayah['yield'] }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                <br>
             </div>
 
             <div class="col col-md-6 text-dark">
@@ -198,6 +251,62 @@
                             <td>{{ $ari['eb']->avg('ppol') }}</td>
                             <td>{{ $ari['eb']->avg('yield') }}</td>
                         </tr>
+                    </tbody>
+                </table>
+
+                <h6>Analisa Rendemen per KUD</h6>
+                <table width="100%" class="table table-dark table-striped table-sm table-bordered table-hover text-xs">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>KUD</th>
+                            <th>Register</th>
+                            <th>Masuk<sub>(rit)</sub></th>
+                            <th>%Brix</th>
+                            <th>%Pol</th>
+                            <th>Rendemen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($kud as $kud)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $kud['name'] }}</td>
+                            <td>{{ $kud['register'] }}</td>
+                            <td>{{ $kud['rit'] }}</td>
+                            <td>{{ $kud['pbrix'] }}</td>
+                            <td>{{ $kud['ppol'] }}</td>
+                            <td>{{ $kud['yield'] }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+
+                <h6>Analisa Rendemen per Pos Pantau</h6>
+                <table width="100%" class="table table-dark table-striped table-sm table-bordered table-hover text-xs">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Pos Pantau</th>
+                            <th>Register</th>
+                            <th>Masuk<sub>(rit)</sub></th>
+                            <th>%Brix</th>
+                            <th>%Pol</th>
+                            <th>Rendemen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($pospantau as $pospantau)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $pospantau['name'] }}</td>
+                            <td>{{ $pospantau['register'] }}</td>
+                            <td>{{ $pospantau['rit'] }}</td>
+                            <td>{{ $pospantau['pbrix'] }}</td>
+                            <td>{{ $pospantau['ppol'] }}</td>
+                            <td>{{ $pospantau['yield'] }}</td>
+                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
                 <br>

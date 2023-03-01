@@ -9,6 +9,17 @@
         @include('components.alert', ['message'=>$message, 'color'=>'success'])
     @endif
 
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <p>Error :</p>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+    </div>
+    @endif
+
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h5 class="m-0 font-weight-bold text-primary">{{ ucfirst('penilaian MBS') }}</h5>
@@ -20,8 +31,8 @@
                         <tr>
                             <td>ID</td>
                             <td>Timestamp</td>
-                            {{-- <td>Nopol</td>
-                            <td>Barcode</td> --}}
+                            <td>Nopol</td>
+                            <td>Barcode</td>
                             <td>Kotoran</td>
                             <td>Score</td>
                             <td>User</td>
@@ -33,8 +44,8 @@
                         <tr>
                             <td>{{ $score->id }}</td>
                             <td>{{ $score->created_at }}</td>
-                            {{-- <td>{{ $score->rit->nopol }}</td>
-                            <td>{{ $score->rit->barcode_antrian }}</td> --}}
+                            <td>{{ $score->rit->nopol }}</td>
+                            <td>{{ $score->rit->barcode_antrian }}</td>
                             <td>
                                 <ul>
                                 @forelse($score->scoring_value as $scoring_value)
@@ -91,7 +102,7 @@
                 @csrf
                 @method('POST')
 
-                {{-- <div class="form-group row">
+                <div class="form-group row">
                     <label for="rit_id" class="col-sm-6 col-form-label">Nopol</label>
                     <div class="col-sm-6">
                         <select class="form-control" name="rit_id">
@@ -102,7 +113,7 @@
                             @endforeach
                         </select>
                     </div>
-                </div> --}}
+                </div>
 
                 @foreach($dirts as $dirt)
                     @include('components.input3',[

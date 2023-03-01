@@ -42,22 +42,42 @@ class AriController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'ari_sampling_id' => 'required|unique:aris',
             'pbrix' => 'required',
             'ppol' => 'required',
             'pol' => 'required',
             'user_id' => 'required',
         ]);
-        $category = AriSampling::whereId($request->ari_sampling_id)->get()->last()->category;
-        $ppol = self::correctPol($request);
-        $request->request->add(['ppol' => $ppol]);
-        $yield = self::findYield($request);
-        $request->request->add([
-            'category' => $category,
-            'yield' => $yield,
-        ]);
-        Ari::create($request->all());
-        return redirect()->back()->with('success', 'Data berhasil disimpan');
+        if(AriSampling::where('rfid', $request->rfid)->count() > 0){
+
+            $ari_sampling_id = AriSampling::where('rfid', $request->rfid)->get()->last()->id;
+            $category = AriSampling::whereId($ari_sampling_id)->get()->last()->category;
+            $ppol = self::correctPol($request);
+            $request->request->add(['ppol' => $ppol]);
+            $yield = self::findYield($request);
+            $request->request->add([
+                'category' => $category,
+                'yield' => $yield,
+            ]);
+
+            if(Ari::where('ari_sampling_id', $ari_sampling_id)->count() == 0){
+                Ari::insert([
+                    'ari_sampling_id' => $ari_sampling_id,
+                    'pbrix' => $request->pbrix,
+                    'ppol' => $ppol,
+                    'pol' => $request->pol,
+                    'yield' => $request->yield,
+                    'category' => $request->category,
+                    'user_id' => $request->user_id,
+                ]);
+                return redirect()->back()->with('success', 'Data berhasil disimpan');
+            }
+            else {
+                return redirect()->back()->with('error', 'Data gagal simpan');
+            }
+        }
+        else {
+            return redirect()->back()->with('error', 'Sampel tidak terdaftar');
+        }
     }
 
     /**

@@ -24,6 +24,10 @@ class ReportController extends Controller
         $balance = Report::serveBalance($request);
         $posbrix = Report::servePosBrix($request);
         $ari = Report::serveAri($request);
-        return view('report.show', compact('data', 'indicators', 'request', 'keliling', 'chemical', 'balance', 'posbrix', 'ari'));
+        $kud = Report::serveKud($request);
+        $pospantau = Report::servePospantau($request);
+        $wilayah = Report::serveWilayah($request);
+        $timbangan = Report::serveTimbangan($request);
+        return view('report.show', compact('data', 'indicators', 'request', 'keliling', 'chemical', 'balance', 'posbrix', 'ari', 'kud', 'pospantau', 'wilayah', 'timbangan'));
     }
 }

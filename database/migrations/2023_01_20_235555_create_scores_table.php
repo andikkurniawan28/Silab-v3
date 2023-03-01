@@ -15,7 +15,7 @@ class CreateScoresTable extends Migration
     {
         Schema::create('scores', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('rit_id')->constrained()->unique();
+            $table->foreignId('rit_id')->unique()->constrained();
             $table->foreignId('user_id')->constrained();
             $table->integer('cane_table');
             $table->string('value');

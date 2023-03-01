@@ -90,8 +90,8 @@
                 @method('POST')
 
                 @include('components.input',[
-                    'label' => 'Sample',
-                    'name' => 'ari_sampling_id',
+                    'label' => 'RFID',
+                    'name' => 'rfid',
                     'type' => 'number',
                     'value' => '',
                     'modifier' => 'required',

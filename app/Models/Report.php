@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\Kud;
 use App\Models\Sample;
 use App\Models\Balance;
 use App\Models\Posbrix;
+use App\Models\Wilayah;
 use App\Models\Analysis;
 use App\Models\Material;
 use App\Models\Imbibition;
@@ -119,6 +121,74 @@ class Report extends Model
             ->where('created_at', '<', $time['tomorrow'])
             ->where('category', 'EB|GD');
 
+        return $data;
+    }
+
+    public function serveKud($request){
+        $time = self::determineTimeRange($request);
+        foreach(Kud::all() as $kud){
+            $data[$kud->id]['name'] = $kud->name;
+            $data[$kud->id]['register'] = $kud->code;
+            $rit_id = Rit::where('kud_id', $kud->id)->get('id');
+            $ari_sampling_id = AriSampling::whereIn('rit_id', $rit_id)
+                ->where('created_at', '>=', $time['current'])
+                ->where('created_at', '<', $time['tomorrow'])
+                ->get('id');
+            $data[$kud->id]['rit'] = Ari::whereIn('ari_sampling_id', $ari_sampling_id)->count('id');
+            $data[$kud->id]['pbrix'] = Ari::whereIn('ari_sampling_id', $ari_sampling_id)->avg('pbrix');
+            $data[$kud->id]['ppol'] = Ari::whereIn('ari_sampling_id', $ari_sampling_id)->avg('ppol');
+            $data[$kud->id]['yield'] = Ari::whereIn('ari_sampling_id', $ari_sampling_id)->avg('yield');
+        }
+        return $data;
+    }
+
+    public function servePospantau($request){
+        $time = self::determineTimeRange($request);
+        foreach(Pospantau::all() as $pospantau){
+            $data[$pospantau->id]['name'] = $pospantau->name;
+            $data[$pospantau->id]['register'] = $pospantau->code;
+            $rit_id = Rit::where('pospantau_id', $pospantau->id)->get('id');
+            $ari_sampling_id = AriSampling::whereIn('rit_id', $rit_id)
+                ->where('created_at', '>=', $time['current'])
+                ->where('created_at', '<', $time['tomorrow'])
+                ->get('id');
+            $data[$pospantau->id]['rit'] = Ari::whereIn('ari_sampling_id', $ari_sampling_id)->count('id');
+            $data[$pospantau->id]['pbrix'] = Ari::whereIn('ari_sampling_id', $ari_sampling_id)->avg('pbrix');
+            $data[$pospantau->id]['ppol'] = Ari::whereIn('ari_sampling_id', $ari_sampling_id)->avg('ppol');
+            $data[$pospantau->id]['yield'] = Ari::whereIn('ari_sampling_id', $ari_sampling_id)->avg('yield');
+        }
+        return $data;
+    }
+
+    public function serveWilayah($request){
+        $time = self::determineTimeRange($request);
+        foreach(Wilayah::all() as $wilayah){
+            $data[$wilayah->id]['name'] = $wilayah->name;
+            $data[$wilayah->id]['register'] = $wilayah->code;
+            $rit_id = Rit::where('wilayah_id', $wilayah->id)->get('id');
+            $ari_sampling_id = AriSampling::whereIn('rit_id', $rit_id)
+                ->where('created_at', '>=', $time['current'])
+                ->where('created_at', '<', $time['tomorrow'])
+                ->get('id');
+            $data[$wilayah->id]['rit'] = Ari::whereIn('ari_sampling_id', $ari_sampling_id)->count('id');
+            $data[$wilayah->id]['pbrix'] = Ari::whereIn('ari_sampling_id', $ari_sampling_id)->avg('pbrix');
+            $data[$wilayah->id]['ppol'] = Ari::whereIn('ari_sampling_id', $ari_sampling_id)->avg('ppol');
+            $data[$wilayah->id]['yield'] = Ari::whereIn('ari_sampling_id', $ari_sampling_id)->avg('yield');
+        }
+        return $data;
+    }
+
+    public function serveTimbangan($request){
+        $time = self::determineTimeRange($request);
+        $data['mollases'] = Mollase::where('created_at', '>=', $time['current'])
+                ->where('created_at', '<', $time['tomorrow'])
+                ->sum('netto');
+        $data['rawsugarinputs'] = Rawsugarinput::where('created_at', '>=', $time['current'])
+                ->where('created_at', '<', $time['tomorrow'])
+                ->sum('netto');
+        $data['rawsugaroutputs'] = Rawsugaroutput::where('created_at', '>=', $time['current'])
+                ->where('created_at', '<', $time['tomorrow'])
+                ->sum('netto');
         return $data;
     }
 

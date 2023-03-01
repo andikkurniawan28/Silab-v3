@@ -11,9 +11,9 @@ class Score extends Model
 
     protected $guarded = [];
 
-    // public function rit(){
-    //     return $this->belongsTo(Rit::class);
-    // }
+    public function rit(){
+        return $this->belongsTo(Rit::class);
+    }
 
     public function user(){
         return $this->belongsTo(User::class);

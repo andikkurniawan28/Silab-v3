@@ -74,8 +74,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Time</th>
-                                                <th>Nopol</th>
-                                                <th>Antrian</th>
+                                                <th>E-SPTA</th>
                                                 <th>Brix</th>
                                             </tr>
                                         </thead>
@@ -83,8 +82,7 @@
                                             @foreach($posbrixes as $posbrix)
                                             <tr>
                                                 <td>{{ date('H:i', strtotime($posbrix->created_at)) }}</td>
-                                                <td>{{ $posbrix->rit->nopol }}</td>
-                                                <td>{{ $posbrix->rit->barcode_antrian }}</td>
+                                                <td>{{ $posbrix->spta }}</td>
                                                 <td>{{ $posbrix->brix }}</td>
                                             </tr>
                                             @endforeach
@@ -132,7 +130,7 @@
                     <div class="col-lg-12 text-left text-xs">
                         <div class="card bg-dark text-white shadow">
                             <div class="card-header">
-                                <h5>Analisa Rendemen Individu</h5>
+                                <h5>Analisa Rendemen</h5>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -152,8 +150,8 @@
                                             @foreach($aris as $ari)
                                             <tr>
                                                 <td>{{ date('H:i', strtotime($ari->created_at)) }}</td>
-                                                <td>{{ $ari->rit->nopol }}</td>
-                                                <td>{{ $ari->rit->barcode_antrian }}</td>
+                                                <td>{{ $ari->ari_sampling->rit->nopol }}</td>
+                                                <td>{{ $ari->ari_sampling->rit->barcode_antrian }}</td>
                                                 <td>{{ $ari->pbrix }}</td>
                                                 <td>{{ $ari->ppol }}</td>
                                                 <td>{{ $ari->pol }}</td>
