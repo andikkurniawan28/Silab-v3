@@ -66,7 +66,7 @@
                                     @include('components.icon', ['icon' => 'trash '])
                                     Hapus
                                 </button>
-                                <a href="{{ route('skmt', $score->id) }}" class="btn btn-outline-info btn-sm">
+                                <a target="_blank" href="{{ route('skmt', $score->id) }}" class="btn btn-outline-info btn-sm">
                                     @include('components.icon', ['icon' => 'file '])
                                     SKMT
                                 </a>
@@ -127,7 +127,7 @@
                                     @else
                                         {{ 'btn-outline-primary' }}
                                     @endif
-                                        btn-toggle  btn-lg">
+                                        btn-toggle  btn-sm">
                                     <input type="radio" name="{{ $dirt->id }}" id="{{ $dirt->id }}" autocomplete="off" value="{{ $j }}"
                                     @if($j == 0)
                                     {{ 'checked' }}

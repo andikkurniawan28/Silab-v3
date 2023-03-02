@@ -174,4 +174,6 @@ Route::get('meja_selatan', [AplikasiPenilaianTebuController::class, 'meja_selata
 Route::get('meja_utara', [AplikasiPenilaianTebuController::class, 'meja_utara'])->name('meja_utara')->middleware(['auth', 'operator_qc']);
 Route::post('proses_meja_utara', [AplikasiPenilaianTebuController::class, 'proses_meja_utara'])->name('proses_meja_utara')->middleware(['auth', 'operator_qc']);
 Route::post('proses_meja_selatan', [AplikasiPenilaianTebuController::class, 'proses_meja_selatan'])->name('proses_meja_selatan')->middleware(['auth', 'operator_qc']);
+Route::get('penilaian_meja_utara_sukses/{score}', [AplikasiPenilaianTebuController::class, 'penilaian_meja_utara_sukses'])->name('penilaian_meja_utara_sukses')->middleware(['auth', 'operator_qc']);
+Route::get('penilaian_meja_selatan_sukses/{score}', [AplikasiPenilaianTebuController::class, 'penilaian_meja_selatan_sukses'])->name('penilaian_meja_selatan_sukses')->middleware(['auth', 'operator_qc']);
 

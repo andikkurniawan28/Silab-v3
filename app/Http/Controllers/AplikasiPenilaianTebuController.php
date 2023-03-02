@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Rit;
 use App\Models\Dirt;
 use App\Models\Score;
+use App\Models\ScoringValue;
 use Illuminate\Http\Request;
 
 class AplikasiPenilaianTebuController extends Controller
@@ -26,6 +27,7 @@ class AplikasiPenilaianTebuController extends Controller
     public function proses_meja_selatan(Request $request){
         $request->validate([
             'rit_id' => 'required|unique:scores',
+            'cane_table' => 'required',
         ]);
         $name = self::getImage($request);
         $score = self::generateScore($request);
@@ -45,11 +47,42 @@ class AplikasiPenilaianTebuController extends Controller
                 'value' => $request->{$dirt->id},
             ]);
         }
-        return redirect()->back()->with('success', 'Data berhasil disimpan');
+        return redirect()->route('penilaian_meja_selatan_sukses', $score);
     }
 
     public function proses_meja_utara(Request $request){
+        $request->validate([
+            'rit_id' => 'required|unique:scores',
+            'cane_table' => 'required',
+        ]);
+        $name = self::getImage($request);
+        $score = self::generateScore($request);
+        Score::insert([
+            'rit_id' => $request->rit_id,
+            'user_id' => $request->user_id,
+            'cane_table' => $request->cane_table,
+            'value' => $score,
+            'image1' => $name['img1'],
+            'image2' => $name['img2'],
+        ]);
+        $score_id = Score::where('cane_table', $request->cane_table)->get()->last()->id;
+        foreach(Dirt::all() as $dirt){
+            ScoringValue::insert([
+                'score_id' => $score_id,
+                'dirt_id' => $dirt->id,
+                'value' => $request->{$dirt->id},
+            ]);
+        }
+        return redirect()->route('penilaian_meja_utara_sukses', $score);
 
+    }
+
+    public function penilaian_meja_selatan_sukses($score){
+        return view('aplikasi.penilaian_meja_selatan_sukses', compact('score'));
+    }
+
+    public function penilaian_meja_utara_sukses($score){
+        return view('aplikasi.penilaian_meja_utara_sukses', compact('score'));
     }
 
     public function getImage($request)
