@@ -284,6 +284,10 @@
                                                 @foreach($materialx->method as $method)
                                                     <td>{{ $method->indicator->name }}</td>
                                                 @endforeach
+                                                @if($materialx->id >= 43 && $materialx->id <= 49 )
+                                                    <td>Pan</td>
+                                                    <td>Hl</td>
+                                                @endif
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -299,6 +303,10 @@
                                                         @endforeach
                                                     </td>
                                                 @endforeach
+                                                @if($materialx->id >= 43 && $materialx->id <= 49 )
+                                                <td>{{ $sample->pan }}</td>
+                                                <td>{{ $sample->volume }}</td>
+                                                @endif
                                             </tr>
                                             @endforeach
                                         </tbody>

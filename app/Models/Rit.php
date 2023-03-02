@@ -14,10 +14,6 @@ class Rit extends Model
 
     protected $guarded = [];
 
-    public function posbrix(){
-        return $this->hasMany(Posbrix::class);
-    }
-
     public function ari_sampling(){
         return $this->hasMany(AriSampling::class);
     }

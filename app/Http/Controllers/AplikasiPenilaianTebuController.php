@@ -5,47 +5,25 @@ namespace App\Http\Controllers;
 use App\Models\Rit;
 use App\Models\Dirt;
 use App\Models\Score;
-use App\Models\Station;
-use App\Models\ScoringValue;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
 
-class ScoreController extends Controller
+class AplikasiPenilaianTebuController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $stations = Station::all();
-        $scores = Score::latest()->paginate(env('TABLE_LIMIT'));
+    public function meja_selatan(){
         $dirts = Dirt::all();
         $score_rit_id = Score::select('rit_id')->get();
         $rits = Rit::whereNotIn('id', $score_rit_id)->get();
-        return view('score.index', compact('scores', 'rits', 'stations', 'dirts'));
+        return view('aplikasi.meja_selatan', compact('rits', 'dirts'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function meja_utara(){
+        $dirts = Dirt::all();
+        $score_rit_id = Score::select('rit_id')->get();
+        $rits = Rit::whereNotIn('id', $score_rit_id)->get();
+        return view('aplikasi.meja_utara', compact('rits', 'dirts'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
+    public function proses_meja_selatan(Request $request){
         $request->validate([
             'rit_id' => 'required|unique:scores',
         ]);
@@ -70,57 +48,8 @@ class ScoreController extends Controller
         return redirect()->back()->with('success', 'Data berhasil disimpan');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Score  $score
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Score $score)
-    {
-        //
-    }
+    public function proses_meja_utara(Request $request){
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Score  $score
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Score $score)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Score  $score
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        Score::whereId($id)->update([
-            'score' => $request->score,
-        ]);
-        return redirect()->back()->with('success', 'Data berhasil disimpan');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Score  $score
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $image1 = Score::whereId($id)->get()->last()->image1;
-        $image2 = Score::whereId($id)->get()->last()->image2;
-        File::delete(public_path($image1));
-        File::delete(public_path($image2));
-        Score::whereId($id)->delete();
-        return redirect()->back()->with('success', 'Data berhasil dihapus');
     }
 
     public function getImage($request)

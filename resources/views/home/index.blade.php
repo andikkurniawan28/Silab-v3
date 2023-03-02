@@ -52,10 +52,10 @@
 
     <!-- Chart Section -->
     <div class="row">
-        {{-- @include('components.area_chart',[
+        @include('components.area_chart',[
             'title' => 'Reject SHS',
             'id' => 'myAreaChart',
-        ]) --}}
+        ])
         {{-- @include('components.pie_chart') --}}
     </div>
 
@@ -122,9 +122,7 @@ var myLineChart = new Chart(ctx, {
       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
-      data: [
-
-            ],
+      data: [ 2000, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
     }],
   },
   options: {

@@ -90,7 +90,7 @@
 
 @for($i=1; $i<=5; $i++)
 <div class="modal fade" id="create{{ $i }}" tabindex="-1" score="dialog" aria-labelledby="createLabel" aria-hidden="true">
-    <div class="modal-dialog" score="document">
+    <div class="modal-dialog modal-lg" score="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="createLabel">{{ ucfirst('penilaian MBS') }} Meja {{ $i }}</h5>
@@ -103,8 +103,8 @@
                 @method('POST')
 
                 <div class="form-group row">
-                    <label for="rit_id" class="col-sm-6 col-form-label">Nopol</label>
-                    <div class="col-sm-6">
+                    <label for="rit_id" class="col-sm-3 col-form-label">Nopol</label>
+                    <div class="col-sm-9">
                         <select class="form-control" name="rit_id">
                             @foreach ($rits as $rit)
                                 <option value="{{ $rit->id }}">
@@ -116,13 +116,28 @@
                 </div>
 
                 @foreach($dirts as $dirt)
-                    @include('components.input3',[
-                        'label' => $dirt->name,
-                        'name' => $dirt->id,
-                        'type' => 'number',
-                        'value' => '',
-                        'modifier' => '',
-                    ])
+                <div class="form-group row">
+                    <label for="{{ $dirt->id }}" class="col-sm-3 col-form-label">{{ $dirt->name }}</label>
+                    <div class="col-sm-9">
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            @for($j=0; $j<=90; $j+=10)
+                                <label class="btn
+                                    @if($j < 10)
+                                        {{ 'btn-outline-danger' }}
+                                    @else
+                                        {{ 'btn-outline-primary' }}
+                                    @endif
+                                        btn-toggle  btn-lg">
+                                    <input type="radio" name="{{ $dirt->id }}" id="{{ $dirt->id }}" autocomplete="off" value="{{ $j }}"
+                                    @if($j == 0)
+                                    {{ 'checked' }}
+                                    @endif
+                                    > {{ $j }}
+                                </label>
+                            @endfor
+                        </div>
+                    </div>
+                </div>
                 @endforeach
 
                 <input type="hidden" name="cane_table" value="{{ $i }}">

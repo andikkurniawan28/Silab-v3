@@ -31,6 +31,10 @@
                                 @foreach($material->method as $method)
                                     <td>{{ $method->indicator->name }}</td>
                                 @endforeach
+                                @if($material->id >= 43 && $material->id <= 49 )
+                                    <td>Pan</td>
+                                    <td>Hl</td>
+                                @endif
                             </tr>
                             @foreach($material->sample()->orderBy('id', 'desc')->get() as $sample)
                             <tr>
@@ -45,6 +49,10 @@
                                     @endforeach
                                 </td>
                                 @endforeach
+                                @if($material->id >= 43 && $material->id <= 49 )
+                                <td>{{ $sample->pan }}</td>
+                                <td>{{ $sample->volume }}</td>
+                                @endif
 
                                 @if($loop->iteration == 5)
                                     @break

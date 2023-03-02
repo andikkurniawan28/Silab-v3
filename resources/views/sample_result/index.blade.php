@@ -23,6 +23,10 @@
                             @foreach($methods as $method)
                                 <td>{{ $method->indicator->name }}</td>
                             @endforeach
+                            @if($material_id >= 43 && $material_id <= 49 )
+                                <td>Pan</td>
+                                <td>Hl</td>
+                            @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -39,6 +43,10 @@
                                         @endforeach
                                     </td>
                                 @endforeach
+                            @if($material_id >= 43 && $material_id <= 49 )
+                                <td>{{ $sample->pan }}</td>
+                                <td>{{ $sample->volume }}</td>
+                            @endif
                         </tr>
                         @endforeach
                     </tbody>

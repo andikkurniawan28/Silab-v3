@@ -87,7 +87,7 @@
                 <a class="collapse-item" href="{{ route('ari_samplings.index') }}">Sampling ARI</a>
                 <a class="collapse-item" href="{{ route('aris.index') }}">Analisa Rendemen</a>
                 <a class="collapse-item" href="{{ route('scores.index') }}">Penilaian MBS</a>
-                <a class="collapse-item" href="{{ route('scoring_values.index') }}">Penilaian Kotoran</a>
+                {{-- <a class="collapse-item" href="{{ route('scoring_values.index') }}">Penilaian Kotoran</a> --}}
             </div>
         </div>
     </li>
@@ -124,6 +124,8 @@
                 <a class="collapse-item" href="{{ route('tap_timbangan_eb') }}" target="_blank">Tap Timbangan EB/GD</a>
                 <a class="collapse-item" href="{{ route('tap_sample_ari') }}" target="_blank">Tap Sampel ARI EK</a>
                 <a class="collapse-item" href="{{ route('tap_sample_ari_eb') }}" target="_blank">Tap Sampel ARI EB/GD</a>
+                <a class="collapse-item" href="{{ route('meja_selatan') }}" target="_blank">Meja Selatan</a>
+                <a class="collapse-item" href="{{ route('meja_utara') }}" target="_blank">Meja Utara</a>
             </div>
         </div>
     </li>

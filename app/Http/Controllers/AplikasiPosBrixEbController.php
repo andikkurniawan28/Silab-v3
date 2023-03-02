@@ -22,11 +22,6 @@ class AplikasiPosBrixEbController extends Controller
 
         Posbrix::create($request->all());
 
-        Rit::insert([
-            'spta' => $request->spta,
-            'category' => $request->category,
-        ]);
-
         return redirect()->route('posbrix', array('spta' => $request->spta, 'category' => $request->category));
     }
 }

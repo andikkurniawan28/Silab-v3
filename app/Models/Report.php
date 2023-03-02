@@ -31,6 +31,12 @@ class Report extends Model
                 ->select('id')
                 ->get();
 
+            $data[$material->id]['volume'] =
+                Sample::where('created_at', '>=', $time['current'])
+                ->where('created_at', '<', $time['tomorrow'])
+                ->where('material_id', $material->id)
+                ->sum('volume');
+
             foreach(Method::where('material_id', $material->id)->get() as $method) {
                 $data[$material->id][$method->indicator->name] =
                     Analysis::where('indicator_id', $method->indicator_id)

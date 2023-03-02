@@ -28,26 +28,60 @@
                                     <form class="user" action="{{ route('process_rfid') }}" method="POST">
                                     @csrf
                                     @method('POST')
+
                                         <div class="form-group">
                                             <label for="spta" class="col-auto col-form-label">E-SPTA</label>
-                                            <input type="text" class="form-control form-control-user" id="spta" name="spta" value="{{ $spta }}" readonly>
+                                            <input type="text" class="form-control" id="spta" name="spta" value="{{ $spta }}" readonly>
+                                            <input type="hidden" class="form-control" id="category" name="category" value="{{ $category }}" readonly>
                                         </div>
+
                                         <div class="form-group">
-                                            <label for="spta" class="col-auto col-form-label">Jenis</label>
-                                            <input type="text" class="form-control form-control-user" id="category" name="category" value="{{ $category }}" readonly>
+                                            <label for="brix" class="col-auto col-form-label">Brix</label><br>
+                                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                                @for($i=5; $i<=20; $i++)
+                                                <label class="btn
+                                                @if($i < 10)
+                                                {{ 'btn-outline-danger' }}
+                                                @else
+                                                {{ 'btn-outline-primary' }}
+                                                @endif
+                                                 btn-toggle  btn-md">
+                                                    <input type="radio" name="brix" id="brix" autocomplete="off" value="{{ $i }}"
+                                                    @if($i == 12)
+                                                    {{ 'checked' }}
+                                                    @endif
+                                                    > {{ $i }}
+                                                </label>
+                                                @endfor
+                                            </div>
                                         </div>
+
                                         <div class="form-group">
-                                            <label for="brix" class="col-auto col-form-label">Brix</label>
-                                            <input type="number" class="form-control form-control-user"
-                                                id="brix" name="brix" placeholder="Masukkan Nilai Brix" required>
+                                            <label for="inputState">Status</label><br>
+                                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                                @for($i=0; $i<=1; $i++)
+                                                <label class="btn
+                                                @if($i == 0)
+                                                {{ 'btn-outline-danger' }}
+                                                @else
+                                                {{ 'btn-outline-primary' }}
+                                                @endif
+                                                 btn-toggle  btn-md">
+                                                    <input type="radio" name="is_accepted" id="is_accepted" autocomplete="off" value="{{ $i }}"
+                                                        @if($i == 1)
+                                                        {{ 'checked' }}
+                                                        @endif
+                                                    >
+                                                        @if($i == 0)
+                                                        {{ 'Ditolak' }}
+                                                        @else
+                                                        {{ 'Diterima' }}
+                                                    @endif
+                                                </label>
+                                                @endfor
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="inputState">Status</label>
-                                            <select id="inputState" class="form-control" name="is_accepted">
-                                                <option value="1" selected>Diterima</option>
-                                                <option value="0">Ditolak</option>
-                                            </select>
-                                        </div>
+
                                         <br><br>
                                         <input type="hidden" name="user_id" value="{{ Auth()->user()->id }}">
                                         <button type="submit" class="btn btn-dark btn-user btn-block">

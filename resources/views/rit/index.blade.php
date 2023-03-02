@@ -26,10 +26,6 @@
                             <td>Antrian</td>
                             <td>Register</td>
                             <td>Nopol</td>
-                            {{-- <td>Petani</td>
-                            <td>KUD</td>
-                            <td>Pos Pantau</td>
-                            <td>Wilayah</td> --}}
                             <td>Action</td>
                         </tr>
                     </thead>
@@ -44,22 +40,6 @@
                             <td>{{ $rit->barcode_antrian }}</td>
                             <td>{{ $rit->register }}</td>
                             <td>{{ $rit->nopol }}</td>
-                            {{-- <td>{{ $rit->petani }}</td>
-                            <td>
-                                @if($rit->kud != NULL)
-                                {{ $rit->kud->name }}
-                                @endif
-                            </td>
-                            <td>
-                                @if($rit->pospantau != NULL)
-                                {{ $rit->pospantau->name }}
-                                @endif
-                            </td>
-                            <td>
-                                @if($rit->wilayah != NULL)
-                                {{ $rit->wilayah->name }}
-                                @endif
-                            </td> --}}
                             <td>
                                 <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#edit{{ $rit->id }}">
                                     @include('components.icon', ['icon' => 'edit '])
@@ -77,10 +57,10 @@
             </div>
         </div>
         <div class="card-footer">
-            <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#create">
+            {{-- <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#create">
                 @include('components.icon', ['icon' => 'plus '])
                 Tambah
-            </button>
+            </button> --}}
         </div>
     </div>
 </div>

@@ -64,6 +64,7 @@ use App\Http\Controllers\MonitoringSaveDateController;
 use App\Http\Controllers\AplikasiTapSampleAriController;
 use App\Http\Controllers\AplikasiTapTimbanganController;
 use App\Http\Controllers\MonitoringSelectDateController;
+use App\Http\Controllers\AplikasiPenilaianTebuController;
 use App\Http\Controllers\AplikasiTapSampleAriEbController;
 use App\Http\Controllers\AplikasiTapTimbanganEbController;
 
@@ -167,4 +168,10 @@ Route::resource('wilayahs', WilayahController::class)->middleware(['auth', 'kasu
 
 // TestApiPde
 Route::get('test_api_pde/{rfid}', TestApiPdeController::class)->name('test_api_pde');
+
+// Aplikasi Penilaian
+Route::get('meja_selatan', [AplikasiPenilaianTebuController::class, 'meja_selatan'])->name('meja_selatan')->middleware(['auth', 'operator_qc']);
+Route::get('meja_utara', [AplikasiPenilaianTebuController::class, 'meja_utara'])->name('meja_utara')->middleware(['auth', 'operator_qc']);
+Route::post('proses_meja_utara', [AplikasiPenilaianTebuController::class, 'proses_meja_utara'])->name('proses_meja_utara')->middleware(['auth', 'operator_qc']);
+Route::post('proses_meja_selatan', [AplikasiPenilaianTebuController::class, 'proses_meja_selatan'])->name('proses_meja_selatan')->middleware(['auth', 'operator_qc']);
 

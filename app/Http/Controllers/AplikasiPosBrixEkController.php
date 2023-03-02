@@ -17,15 +17,10 @@ class AplikasiPosBrixEkController extends Controller
     public function __invoke(Request $request)
     {
         $request->validate([
-            'spta' => 'required|unique:posbrixes|unique:rits'
+            'spta' => 'required|unique:posbrixes|unique:rits',
         ]);
 
         Posbrix::create($request->all());
-
-        Rit::insert([
-            'spta' => $request->spta,
-            'category' => $request->category,
-        ]);
 
         return redirect()->route('posbrix', array('spta' => $request->spta, 'category' => $request->category));
     }

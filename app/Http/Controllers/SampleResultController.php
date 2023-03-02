@@ -22,6 +22,6 @@ class SampleResultController extends Controller
         $material = Material::whereId($material_id)->get()->last()->name;
         $samples = Sample::where('material_id', $material_id)->latest()->paginate(5000);
         $methods = Method::where('material_id', $material_id)->get();
-        return view('sample_result.index', compact('material', 'samples', 'methods', 'stations'));
+        return view('sample_result.index', compact('material', 'samples', 'methods', 'stations', 'material_id'));
     }
 }
