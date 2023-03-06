@@ -11,7 +11,9 @@ use App\Models\Tspot;
 use App\Models\Factor;
 use App\Models\Method;
 use App\Models\Sample;
+use App\Models\Kawalan;
 use App\Models\Station;
+use App\Models\Variety;
 use App\Models\Wilayah;
 use App\Models\Analysis;
 use App\Models\Chemical;
@@ -1049,13 +1051,13 @@ class DatabaseSeeder extends Seeder
         ];
 
         $dirts = [
-            ['name' => ucfirst('pucuk')],
-            ['name' => ucfirst('sogolan')],
-            ['name' => ucfirst('daduk')],
-            ['name' => ucfirst('akar')],
-            ['name' => ucfirst('tali pucuk')],
-            ['name' => ucfirst('tebu muda')],
-            ['name' => ucfirst('lelesan')],
+            ['name' => ucfirst('daduk'), 'value' => 10],
+            ['name' => ucfirst('pucuk'), 'value' => 20],
+            ['name' => ucfirst('sogolan'), 'value' => 30],
+            ['name' => ucfirst('tali pucuk'), 'value' => 40],
+            ['name' => ucfirst('tebu muda'), 'value' => 50],
+            ['name' => ucfirst('lelesan'), 'value' => 60],
+            ['name' => ucfirst('akar'), 'value' => 70],
         ];
 
         // for($i=1; $i<=1000; $i++){
@@ -1158,6 +1160,24 @@ class DatabaseSeeder extends Seeder
             [ 'code' => 'Z', 'name' => 'SPT' ],
         ];
 
+        $varieties = [
+            ['name' => 'PS 881'],
+            ['name' => 'PS 862'],
+            ['name' => 'PS KA'],
+            ['name' => 'Cening'],
+            ['name' => 'PSJK 922'],
+            ['name' => 'PSJK 920'],
+            ['name' => 'PS 864'],
+            ['name' => 'BL'],
+            ['name' => 'Lain-lain'],
+        ];
+
+        $kawalans = [
+            ['name' => 'Non VMA'],
+            ['name' => 'VMA'],
+            ['name' => 'ZPK'],
+        ];
+
         Role::insert($roles);
         User::insert($users);
         Station::insert($stations);
@@ -1175,6 +1195,8 @@ class DatabaseSeeder extends Seeder
         Kud::insert($kuds);
         Pospantau::insert($pospantaus);
         Wilayah::insert($wilayahs);
+        Variety::insert($varieties);
+        Kawalan::insert($kawalans);
 
     }
 }

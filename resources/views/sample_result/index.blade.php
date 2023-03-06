@@ -38,7 +38,9 @@
                                     <td>
                                         @foreach($sample->analysis as $analysis)
                                             @if($method->indicator_id == $analysis->indicator_id)
-                                                {{ $analysis->value }}
+                                                {{-- {{ $analysis->value }} --}}
+                                                {{-- {{ number_format($analysis->value, 2, ',' , '') }} --}}
+                                                {{ number_format($analysis->value, 2, ',' , '.') }}
                                             @endif
                                         @endforeach
                                     </td>

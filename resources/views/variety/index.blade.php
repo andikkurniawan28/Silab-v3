@@ -11,7 +11,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h5 class="m-0 font-weight-bold text-primary">{{ ucfirst('kotoran') }}</h5>
+            <h5 class="m-0 font-weight-bold text-primary">{{ ucfirst('varietas') }}</h5>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -21,23 +21,21 @@
                             <td>ID</td>
                             <td>Timestamp</td>
                             <td>Nama</td>
-                            <td>Value</td>
                             <td>Action</td>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($dirts as $dirt)
+                        @foreach ($varieties as $variety)
                         <tr>
-                            <td>{{ $dirt->id }}</td>
-                            <td>{{ $dirt->created_at }}</td>
-                            <td>{{ $dirt->name }}</td>
-                            <td>{{ $dirt->value }}</td>
+                            <td>{{ $variety->id }}</td>
+                            <td>{{ $variety->created_at }}</td>
+                            <td>{{ $variety->name }}</td>
                             <td>
-                                <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#edit{{ $dirt->id }}">
+                                <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#edit{{ $variety->id }}">
                                     @include('components.icon', ['icon' => 'edit '])
                                     Edit
                                 </button>
-                                <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#delete{{ $dirt->id }}">
+                                <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#delete{{ $variety->id }}">
                                     @include('components.icon', ['icon' => 'trash '])
                                     Hapus
                                 </button>
@@ -57,16 +55,16 @@
     </div>
 </div>
 
-<div class="modal fade" id="create" tabindex="-1" dirt="dialog" aria-labelledby="createLabel" aria-hidden="true">
-    <div class="modal-dialog" dirt="document">
+<div class="modal fade" id="create" tabindex="-1" variety="dialog" aria-labelledby="createLabel" aria-hidden="true">
+    <div class="modal-dialog" variety="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createLabel">Tambah {{ ucfirst('kotoran') }}</h5>
+                <h5 class="modal-title" id="createLabel">Tambah {{ ucfirst('varietas') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
 
-                <form method="POST" action="{{ route('dirts.store') }}" class="text-dark">
+                <form method="POST" action="{{ route('varieties.store') }}" class="text-dark">
                 @csrf
                 @method('POST')
 
@@ -74,14 +72,6 @@
                     'label' => 'Nama',
                     'name' => 'name',
                     'type' => 'text',
-                    'value' => '',
-                    'modifier' => 'required',
-                ])
-
-                @include('components.input',[
-                    'label' => 'Value',
-                    'name' => 'value',
-                    'type' => 'number',
                     'value' => '',
                     'modifier' => 'required',
                 ])
@@ -97,17 +87,17 @@
     </div>
 </div>
 
-@foreach($dirts as $dirt)
-<div class="modal fade" id="edit{{ $dirt->id }}" tabindex="-1" dirt="dialog" aria-labelledby="edit{{ $dirt->id }}Label" aria-hidden="true">
-    <div class="modal-dialog" dirt="document">
+@foreach($varieties as $variety)
+<div class="modal fade" id="edit{{ $variety->id }}" tabindex="-1" variety="dialog" aria-labelledby="edit{{ $variety->id }}Label" aria-hidden="true">
+    <div class="modal-dialog" variety="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="edit{{ $dirt->id }}Label">Edit {{ ucfirst('kotoran') }}</h5>
+                <h5 class="modal-title" id="edit{{ $variety->id }}Label">Edit {{ ucfirst('varietas') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
 
-                <form method="POST" action="{{ route('dirts.update', $dirt->id) }}" class="text-dark">
+                <form method="POST" action="{{ route('varieties.update', $variety->id) }}" class="text-dark">
                 @csrf
                 @method('PUT')
 
@@ -115,15 +105,7 @@
                     'label' => 'Nama',
                     'name' => 'name',
                     'type' => 'text',
-                    'value' => $dirt->name,
-                    'modifier' => 'required',
-                ])
-
-                @include('components.input',[
-                    'label' => 'Value',
-                    'name' => 'value',
-                    'type' => 'number',
-                    'value' => $dirt->value,
+                    'value' => $variety->name,
                     'modifier' => 'required',
                 ])
 
@@ -139,16 +121,16 @@
 </div>
 @endforeach
 
-@foreach($dirts as $dirt)
-<div class="modal fade" id="delete{{ $dirt->id }}" tabindex="-1" dirt="dialog" aria-labelledby="delete{{ $dirt->id }}Label" aria-hidden="true">
-    <div class="modal-dialog" dirt="document">
+@foreach($varieties as $variety)
+<div class="modal fade" id="delete{{ $variety->id }}" tabindex="-1" variety="dialog" aria-labelledby="delete{{ $variety->id }}Label" aria-hidden="true">
+    <div class="modal-dialog" variety="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="delete{{ $dirt->id }}Label">Hapus {{ ucfirst('kotoran') }}</h5>
+                <h5 class="modal-title" id="delete{{ $variety->id }}Label">Hapus {{ ucfirst('varietas') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-            <form method="POST" action="{{ route('dirts.destroy', $dirt->id) }}" class="text-dark">
+            <form method="POST" action="{{ route('varieties.destroy', $variety->id) }}" class="text-dark">
                 @csrf
                 @method('DELETE')
                 <p>Apakah Anda yakin ?</p>
@@ -157,10 +139,10 @@
                     'label' => 'Nama',
                     'name' => 'name',
                     'type' => 'text',
-                    'value' => $dirt->name,
+                    'value' => $variety->name,
                     'modifier' => 'readonly',
                 ])
-                <input type="hidden" name="dirt_id" value="{{ $dirt->dirt_id }}">
+                <input type="hidden" name="variety_id" value="{{ $variety->variety_id }}">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>

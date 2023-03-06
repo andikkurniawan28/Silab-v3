@@ -57,6 +57,36 @@
                                         </div>
 
                                         <div class="form-group">
+                                            <label for="variety" class="col-auto col-form-label">Varietas</label><br>
+                                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                                @foreach($varieties as $variety)
+                                                <label class="btn btn-outline-primary btn-toggle  btn-md">
+                                                    <input type="radio" name="variety_id" id="variety_id" autocomplete="off" value="{{ $variety->id }}"
+                                                    @if($variety->id == 8)
+                                                    {{ 'checked' }}
+                                                    @endif
+                                                    > {{ $variety->name }}
+                                                </label>
+                                                @endforeach
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="kawalan" class="col-auto col-form-label">Kawalan</label><br>
+                                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                                @foreach($kawalans as $kawalan)
+                                                <label class="btn btn-outline-primary btn-toggle  btn-md">
+                                                    <input type="radio" name="kawalan_id" id="kawalan_id" autocomplete="off" value="{{ $kawalan->id }}"
+                                                    @if($kawalan->id == 1)
+                                                    {{ 'checked' }}
+                                                    @endif
+                                                    > {{ $kawalan->name }}
+                                                </label>
+                                                @endforeach
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
                                             <label for="inputState">Status</label><br>
                                             <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                                 @for($i=0; $i<=1; $i++)

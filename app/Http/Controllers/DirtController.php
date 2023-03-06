@@ -39,6 +39,10 @@ class DirtController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|unique:dirts',
+            'value' => 'required',
+        ]);
         Dirt::create($request->all());
         Activity::insert([
             'subject' => 'Dirt',
@@ -80,8 +84,12 @@ class DirtController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'value' => 'required',
+        ]);
         Dirt::where('id', $id)->update([
             'name' => $request->name,
+            'value' => $request->value,
         ]);
         Activity::insert([
             'subject' => 'Dirt',

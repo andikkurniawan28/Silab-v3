@@ -74,7 +74,7 @@
                                                                     {{ 'checked' }}
                                                                 @endif
                                                             >
-                                                            {{ $j }}
+                                                            {{ $j }}%
                                                         </label>
                                                     @endfor
                                                 </div>

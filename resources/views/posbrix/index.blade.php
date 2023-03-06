@@ -34,6 +34,8 @@
                             <td>E-SPTA</td>
                             <td>Jenis</td>
                             <td>Brix</td>
+                            <td><a href="{{ route('varieties.index') }}" target="_blank">Varietas</a></td>
+                            <td><a href="{{ route('kawalans.index') }}" target="_blank">Kawalan</a></td>
                             <td>Status</td>
                             <td>User</td>
                             <td>Action</td>
@@ -47,7 +49,21 @@
                             <td>{{ $posbrix->spta }}</td>
                             <td>{{ $posbrix->category }}</td>
                             <td>{{ $posbrix->brix }}</td>
-                            <td>{{ $posbrix->is_accepted }}</td>
+                            <td>
+                                @if($posbrix->variety_id != NULL)
+                                    {{ $posbrix->variety->name }}
+                                @else
+                                    {{ $posbrix->variety_id }}
+                                @endif
+                            </td>
+                            <td>
+                                @if($posbrix->kawalan_id != NULL)
+                                    {{ $posbrix->kawalan->name }}
+                                @else
+                                    {{ $posbrix->kawalan_id }}
+                                @endif
+                            </td>
+                            <td>@if($posbrix->is_accepted === 1){{ 'Diterima' }}@elseif($posbrix->is_accepted === 0){{ 'Ditolak' }}@else{{ '-' }}@endif</td>
                             <td>{{ $posbrix->user->name }}</td>
                             <td>
                                 <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#edit{{ $posbrix->id }}">
@@ -112,6 +128,28 @@
                     'value' => '',
                     'modifier' => 'required',
                 ])
+
+                <div class="form-group row">
+                    <label for="variety_id" class="col-sm-2 col-form-label">Varietas</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="variety_id">
+                            @foreach($varieties as $variety)
+                                <option value="{{ $variety->id }}" @if($variety->id == 8) {{ 'selected' }} @endif>{{ $variety->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="kawalan_id" class="col-sm-2 col-form-label">Kawalan</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="kawalan_id">
+                            @foreach($kawalans as $kawalan)
+                                <option value="{{ $kawalan->id }}" @if($kawalan->id == 1) {{ 'selected' }} @endif>{{ $kawalan->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
 
                 <div class="form-group row">
                     <label for="is_accepted" class="col-sm-2 col-form-label">Status</label>
@@ -180,6 +218,28 @@
                     'value' => $posbrix->brix,
                     'modifier' => 'required',
                 ])
+
+                <div class="form-group row">
+                    <label for="variety_id" class="col-sm-2 col-form-label">Varietas</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="variety_id">
+                            @foreach($varieties as $variety)
+                                <option value="{{ $variety->id }}" @if($variety->id == $posbrix->variety_id) {{ 'selected' }} @endif>{{ $variety->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="kawalan_id" class="col-sm-2 col-form-label">Kawalan</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="kawalan_id">
+                            @foreach($kawalans as $kawalan)
+                                <option value="{{ $kawalan->id }}" @if($kawalan->id == $posbrix->kawalan_id) {{ 'selected' }} @endif>{{ $kawalan->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
 
                 <div class="form-group row">
                     <label for="is_accepted" class="col-sm-2 col-form-label">Status</label>

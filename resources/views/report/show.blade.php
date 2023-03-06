@@ -18,6 +18,13 @@
 
 	<body>
 
+        @if($request->handling == 'export')
+            @php
+                header("Content-type: application/vnd-ms-excel");
+                header("Content-Disposition: attachment; filename=Laporan_Silab_".$request->date.".xls");
+            @endphp
+        @endif
+
         <div class="wrapper">
 
             <section class="invoice">
@@ -89,7 +96,7 @@
                                         @foreach($indicators as $indicator)
                                             <td>
                                                 @if (array_key_exists($indicator->name, $data))
-                                                    {{ $data[$indicator->name] }}
+                                                    {{ number_format($data[$indicator->name], 2, ',' , '.') }}
                                                 @else
 
                                                 @endif
@@ -115,15 +122,15 @@
                             <tbody>
                             <tr>
                                 <td>Tetes</td>
-                                <td>{{ number_format($timbangan['mollases']) }}</td>
+                                <td>{{ number_format($timbangan['mollases'], 2, ',' , '.') }}</td>
                             </tr>
                             <tr>
                                 <td>Rawsugar Input</td>
-                                <td>{{ number_format($timbangan['rawsugarinputs']) }}</td>
+                                <td>{{ number_format($timbangan['rawsugarinputs'], 2, ',' , '.') }}</td>
                             </tr>
                             <tr>
                                 <td>Rawsugar Output</td>
-                                <td>{{ number_format($timbangan['rawsugaroutputs']) }}</td>
+                                <td>{{ number_format($timbangan['rawsugaroutputs'], 2, ',' , '.') }}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -142,7 +149,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $keliling['name'] }}</td>
-                                <td>{{ $keliling['average'] }}</td>
+                                <td>{{ number_format($keliling['average'], 2, ',' , '.') }}</td>
                             </tr>
                             @endforeach
                             </tbody>
@@ -168,9 +175,18 @@
                                     <td>{{ $wilayah['name'] }}</td>
                                     <td>{{ $wilayah['register'] }}</td>
                                     <td>{{ $wilayah['rit'] }}</td>
-                                    <td>{{ $wilayah['pbrix'] }}</td>
-                                    <td>{{ $wilayah['ppol'] }}</td>
-                                    <td>{{ $wilayah['yield'] }}</td>
+                                    <td>
+                                        {{-- {{ $wilayah['pbrix'] }} --}}
+                                        {{ number_format($wilayah['pbrix'], 2, ',' , '.') }}
+                                    </td>
+                                    <td>
+                                        {{-- {{ $wilayah['ppol'] }} --}}
+                                        {{ number_format($wilayah['ppol'], 2, ',' , '.') }}
+                                    </td>
+                                    <td>
+                                        {{-- {{ $wilayah['yield'] }} --}}
+                                        {{ number_format($wilayah['yield'], 2, ',' , '.') }}
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -216,7 +232,7 @@
                                     <td>{{ $balance['flow_nm'] }}</td>
                                     <td>
                                         @if($balance['tebu'] > 0)
-                                        {{ $balance['flow_nm'] / $balance['tebu'] * 100 }}
+                                        {{ number_format($balance['flow_nm'] / $balance['tebu'] * 100, 2, ',' , '.') }}
                                         @else
                                         {{ '-' }}
                                         @endif
@@ -227,7 +243,7 @@
                                     <td>{{ $balance['flow_imb'] }}</td>
                                     <td>
                                         @if($balance['tebu'] > 0)
-                                        {{ $balance['flow_imb'] / $balance['tebu'] * 100 }}
+                                        {{ number_format($balance['flow_imb'] / $balance['tebu'] * 100, 2, ',' , '.') }}
                                         @else
                                         {{ '-' }}
                                         @endif
@@ -240,10 +256,16 @@
                         <table width="100%" class="table table-dark table-striped table-sm table-bordered table-hover text-xs">
                             <thead>
                                 <tr>
-                                    <th>Jenis</th>
-                                    <th>Masuk<sub>(rit)</sub></th>
-                                    <th>Diterima<sub>(rit)</sub></th>
-                                    <th>Brix Rerata Diterima</th>
+                                    <th rowspan="2">Jenis</th>
+                                    <th rowspan="2">Masuk<sub>(rit)</sub></th>
+                                    <th colspan="2">Diterima</th>
+                                    <th colspan="2">Ditolak</th>
+                                </tr>
+                                <tr>
+                                    <th>Rit</th>
+                                    <th>Brix</th>
+                                    <th>Rit</th>
+                                    <th>Brix</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -251,13 +273,25 @@
                                     <td>Engkel Kecil</td>
                                     <td>{{ $posbrix['ek']->count() }}</td>
                                     <td>{{ $posbrix['ek']->where('is_accepted', 1)->count() }}</td>
-                                    <td>{{ number_format($posbrix['brix_ek'], 2) }}</td>
+                                    <td>
+                                        {{ number_format($posbrix['brix_ek'], 2, ',' , '.') }}
+                                    </td>
+                                    <td>{{ $posbrix['ek']->where('is_accepted', 0)->count() }}</td>
+                                    <td>
+                                        {{ number_format($posbrix['brix_ek_ditolak'], 2, ',' , '.') }}
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Engkel Besar & Gandeng</td>
                                     <td>{{ $posbrix['eb']->count() }}</td>
                                     <td>{{ $posbrix['eb']->where('is_accepted', 1)->count() }}</td>
-                                    <td>{{ number_format($posbrix['brix_eb'], 2) }}</td>
+                                    <td>
+                                        {{ number_format($posbrix['brix_eb'], 2, ',' , '.') }}
+                                    </td>
+                                    <td>{{ $posbrix['eb']->where('is_accepted', 0)->count() }}</td>
+                                    <td>
+                                        {{ number_format($posbrix['brix_eb_ditolak'], 2, ',' , '.') }}
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -277,16 +311,34 @@
                                 <tr>
                                     <td>Engkel Kecil</td>
                                     <td>{{ $ari['ek']->count() }}</td>
-                                    <td>{{ $ari['ek']->avg('pbrix') }}</td>
-                                    <td>{{ $ari['ek']->avg('ppol') }}</td>
-                                    <td>{{ $ari['ek']->avg('yield') }}</td>
+                                    <td>
+                                        {{-- {{ $ari['ek']->avg('pbrix') }} --}}
+                                        {{ number_format($ari['ek']->avg('pbrix'), 2, ',' , '.') }}
+                                    </td>
+                                    <td>
+                                        {{-- {{ $ari['ek']->avg('ppol') }} --}}
+                                        {{ number_format($ari['ek']->avg('ppol'), 2, ',' , '.') }}
+                                    </td>
+                                    <td>
+                                        {{-- {{ $ari['ek']->avg('yield') }} --}}
+                                        {{ number_format($ari['ek']->avg('yield'), 2, ',' , '.') }}
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Engkel Besar & Gandeng</td>
                                     <td>{{ $ari['eb']->count() }}</td>
-                                    <td>{{ $ari['eb']->avg('pbrix') }}</td>
-                                    <td>{{ $ari['eb']->avg('ppol') }}</td>
-                                    <td>{{ $ari['eb']->avg('yield') }}</td>
+                                    <td>
+                                        {{-- {{ $ari['eb']->avg('pbrix') }} --}}
+                                        {{ number_format($ari['eb']->avg('pbrix'), 2, ',' , '.') }}
+                                    </td>
+                                    <td>
+                                        {{-- {{ $ari['eb']->avg('ppol') }} --}}
+                                        {{ number_format($ari['eb']->avg('ppol'), 2, ',' , '.') }}
+                                    </td>
+                                    <td>
+                                        {{-- {{ $ari['eb']->avg('yield') }} --}}
+                                        {{ number_format($ari['eb']->avg('yield'), 2, ',' , '.') }}
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -311,9 +363,18 @@
                                     <td>{{ $kud['name'] }}</td>
                                     <td>{{ $kud['register'] }}</td>
                                     <td>{{ $kud['rit'] }}</td>
-                                    <td>{{ $kud['pbrix'] }}</td>
-                                    <td>{{ $kud['ppol'] }}</td>
-                                    <td>{{ $kud['yield'] }}</td>
+                                    <td>
+                                        {{-- {{ $kud['pbrix'] }} --}}
+                                        {{ number_format($kud['pbrix'], 2, ',' , '.') }}
+                                    </td>
+                                    <td>
+                                        {{-- {{ $kud['ppol'] }} --}}
+                                        {{ number_format($kud['ppol'], 2, ',' , '.') }}
+                                    </td>
+                                    <td>
+                                        {{-- {{ $kud['yield'] }} --}}
+                                        {{ number_format($kud['yield'], 2, ',' , '.') }}
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -339,9 +400,18 @@
                                     <td>{{ $pospantau['name'] }}</td>
                                     <td>{{ $pospantau['register'] }}</td>
                                     <td>{{ $pospantau['rit'] }}</td>
-                                    <td>{{ $pospantau['pbrix'] }}</td>
-                                    <td>{{ $pospantau['ppol'] }}</td>
-                                    <td>{{ $pospantau['yield'] }}</td>
+                                    <td>
+                                        {{-- {{ $pospantau['pbrix'] }} --}}
+                                        {{ number_format($pospantau['pbrix'], 2, ',' , '.') }}
+                                    </td>
+                                    <td>
+                                        {{-- {{ $pospantau['ppol'] }} --}}
+                                        {{ number_format($pospantau['ppol'], 2, ',' , '.') }}
+                                    </td>
+                                    <td>
+                                        {{-- {{ $pospantau['yield'] }} --}}
+                                        {{ number_format($pospantau['yield'], 2, ',' , '.') }}
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>

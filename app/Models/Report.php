@@ -107,10 +107,22 @@ class Report extends Model
             ->where('is_accepted', 1)
             ->avg('brix');
 
+        $data['brix_ek_ditolak'] = Posbrix::where('created_at', '>=', $time['current'])
+            ->where('created_at', '<', $time['tomorrow'])
+            ->where('category', 'EK')
+            ->where('is_accepted', 0)
+            ->avg('brix');
+
         $data['brix_eb'] = Posbrix::where('created_at', '>=', $time['current'])
             ->where('created_at', '<', $time['tomorrow'])
             ->where('category', 'EB|GD')
             ->where('is_accepted', 1)
+            ->avg('brix');
+
+        $data['brix_eb_ditolak'] = Posbrix::where('created_at', '>=', $time['current'])
+            ->where('created_at', '<', $time['tomorrow'])
+            ->where('category', 'EB|GD')
+            ->where('is_accepted', 0)
             ->avg('brix');
 
         return $data;

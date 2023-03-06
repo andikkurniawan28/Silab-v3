@@ -16,6 +16,8 @@ class CreatePosbrixesTable extends Migration
         Schema::create('posbrixes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
+            $table->foreignId('variety_id')->nullable()->constrained();
+            $table->foreignId('kawalan_id')->nullable()->constrained();
             $table->string('spta')->unique();
             $table->string('category');
             $table->integer('brix')->nullable();

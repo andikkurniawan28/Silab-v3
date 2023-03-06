@@ -44,7 +44,7 @@
                                 <td>
                                     @foreach($sample->analysis as $analysis)
                                         @if($analysis->indicator->id == $method->indicator_id)
-                                            {{ $analysis->value }}
+                                            {{ number_format($analysis->value, 2, ',' , '.') }}
                                         @endif
                                     @endforeach
                                 </td>

@@ -75,6 +75,12 @@
             <a class="dropdown-item" href="{{ route('wilayahs.index') }}">
                 <i class="fas fa-shop fa-sm fa-fw mr-2 text-gray-400"></i> Wilayah
             </a>
+            <a class="dropdown-item" href="{{ route('varieties.index') }}">
+                <i class="fas fa-file fa-sm fa-fw mr-2 text-gray-400"></i> Varietas
+            </a>
+            <a class="dropdown-item" href="{{ route('kawalans.index') }}">
+                <i class="fas fa-truck fa-sm fa-fw mr-2 text-gray-400"></i> Kawalan
+            </a>
             @endif
 
             @if(Auth()->user()->role_id <= 7)

@@ -18,6 +18,8 @@ class PosbrixRfidController extends Controller
     {
         Posbrix::where('spta', $request->spta)->update([
             'brix' => $request->brix,
+            'variety_id' => $request->variety_id,
+            'kawalan_id' => $request->kawalan_id,
             'is_accepted' => $request->is_accepted,
         ]);
 

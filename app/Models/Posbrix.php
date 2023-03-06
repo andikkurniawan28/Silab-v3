@@ -15,4 +15,12 @@ class Posbrix extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function variety(){
+        return $this->belongsTo(Variety::class);
+    }
+
+    public function kawalan(){
+        return $this->belongsTo(Kawalan::class);
+    }
+
 }

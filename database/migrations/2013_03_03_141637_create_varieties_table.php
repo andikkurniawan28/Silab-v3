@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDirtsTable extends Migration
+class CreateVarietiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateDirtsTable extends Migration
      */
     public function up()
     {
-        Schema::create('dirts', function (Blueprint $table) {
+        Schema::create('varieties', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('value');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
@@ -29,6 +28,6 @@ class CreateDirtsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dirts');
+        Schema::dropIfExists('varieties');
     }
 }

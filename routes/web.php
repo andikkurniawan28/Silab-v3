@@ -21,9 +21,11 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SampleController;
 use App\Http\Controllers\TvalueController;
 use App\Http\Controllers\BalanceController;
+use App\Http\Controllers\KawalanController;
 use App\Http\Controllers\MollaseController;
 use App\Http\Controllers\PosbrixController;
 use App\Http\Controllers\StationController;
+use App\Http\Controllers\VarietyController;
 use App\Http\Controllers\WilayahController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AnalysisController;
@@ -94,6 +96,10 @@ Route::resource('ari_samplings', AriSamplingController::class)->middleware(['aut
 Route::resource('scores', ScoreController::class)->middleware(['auth', 'operator_qc']);
 Route::resource('dirts', DirtController::class)->middleware(['auth', 'kasubsie']);
 Route::resource('scoring_values', ScoringValueController::class)->middleware(['auth', 'operator_qc']);
+Route::resource('varieties', VarietyController::class)->middleware(['auth', 'kasubsie']);
+Route::resource('kawalans', KawalanController::class)->middleware(['auth', 'kasubsie']);
+
+
 Route::get('station_result/{station_id}', StationResultController::class)->name('station_result')->middleware(['auth']);
 Route::get('sample_result/{material_id}', SampleResultController::class)->name('sample_result')->middleware(['auth']);
 Route::get('report', [ ReportController::class, 'index' ])->name('report')->middleware(['auth', 'mandor']);
