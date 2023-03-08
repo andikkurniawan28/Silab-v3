@@ -55,22 +55,22 @@
                     <h4 class='text-left text-dark'><strong>Laporan Hasil Scoring</strong></h4>
 
                         <table width='100%' border='1' class="text-dark" cellpadding='5'>
-                            {{-- <tr>
+                            <tr>
                                 <th bgcolor='#00FFFF'>Nomor Antrian</th>
-                                <td>{{ $score->barcode }}</td>
+                                <td>{{ $score->rit->barcode_antrian }}</td>
                             </tr>
                             <tr>
                                 <th bgcolor='#00FFFF'>Nomor Polisi</th>
-                                <td>{{ $score->truck_number }}</td>
+                                <td>{{ $score->rit->nopol }}</td>
                             </tr>
                             <tr>
                                 <th bgcolor='#00FFFF'>Register</th>
-                                <td>{{ $score->register }}</td>
+                                <td>{{ $score->rit->register }}</td>
                             </tr>
                             <tr>
                                 <th bgcolor='#00FFFF'>Petani</th>
-                                <td>{{ $score->farmer }}</td>
-                            </tr> --}}
+                                <td>{{ $score->rit->petani }}</td>
+                            </tr>
                             <tr>
                                 <th bgcolor='#00FFFF'>Timestamp</th>
                                 <td>{{ $score->created_at }}</td>
@@ -84,7 +84,7 @@
                                 <td>
                                     <ul>
                                         @foreach($score->scoring_value as $scoring_value)
-                                            <li>{{ $scoring_value->dirt->name }} : {{ $scoring_value->value }} %</li>
+                                            <li>{{ $scoring_value->dirt->name }} : {{ $scoring_value->value }}%</li>
                                         @endforeach
                                     </ul>
                                 </td>
@@ -111,7 +111,7 @@
 
                         <h6 align='justify' class="text-dark">
                             Bahwasanya dari hasil pengamatan Tim Quality Control PG. Kebon Agung, tebu saudara
-                            @switch($score->score)
+                            @switch($score->value)
                                 @case("A")
                                     <b>telah memenuhi</b>
                                     @break
@@ -139,7 +139,7 @@
 
                         <h6 align='justify' class="text-dark">
                             Demikian pemberitahuan ini dibuat, semoga kedepan dapat
-                            @switch($score->score)
+                            @switch($score->value)
                                 @case("A")
                                     <b>dipertahankan</b>
                                     @break

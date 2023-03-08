@@ -33,7 +33,7 @@
                             <td>Timestamp</td>
                             {{-- <td>Nopol</td> --}}
                             <td>Barcode</td>
-                            <td><a href="{{ route('dirts.index') }}">Kotoran</a></td>
+                            <td><a href="{{ route('dirts.index') }}" target="_blank">Kotoran</a></td>
                             <td>Score</td>
                             <td>User</td>
                             <td>Action</td>
@@ -49,7 +49,7 @@
                             <td>
                                 <ul>
                                 @forelse($score->scoring_value as $scoring_value)
-                                    <li>{{ $scoring_value->dirt->name }} : {{ $scoring_value->value }}</li>
+                                    <li>{{ $scoring_value->dirt->name }} : {{ $scoring_value->value }}%</li>
                                 @empty
 
                                 @endforelse
@@ -90,7 +90,7 @@
 
 @for($i=1; $i<=5; $i++)
 <div class="modal fade" id="create{{ $i }}" tabindex="-1" score="dialog" aria-labelledby="createLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" score="document">
+    <div class="modal-dialog modal-xl" score="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="createLabel">{{ ucfirst('penilaian MBS') }} Meja {{ $i }}</h5>
@@ -132,7 +132,7 @@
                                     @if($j == 0)
                                     {{ 'checked' }}
                                     @endif
-                                    > {{ $j }}
+                                    > {{ $j }}%
                                 </label>
                             @endfor
                         </div>

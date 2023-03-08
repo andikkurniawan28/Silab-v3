@@ -134,24 +134,24 @@ class ScoreController extends Controller
 
         switch($request->cane_table){
             case 1 :
-                $url = "http://admin:qc_12345@192.168.29.30/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
-                $url2 = "http://admin:qc_12345@192.168.29.30/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+                $url = "http://admin:qc_12345@192.168.29.102/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+                $url2 = "http://admin:qc_12345@192.168.29.103/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
             break;
             case 2 :
-                $url = "http://admin:qc_12345@192.168.29.30/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
-                $url2 = "http://admin:qc_12345@192.168.29.30/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+                $url = "http://admin:qc_12345@192.168.29.102/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+                $url2 = "http://admin:qc_12345@192.168.29.103/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
             break;
             case 3 :
-                $url = "http://admin:qc_12345@192.168.29.30/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
-                $url2 = "http://admin:qc_12345@192.168.29.30/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+                $url = "http://admin:qc_12345@192.168.29.102/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+                $url2 = "http://admin:qc_12345@192.168.29.103/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
             break;
             case 4 :
-                $url = "http://admin:qc_12345@192.168.29.30/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
-                $url2 = "http://admin:qc_12345@192.168.29.30/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+                $url = "http://admin:qc_12345@192.168.29.102/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+                $url2 = "http://admin:qc_12345@192.168.29.103/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
             break;
             case 5 :
-                $url = "http://admin:qc_12345@192.168.29.30/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
-                $url2 = "http://admin:qc_12345@192.168.29.30/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+                $url = "http://admin:qc_12345@192.168.29.102/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+                $url2 = "http://admin:qc_12345@192.168.29.103/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
             break;
         }
 
