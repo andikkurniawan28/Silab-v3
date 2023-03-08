@@ -33,7 +33,7 @@
                             <td>Timestamp</td>
                             {{-- <td>Nopol</td> --}}
                             <td>Barcode</td>
-                            <td>Kotoran</td>
+                            <td><a href="{{ route('dirts.index') }}">Kotoran</a></td>
                             <td>Score</td>
                             <td>User</td>
                             <td>Action</td>
@@ -58,10 +58,10 @@
                             <td>{{ $score->value }}</td>
                             <td>{{ $score->user->name }}</td>
                             <td>
-                                <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#edit{{ $score->id }}">
+                                {{-- <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#edit{{ $score->id }}">
                                     @include('components.icon', ['icon' => 'edit '])
                                     Edit
-                                </button>
+                                </button> --}}
                                 <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#delete{{ $score->id }}">
                                     @include('components.icon', ['icon' => 'trash '])
                                     Hapus

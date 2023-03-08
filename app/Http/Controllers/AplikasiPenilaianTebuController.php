@@ -96,24 +96,24 @@ class AplikasiPenilaianTebuController extends Controller
 
         switch($request->cane_table){
             case 1 :
-                $url = "http://admin:qc_12345@192.168.29.103/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
-                $url2 = "http://admin:qc_12345@192.168.29.103/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+                $url = "http://admin:qc_12345@192.168.29.30/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+                $url2 = "http://admin:qc_12345@192.168.29.30/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
             break;
             case 2 :
-                $url = "http://admin:qc_12345@192.168.40.30/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
-                $url2 = "http://admin:qc_12345@192.168.40.32/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+                $url = "http://admin:qc_12345@192.168.29.30/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+                $url2 = "http://admin:qc_12345@192.168.29.32/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
             break;
             case 3 :
-                $url = "http://admin:qc_12345@192.168.40.30/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
-                $url2 = "http://admin:qc_12345@192.168.40.32/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+                $url = "http://admin:qc_12345@192.168.29.30/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+                $url2 = "http://admin:qc_12345@192.168.29.32/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
             break;
             case 4 :
-                $url = "http://admin:qc_12345@192.168.40.30/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
-                $url2 = "http://admin:qc_12345@192.168.40.32/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+                $url = "http://admin:qc_12345@192.168.29.30/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+                $url2 = "http://admin:qc_12345@192.168.29.32/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
             break;
             case 5 :
-                $url = "http://admin:qc_12345@192.168.40.30/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
-                $url2 = "http://admin:qc_12345@192.168.40.32/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+                $url = "http://admin:qc_12345@192.168.29.30/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
+                $url2 = "http://admin:qc_12345@192.168.29.32/ISAPI/streaming/channels/1/picture?videocodec=jpeg";
             break;
         }
 
@@ -138,6 +138,29 @@ class AplikasiPenilaianTebuController extends Controller
     }
 
     public function generateScore($request){
-        return 'D';
+        $daduk = $request->{1} * Dirt::whereId(1)->get()->last()->value / 10;
+        $akar = $request->{2} * Dirt::whereId(2)->get()->last()->value / 10;
+        $tali_pucuk = $request->{3} * Dirt::whereId(3)->get()->last()->value / 10;
+        $pucuk = $request->{4}  * Dirt::whereId(4)->get()->last()->value / 10;
+        $sogolan = $request->{5} * Dirt::whereId(5)->get()->last()->value / 10;
+        $tebu_muda = $request->{6} * Dirt::whereId(6)->get()->last()->value / 10;
+        $lelesan = $request->{7} * Dirt::whereId(7)->get()->last()->value / 10;
+        $terbakar = $request->{8} * Dirt::whereId(8)->get()->last()->value / 10;
+
+        $score = 100 - ($daduk + $akar + $tali_pucuk + $pucuk + $sogolan + $tebu_muda + $lelesan + $terbakar);
+
+        switch($score){
+            case($score < 1): $grade = 'G'; break;
+            case($score >= 1 && $score <= 40): $grade = 'G'; break;
+            case($score >= 41 && $score <= 50): $grade = 'F'; break;
+            case($score >= 51 && $score <= 60): $grade = 'E'; break;
+            case($score >= 61 && $score <= 70): $grade = 'D'; break;
+            case($score >= 71 && $score <= 80): $grade = 'C'; break;
+            case($score >= 81 && $score <= 90): $grade = 'B'; break;
+            case($score >= 91 && $score <= 100): $grade = 'A'; break;
+            case($score > 100): $grade = 'A'; break;
+        }
+
+        return $grade;
     }
 }

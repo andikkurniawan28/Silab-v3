@@ -21,7 +21,7 @@
                             <td>ID</td>
                             <td>Timestamp</td>
                             <td>Nama</td>
-                            <td>Value</td>
+                            <td>Value per 10%</td>
                             <td>Action</td>
                         </tr>
                     </thead>

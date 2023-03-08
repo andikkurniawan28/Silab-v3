@@ -49,8 +49,8 @@
                                                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                                     @for($k=4; $k<=5; $k++)
                                                     <label class="btn btn-outline-primary btn-toggle btn-md">
-                                                    <input type="radio" name="{{ 'cane_table' }}" id="{{ 'cane_table' }}" autocomplete="off" value="{{ $k }}"> {{ $k }}
-                                                        </label>
+                                                        <input type="radio" name="{{ 'cane_table' }}" id="{{ 'cane_table' }}" autocomplete="off" value="{{ $k }}"> {{ $k }}
+                                                    </label>
                                                     @endfor
                                                 </div>
                                             </div>

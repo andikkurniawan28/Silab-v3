@@ -16,7 +16,7 @@ class CreateDirtsTable extends Migration
         Schema::create('dirts', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('value');
+            $table->float('value');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

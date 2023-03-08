@@ -84,7 +84,7 @@
                                 <td>
                                     <ul>
                                         @foreach($score->scoring_value as $scoring_value)
-                                            <li>{{ $scoring_value->dirt->name }} : {{ $scoring_value->value }}</li>
+                                            <li>{{ $scoring_value->dirt->name }} : {{ $scoring_value->value }} %</li>
                                         @endforeach
                                     </ul>
                                 </td>
@@ -102,8 +102,8 @@
                                 <th bgcolor='#00FFFF' colspan='3'>Dokumentasi</th>
                             </tr>
                             <tr>
-                                <td><img class='rounded mx-auto d-block' src="/{{ $score->image1 }}" width="450" height="375"></img></td>
-                                <td><img class='rounded mx-auto d-block' src="/{{ $score->image2 }}" width="450" height="375"></img></td>
+                                <td><img class='img-fluid' src="/{{ $score->image1 }}" width="450" height="375"></img></td>
+                                <td><img class='img-fluid' src="/{{ $score->image2 }}" width="450" height="375"></img></td>
                             </tr>
                         </table>
 

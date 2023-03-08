@@ -1051,13 +1051,14 @@ class DatabaseSeeder extends Seeder
         ];
 
         $dirts = [
-            ['name' => ucfirst('daduk'), 'value' => 10],
-            ['name' => ucfirst('pucuk'), 'value' => 20],
-            ['name' => ucfirst('sogolan'), 'value' => 30],
-            ['name' => ucfirst('tali pucuk'), 'value' => 40],
-            ['name' => ucfirst('tebu muda'), 'value' => 50],
-            ['name' => ucfirst('lelesan'), 'value' => 60],
-            ['name' => ucfirst('akar'), 'value' => 70],
+            ['name' => ucfirst('daduk'), 'value' => 4.5],
+            ['name' => ucfirst('akar'), 'value' => 5.6],
+            ['name' => ucfirst('tali pucuk'), 'value' => 8.8],
+            ['name' => ucfirst('pucuk'), 'value' => 18.6],
+            ['name' => ucfirst('sogolan'), 'value' => 19.8],
+            ['name' => ucfirst('tebu muda'), 'value' => 27.5],
+            ['name' => ucfirst('lelesan'), 'value' => 27.5],
+            ['name' => ucfirst('terbakar'), 'value' => 27.5],
         ];
 
         // for($i=1; $i<=1000; $i++){
