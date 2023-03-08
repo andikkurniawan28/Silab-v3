@@ -23,4 +23,8 @@ class Posbrix extends Model
         return $this->belongsTo(Kawalan::class);
     }
 
+    public function rit(){
+        return $this->hasMany(Rit::class);
+    }
+
 }

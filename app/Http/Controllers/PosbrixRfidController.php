@@ -23,8 +23,11 @@ class PosbrixRfidController extends Controller
             'is_accepted' => $request->is_accepted,
         ]);
 
+        $posbrix_id = Posbrix::where('spta', $request->spta)->get()->last()->id;
+
         if($request->is_accepted == 1){
             Rit::insert([
+                'posbrix_id' => $posbrix_id,
                 'spta' => $request->spta,
                 'category' => $request->category,
             ]);

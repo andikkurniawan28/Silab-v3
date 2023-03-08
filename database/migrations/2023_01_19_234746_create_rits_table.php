@@ -22,6 +22,7 @@ class CreateRitsTable extends Migration
             $table->string('register')->nullable();
             $table->string('nopol')->nullable();
             $table->string('petani')->nullable();
+            $table->foreignId('posbrix_id')->nullable()->constrained();
             $table->foreignId('kud_id')->nullable()->constrained();
             $table->foreignId('pospantau_id')->nullable()->constrained();
             $table->foreignId('wilayah_id')->nullable()->constrained();

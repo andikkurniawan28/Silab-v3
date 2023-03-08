@@ -21,6 +21,7 @@
                             <td>ID</td>
                             <td>Timestamp</td>
                             <td>Kategori</td>
+                            <td>Brix</td>
                             <td>E-SPTA</td>
                             <td>RFID</td>
                             <td>Antrian</td>
@@ -35,6 +36,7 @@
                             <td>{{ $rit->id }}</td>
                             <td>{{ $rit->created_at }}</td>
                             <td>{{ $rit->category }}</td>
+                            <td>{{ $rit->posbrix->brix }}</td>
                             <td>{{ $rit->spta }}</td>
                             <td>{{ $rit->rfid }}</td>
                             <td>{{ $rit->barcode_antrian }}</td>

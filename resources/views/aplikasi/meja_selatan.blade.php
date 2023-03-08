@@ -31,12 +31,12 @@
                                         @method('POST')
 
                                         <div class="form-group row">
-                                            <label for="rit_id" class="col-sm-3 col-form-label">Nopol</label>
+                                            <label for="rit_id" class="col-sm-3 col-form-label">Identitas</label>
                                             <div class="col-sm-9">
                                                 <select class="form-control" name="rit_id">
                                                     @foreach ($rits as $rit)
                                                         <option value="{{ $rit->id }}">
-                                                            {{ $rit->nopol }} -- {{ $rit->barcode_antrian }}
+                                                            Nopol : {{ $rit->nopol }} -- Antrian :  {{ $rit->barcode_antrian }} -- Brix : {{ $rit->posbrix->brix }}
                                                         </option>
                                                     @endforeach
                                                 </select>

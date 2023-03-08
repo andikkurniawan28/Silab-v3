@@ -34,6 +34,10 @@ class Rit extends Model
         return $this->belongsTo(Wilayah::class);
     }
 
+    public function posbrix(){
+        return $this->belongsTo(Posbrix::class);
+    }
+
     public static function generateDataFromPdeApi($rfid){
 
         $url = 'http://192.168.20.45:8111/rfid/info/';

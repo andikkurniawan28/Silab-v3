@@ -138,7 +138,7 @@ Route::get('posbrix/{spta}/{category}', AnalisaPosBrixController::class)->name('
 Route::get('scan_rfid', ScanRfidPosbrixController::class)->name('scan_rfid')->middleware(['auth', 'operator_qc']);
 Route::get('scan_rfid_eb', ScanRfidPosbrixEbControlle::class)->name('scan_rfid_eb')->middleware(['auth', 'operator_qc']);
 Route::post('process_rfid', PosbrixRfidController::class)->name('process_rfid')->middleware(['auth', 'operator_qc']);
-Route::post('process_rfid_eb', PosbrixRfidController::class)->name('process_rfid_eb')->middleware(['auth', 'operator_qc']);
+// Route::post('process_rfid_eb', PosbrixRfidController::class)->name('process_rfid_eb')->middleware(['auth', 'operator_qc']);
 Route::post('process_posbrix_ek', AplikasiPosBrixEkController::class)->name('process_posbrix_ek')->middleware(['auth', 'operator_qc']);
 Route::post('process_posbrix_eb', AplikasiPosBrixEbController::class)->name('process_posbrix_eb')->middleware(['auth', 'operator_qc']);
 
